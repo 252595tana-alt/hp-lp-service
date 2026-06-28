@@ -212,6 +212,60 @@
     #reasons .section-title { color: var(--white); }
     #reasons .section-desc { color: rgba(255,255,255,0.7); }
     #reasons .section-label { background: rgba(255,255,255,0.12); color: #93c5fd; }
+    .profile-grid {
+      display: grid;
+      grid-template-columns: minmax(250px, 320px) minmax(0, 1fr);
+      gap: 42px;
+      align-items: stretch;
+      margin-bottom: 72px;
+    }
+    .profile-photo-card,
+    .profile-copy {
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.16);
+      box-shadow: 0 16px 40px rgba(3,12,28,0.22);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+    .profile-photo-card {
+      overflow: hidden;
+      border-radius: 20px;
+      padding: 10px;
+    }
+    .profile-photo {
+      display: block;
+      width: 100%;
+      height: 500px;
+      object-fit: cover;
+      object-position: center;
+      border-radius: 14px;
+    }
+    .profile-caption {
+      padding: 14px 8px 6px;
+      color: rgba(255,255,255,0.7);
+      font-size: 12px;
+      line-height: 1.7;
+      text-align: center;
+    }
+    .profile-copy {
+      border-radius: 20px;
+      padding: 36px 40px;
+    }
+    .profile-copy .section-title {
+      max-width: 620px;
+      margin-bottom: 24px;
+      font-size: clamp(23px, 3.5vw, 32px);
+    }
+    .profile-text {
+      display: grid;
+      gap: 16px;
+      max-width: 640px;
+      color: rgba(255,255,255,0.8);
+      font-size: 14px;
+      line-height: 1.9;
+    }
+    .strengths-heading { margin-bottom: 40px; }
+    .strengths-heading .section-desc { margin-bottom: 0; }
     .reason-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
@@ -426,6 +480,15 @@
     }
     footer a { color: rgba(255,255,255,0.5); text-decoration: none; }
 
+    @media (max-width: 760px) {
+      .profile-grid { grid-template-columns: 1fr; gap: 24px; margin-bottom: 60px; }
+      .profile-photo-card { max-width: 420px; width: 100%; margin: 0 auto; }
+      .profile-photo { height: 460px; }
+      .profile-copy { padding: 28px 24px; }
+      .profile-copy .section-title { font-size: 23px; }
+      .profile-text { gap: 14px; line-height: 1.85; }
+    }
+
     /* ===== Responsive ===== */
     @media (max-width: 600px) {
       .section { padding: 60px 0; }
@@ -523,9 +586,27 @@
 <!-- Reasons -->
 <section id="reasons" class="section">
   <div class="container">
-    <span class="section-label">選ばれる理由</span>
-    <h2 class="section-title">3つの強み</h2>
-    <p class="section-desc">個人事業主・小規模店舗のお客様に選ばれる理由をご紹介します。</p>
+    <div class="profile-grid">
+      <figure class="profile-photo-card">
+        <img class="profile-photo" src="public/images/profile-fishing.jpg" alt="プロフィール写真" loading="lazy">
+        <figcaption class="profile-caption">釣り好きな制作者が、地元の事業を丁寧にサポートします。</figcaption>
+      </figure>
+      <div class="profile-copy">
+        <span class="section-label">プロフィール紹介</span>
+        <h2 class="section-title">製造現場と業務整理の経験を活かしたHP・LP制作</h2>
+        <div class="profile-text">
+          <p>大手自動車部品メーカーでの生産管理・物流改善、レーザー装置メーカーでの生産技術、車載電池メーカーでの製造・海外拠点立ち上げ支援、医療製品メーカーでの開発業務を経験してきました。</p>
+          <p>現在はコンサルティング会社にて、業務分析・課題整理・要件定義を担当しています。</p>
+          <p>製造現場で培った「現場目線」と、業務を整理して形にする経験を活かし、お客様の課題やご要望を丁寧にヒアリングします。</p>
+          <p>「何を載せればいいか分からない」という状態でも、事業やサービスの魅力が伝わるように、一緒に整理しながらホームページを制作します。</p>
+        </div>
+      </div>
+    </div>
+    <div class="strengths-heading">
+      <span class="section-label">選ばれる理由</span>
+      <h2 class="section-title">3つの強み</h2>
+      <p class="section-desc">個人事業主・小規模店舗のお客様に選ばれる理由をご紹介します。</p>
+    </div>
     <div class="reason-grid">
       <div class="reason-card">
         <div class="reason-num">REASON 01</div>
