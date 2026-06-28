@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HP・LP制作サービス｜個人事業主・小規模店舗向け</title>
+  <meta name="description" content="個人事業主・小規模店舗向けに、要件整理から公開まで対応するHP・LP制作サービス。1ページHP制作50,000円〜。LINE で気軽にご相談ください。">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy: #1a2e4a;
+      --blue: #2563eb;
+      --blue-light: #eff6ff;
+      --grey: #64748b;
+      --grey-light: #f8fafc;
+      --white: #ffffff;
+      --text: #1e293b;
+      --line-green: #06c755;
+    }
+
+    body {
+      font-family: 'Meiryo UI', 'Meiryo', sans-serif;
+      color: var(--text);
+      line-height: 1.7;
+      font-size: 16px;
+    }
+
+    /* ===== Utility ===== */
+    .container { max-width: 900px; margin: 0 auto; padding: 0 24px; }
+    .section { padding: 80px 0; }
+    .section-label {
+      display: inline-block;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--blue);
+      background: var(--blue-light);
+      padding: 4px 12px;
+      border-radius: 20px;
+      margin-bottom: 12px;
+    }
+    .section-title {
+      font-size: clamp(22px, 4vw, 32px);
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 16px;
+      line-height: 1.4;
+    }
+    .section-desc { color: var(--grey); margin-bottom: 48px; }
+
+    /* ===== LINE CTA Button ===== */
+    .cta-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--line-green);
+      color: #fff;
+      font-size: 17px;
+      font-weight: 700;
+      padding: 16px 36px;
+      border-radius: 50px;
+      text-decoration: none;
+      transition: opacity 0.2s, transform 0.2s;
+      box-shadow: 0 4px 16px rgba(6,199,85,0.35);
+    }
+    .cta-btn:hover { opacity: 0.88; transform: translateY(-2px); }
+    .cta-btn svg { width: 24px; height: 24px; fill: #fff; flex-shrink: 0; }
+    .cta-sub {
+      display: block;
+      font-size: 12px;
+      font-weight: 400;
+      margin-top: 3px;
+      opacity: 0.9;
+    }
+    .cta-wrap { text-align: center; margin-top: 48px; }
+    .cta-note { font-size: 13px; color: var(--grey); margin-top: 12px; }
+    .line-mark {
+      display: inline-grid; place-items: center;
+      width: 32px; height: 32px; flex-shrink: 0;
+      border-radius: 50%; background: #fff;
+      color: var(--line-green); font-size: 8px; font-weight: 800;
+    }
+
+    /* ===== Header ===== */
+    header {
+      position: sticky; top: 0; z-index: 100;
+      background: var(--white);
+      border-bottom: 1px solid #e2e8f0;
+      padding: 14px 24px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .header-name { font-weight: 700; color: var(--navy); font-size: 15px; }
+    .header-cta {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: var(--line-green); color: #fff;
+      font-size: 13px; font-weight: 700;
+      padding: 9px 20px; border-radius: 50px;
+      text-decoration: none; transition: opacity 0.2s;
+    }
+    .header-cta:hover { opacity: 0.85; }
+    .header-cta svg { width: 18px; height: 18px; fill: #fff; }
+
+    /* ===== Hero ===== */
+    #hero {
+      background: url('hero-v2.png') center center / cover no-repeat;
+      color: var(--white);
+      padding: 100px 24px 90px;
+      text-align: center;
+      position: relative;
+    }
+    #hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: rgba(8, 22, 43, 0.5);
+    }
+    #hero > * { position: relative; z-index: 1; }
+    .hero-badge {
+      display: inline-block;
+      font-size: 12px; font-weight: 700; letter-spacing: 0.1em;
+      border: 1px solid rgba(255,255,255,0.4);
+      color: rgba(255,255,255,0.85);
+      padding: 4px 14px; border-radius: 20px; margin-bottom: 24px;
+    }
+    .hero-title {
+      font-size: clamp(26px, 5.5vw, 44px);
+      font-weight: 700; line-height: 1.35;
+      margin-bottom: 20px;
+    }
+    .hero-title span { color: #93c5fd; }
+    .hero-desc {
+      font-size: 16px; color: rgba(255,255,255,0.8);
+      max-width: 560px; margin: 0 auto 40px;
+    }
+    .hero-price {
+      display: inline-block;
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.25);
+      color: #fff; font-size: 15px;
+      padding: 8px 24px; border-radius: 8px; margin-bottom: 40px;
+    }
+    .hero-price strong { font-size: 22px; }
+
+    /* ===== Worries ===== */
+    #worries { background: var(--grey-light); }
+    .worry-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+    .worry-card {
+      position: relative;
+      border-radius: 12px;
+      overflow: hidden;
+      height: 180px;
+      background-size: cover;
+      background-position: center;
+    }
+    .worry-card::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(to right, rgba(255,255,255,0.92) 55%, rgba(255,255,255,0.3));
+    }
+    .worry-text {
+      position: absolute; z-index: 1;
+      left: 24px; top: 50%; transform: translateY(-50%);
+      font-size: 15px; font-weight: 500; color: var(--text);
+      max-width: 58%; line-height: 1.55;
+    }
+    @media (max-width: 600px) {
+      .worry-grid { grid-template-columns: 1fr; }
+      .worry-card { height: 130px; }
+    }
+
+    /* ===== Services ===== */
+    .service-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+    .service-card {
+      position: relative;
+      overflow: hidden;
+      min-height: 260px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      background-position: center;
+      background-size: cover;
+      border-radius: 16px;
+      padding: 28px;
+      color: #fff;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .service-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(6,18,36,0.94) 0%, rgba(6,18,36,0.56) 62%, rgba(6,18,36,0.2) 100%);
+    }
+    .service-card > * { position: relative; z-index: 1; }
+    .service-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 30px rgba(15,30,55,0.2);
+    }
+    .service-name { font-size: 20px; font-weight: 700; color: #fff; margin-bottom: 8px; }
+    .service-desc { font-size: 14px; color: rgba(255,255,255,0.82); }
+
+    /* ===== Reasons ===== */
+    #reasons { background: var(--navy); color: var(--white); }
+    #reasons .section-title { color: var(--white); }
+    #reasons .section-desc { color: rgba(255,255,255,0.7); }
+    #reasons .section-label { background: rgba(255,255,255,0.12); color: #93c5fd; }
+    .reason-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 24px;
+    }
+    .reason-card {
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 16px;
+      padding: 32px 24px;
+      text-align: center;
+    }
+    .reason-num {
+      font-size: 13px; font-weight: 700; letter-spacing: 0.1em;
+      color: #93c5fd; margin-bottom: 8px;
+    }
+    .reason-title { font-size: 20px; font-weight: 700; margin-bottom: 12px; }
+    .reason-desc { font-size: 14px; color: rgba(255,255,255,0.75); line-height: 1.6; }
+
+    /* ===== Works ===== */
+    #works { background: var(--grey-light); }
+    .works-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+    }
+    .work-card {
+      width: 100%;
+      max-width: 760px;
+      margin: 0 auto;
+      background: var(--white);
+      border: 1px solid #e2e8f0;
+      border-radius: 16px;
+      overflow: hidden;
+      transition: box-shadow 0.2s;
+    }
+    .work-card:hover { box-shadow: 0 8px 24px rgba(0,0,0,0.1); }
+    .work-image {
+      display: block;
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+    }
+    .work-body { padding: 20px; }
+    .work-type {
+      display: inline-block;
+      font-size: 11px; font-weight: 700; letter-spacing: 0.08em;
+      background: var(--blue-light); color: var(--blue);
+      padding: 3px 10px; border-radius: 20px; margin-bottom: 8px;
+    }
+    .work-name { font-size: 16px; font-weight: 700; color: var(--navy); margin-bottom: 6px; }
+    .work-meta { font-size: 13px; color: var(--grey); }
+    .work-desc { margin-top: 10px; font-size: 14px; color: var(--grey); }
+    .work-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+    .work-tag {
+      font-size: 12px; color: var(--grey);
+      background: var(--grey-light);
+      padding: 2px 10px; border-radius: 20px;
+    }
+
+    /* ===== Flow ===== */
+    .flow-list { display: flex; flex-direction: column; gap: 0; }
+    .flow-item {
+      display: flex; gap: 20px; align-items: flex-start;
+      position: relative; padding-bottom: 32px;
+    }
+    .flow-item:last-child { padding-bottom: 0; }
+    .flow-item:not(:last-child)::before {
+      content: '';
+      position: absolute;
+      left: 19px; top: 40px;
+      width: 2px; bottom: 0;
+      background: #e2e8f0;
+    }
+    .flow-num {
+      width: 40px; height: 40px; flex-shrink: 0;
+      background: var(--blue);
+      color: #fff; font-weight: 700; font-size: 15px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      position: relative; z-index: 1;
+    }
+    .flow-content { padding-top: 8px; }
+    .flow-title { font-size: 17px; font-weight: 700; color: var(--navy); margin-bottom: 4px; }
+    .flow-desc { font-size: 14px; color: var(--grey); }
+
+    /* ===== Pricing ===== */
+    #pricing { background: var(--grey-light); }
+    .price-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 20px;
+      margin-bottom: 24px;
+    }
+    .price-card {
+      background: var(--white);
+      border: 2px solid #e2e8f0;
+      border-radius: 16px;
+      padding: 28px;
+      text-align: center;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .price-card.featured {
+      border-color: var(--blue);
+      box-shadow: 0 0 0 4px var(--blue-light);
+    }
+    .price-badge {
+      display: inline-block;
+      font-size: 11px; font-weight: 700;
+      background: var(--blue); color: #fff;
+      padding: 3px 12px; border-radius: 20px; margin-bottom: 12px;
+    }
+    .price-name { font-size: 17px; font-weight: 700; color: var(--navy); margin-bottom: 8px; }
+    .price-amount {
+      font-size: 32px; font-weight: 700; color: var(--blue);
+      margin-bottom: 4px;
+    }
+    .price-amount span { font-size: 16px; }
+    .price-note { font-size: 12px; color: var(--grey); margin-bottom: 16px; }
+    .price-features { list-style: none; text-align: left; }
+    .price-features li {
+      font-size: 14px; color: var(--grey);
+      padding: 6px 0; border-bottom: 1px solid #f1f5f9;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .price-features li:last-child { border-bottom: none; }
+    .price-features li::before { content: '✓'; color: var(--blue); font-weight: 700; }
+    .price-table-wrap { overflow-x: auto; }
+    .price-table {
+      width: 100%; border-collapse: collapse;
+      font-size: 14px; background: var(--white);
+      border-radius: 12px; overflow: hidden;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+    }
+    .price-table th {
+      background: var(--navy); color: #fff;
+      padding: 12px 16px; text-align: left;
+      font-weight: 600;
+    }
+    .price-table td { padding: 12px 16px; border-bottom: 1px solid #f1f5f9; }
+    .price-table tr:last-child td { border-bottom: none; }
+    .price-table tr:nth-child(even) td { background: #f8fafc; }
+
+    /* ===== FAQ ===== */
+    .faq-list { display: flex; flex-direction: column; gap: 12px; }
+    details {
+      background: var(--white);
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      overflow: hidden;
+    }
+    details[open] { border-color: var(--blue); }
+    summary {
+      padding: 20px 24px;
+      font-weight: 600; font-size: 15px;
+      cursor: pointer;
+      display: flex; align-items: center; gap: 12px;
+      list-style: none;
+    }
+    summary::-webkit-details-marker { display: none; }
+    summary::before {
+      content: 'Q';
+      width: 28px; height: 28px; flex-shrink: 0;
+      background: var(--blue); color: #fff;
+      border-radius: 50%; font-size: 13px; font-weight: 700;
+      display: flex; align-items: center; justify-content: center;
+    }
+    summary::after {
+      content: '+';
+      margin-left: auto;
+      color: var(--blue); font-size: 22px; font-weight: 300;
+      transition: transform 0.2s;
+    }
+    details[open] summary::after { transform: rotate(45deg); }
+    .faq-answer {
+      padding: 0 24px 20px 64px;
+      font-size: 14px; color: var(--grey); line-height: 1.7;
+    }
+
+    /* ===== Contact ===== */
+    #contact {
+      background: linear-gradient(135deg, var(--navy), #1e3a5f);
+      color: var(--white); text-align: center;
+    }
+    #contact .section-title { color: var(--white); }
+    #contact .section-label { background: rgba(255,255,255,0.15); color: #93c5fd; }
+    .contact-desc {
+      color: rgba(255,255,255,0.8);
+      max-width: 480px; margin: 0 auto 40px;
+      font-size: 15px;
+    }
+    .contact-points {
+      display: flex; flex-wrap: wrap; justify-content: center; gap: 16px;
+      margin-bottom: 40px;
+    }
+    .contact-point {
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.2);
+      color: rgba(255,255,255,0.9);
+      font-size: 14px; padding: 8px 20px; border-radius: 50px;
+      display: flex; align-items: center; gap: 6px;
+    }
+    #contact .cta-note { color: rgba(255,255,255,0.6); }
+
+    /* ===== Footer ===== */
+    footer {
+      background: #0f1929;
+      color: rgba(255,255,255,0.5);
+      text-align: center;
+      padding: 32px 24px;
+      font-size: 13px;
+    }
+    footer a { color: rgba(255,255,255,0.5); text-decoration: none; }
+
+    /* ===== Responsive ===== */
+    @media (max-width: 600px) {
+      .section { padding: 60px 0; }
+      #hero { padding: 72px 20px 64px; }
+      .reason-grid, .service-grid { grid-template-columns: 1fr; }
+      .price-grid { grid-template-columns: 1fr; }
+      .works-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Header -->
+<header>
+  <span class="header-name">HP・LP制作サービス</span>
+</header>
+
+<!-- Hero -->
+<section id="hero">
+  <div class="container">
+    <span class="hero-badge">個人事業主・小規模店舗向け</span>
+    <h1 class="hero-title">
+      「何を載せるか」から<br>一緒に考える、<br><span>HP・LP制作サービス</span>
+    </h1>
+    <p class="hero-desc">
+      要件整理・企画・デザイン・実装・公開まで、<br>すべて対応。相談しやすい価格帯で、<br>あなたのサービスを伝えるサイトを作ります。
+    </p>
+    <div class="hero-price">1ページHP制作 <strong>50,000円〜</strong></div><br>
+    <a href="https://line.me/ti/p/3rFxC5etTu" class="cta-btn" target="_blank" rel="noopener noreferrer">
+      <svg viewBox="0 0 24 24"><path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.630 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63h2.386c.349 0 .63.285.63.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63.349 0 .631.285.631.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.282.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/></svg>
+      <span>LINEで無料見積もり・相談<span class="cta-sub">まだ内容が決まっていなくてもOK</span></span>
+    </a>
+  </div>
+</section>
+
+<!-- Worries -->
+<section id="worries" class="section">
+  <div class="container">
+    <span class="section-label">こんなお悩みありませんか？</span>
+    <h2 class="section-title">「HP を作りたいけど、<br>何から始めればいいか分からない」</h2>
+    <div class="worry-grid">
+      <div class="worry-card" style="background-image:url('https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?w=600&q=70')">
+        <p class="worry-text">HPを作りたいけど、何を載せればいいか分からない</p>
+      </div>
+      <div class="worry-card" style="background-image:url('https://images.unsplash.com/photo-1486325212027-8081e485255e?w=600&q=70')">
+        <p class="worry-text">制作会社に頼むほど規模が大きくない気がする</p>
+      </div>
+      <div class="worry-card" style="background-image:url('https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=600&q=70')">
+        <p class="worry-text">料金感が分からず、相談するのが不安</p>
+      </div>
+      <div class="worry-card" style="background-image:url('https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=600&q=70')">
+        <p class="worry-text">できるだけ早くサイトを公開したい</p>
+      </div>
+      <div class="worry-card" style="background-image:url('https://images.unsplash.com/photo-1507925921958-8a62f3d1a50d?w=600&q=70')">
+        <p class="worry-text">どんな内容・構成にすればよいか一緒に考えてほしい</p>
+      </div>
+      <div class="worry-card" style="background-image:url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&q=70')">
+        <p class="worry-text">実際に作ったサイトの実績を見てから判断したい</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Services -->
+<section id="services" class="section">
+  <div class="container">
+    <span class="section-label">サービス内容</span>
+    <h2 class="section-title">提供しているサービス</h2>
+    <p class="section-desc">企画・構成から公開まで、必要な工程をすべて対応します。</p>
+    <div class="service-grid">
+      <div class="service-card" style="background-image:url('service-hp.webp')">
+        <div class="service-name">HP制作</div>
+        <p class="service-desc">個人事業主・店舗・地域事業者向けの1ページ型ホームページ制作。企画・構成・デザイン・実装・公開まで一括対応。</p>
+      </div>
+      <div class="service-card" style="background-image:url('service-lp.webp')">
+        <div class="service-name">LP制作</div>
+        <p class="service-desc">商品・サービス紹介用のランディングページ制作。ターゲットに刺さるデザインと導線で問い合わせへつなげます。</p>
+      </div>
+      <div class="service-card" style="background-image:url('service-pages.webp')">
+        <div class="service-name">追加ページ制作</div>
+        <p class="service-desc">会社概要・実績紹介・FAQ・サービス詳細など、必要なページを追加制作します。</p>
+      </div>
+      <div class="service-card" style="background-image:url('service-operation.webp')">
+        <div class="service-name">サイト運用</div>
+        <p class="service-desc">公開後の基本運用・管理を月額でサポート。安心してサービスに集中できます。</p>
+      </div>
+      <div class="service-card" style="background-image:url('service-maintenance.webp')">
+        <div class="service-name">保守対応</div>
+        <p class="service-desc">文言修正・画像差し替え・ページ追加・不具合対応など、公開後の変更をスポット対応します。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Reasons -->
+<section id="reasons" class="section">
+  <div class="container">
+    <span class="section-label">選ばれる理由</span>
+    <h2 class="section-title">3つの強み</h2>
+    <p class="section-desc">個人事業主・小規模店舗のお客様に選ばれる理由をご紹介します。</p>
+    <div class="reason-grid">
+      <div class="reason-card">
+        <div class="reason-num">REASON 01</div>
+        <div class="reason-title">要件整理から対応</div>
+        <p class="reason-desc">「何を載せるか分からない」状態からスタートOK。サイトの目的・ターゲット・掲載内容を一緒に整理します。</p>
+      </div>
+      <div class="reason-card">
+        <div class="reason-num">REASON 02</div>
+        <div class="reason-title">スピード対応</div>
+        <p class="reason-desc">企画・構成・デザイン・制作をスピーディーに進行。目安納期は相談から約1ヶ月。</p>
+      </div>
+      <div class="reason-card">
+        <div class="reason-num">REASON 03</div>
+        <div class="reason-title">相談しやすい価格</div>
+        <p class="reason-desc">1ページHP制作50,000円〜。大手制作会社より気軽に相談できる価格帯で対応します。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Works -->
+<section id="works" class="section">
+  <div class="container">
+    <span class="section-label">制作実績</span>
+    <h2 class="section-title">実績紹介</h2>
+    <p class="section-desc">制作したサイトの一部をご紹介します。</p>
+    <div class="works-grid">
+      <div class="work-card">
+        <img class="work-image" src="work-2face.webp" alt="ボートシーバスガイド 2FACEのホームページ制作実績" loading="lazy" width="1600" height="755">
+        <div class="work-body">
+          <span class="work-type">HP制作</span>
+          <div class="work-name">ボートシーバスガイド「2FACE」</div>
+          <p class="work-meta">業種：釣り・レジャー</p>
+          <p class="work-desc">徳島・吉野川のボートシーバスガイドサイト。予約導線と空き状況をファーストビューに分かりやすく整理しました。</p>
+          <div class="work-tags">
+            <span class="work-tag">構成</span>
+            <span class="work-tag">デザイン</span>
+            <span class="work-tag">実装</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Flow -->
+<section id="flow" class="section">
+  <div class="container">
+    <span class="section-label">制作の流れ</span>
+    <h2 class="section-title">相談から公開までの流れ</h2>
+    <p class="section-desc">まずはLINEで気軽にご相談ください。内容未定・検討中でも大丈夫です。</p>
+    <div class="flow-list">
+      <div class="flow-item">
+        <div class="flow-num">1</div>
+        <div class="flow-content">
+          <div class="flow-title">LINEで無料相談・ヒアリング</div>
+          <p class="flow-desc">どんなサイトを作りたいか、目的・ターゲット・ご予算などをヒアリングします。まだ決まっていない段階でもOKです。</p>
+        </div>
+      </div>
+      <div class="flow-item">
+        <div class="flow-num">2</div>
+        <div class="flow-content">
+          <div class="flow-title">企画・構成の整理</div>
+          <p class="flow-desc">サイトの目的・掲載内容・ページ構成・導線を一緒に整理します。</p>
+        </div>
+      </div>
+      <div class="flow-item">
+        <div class="flow-num">3</div>
+        <div class="flow-content">
+          <div class="flow-title">お見積もり・ご契約</div>
+          <p class="flow-desc">構成をもとにお見積もりをご提示。内容を確認いただいてからご契約します。</p>
+        </div>
+      </div>
+      <div class="flow-item">
+        <div class="flow-num">4</div>
+        <div class="flow-content">
+          <div class="flow-title">デザイン・制作</div>
+          <p class="flow-desc">デザイン・実装を進めます。途中確認を行いながらご希望に近いものに仕上げます。</p>
+        </div>
+      </div>
+      <div class="flow-item">
+        <div class="flow-num">5</div>
+        <div class="flow-content">
+          <div class="flow-title">確認・修正（2回まで）</div>
+          <p class="flow-desc">完成したサイトをご確認いただき、修正を行います。修正は基本料金内で2回まで対応。</p>
+        </div>
+      </div>
+      <div class="flow-item">
+        <div class="flow-num">6</div>
+        <div class="flow-content">
+          <div class="flow-title">公開</div>
+          <p class="flow-desc">サーバー・ドメインの設定を行い、サイトを公開します。公開後の運用・保守もご相談ください。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Pricing -->
+<section id="pricing" class="section">
+  <div class="container">
+    <span class="section-label">料金</span>
+    <h2 class="section-title">制作費用・料金一覧</h2>
+    <p class="section-desc">明確な料金体系でご安心いただけます。詳細はLINEでご相談ください。</p>
+    <div class="price-grid">
+      <div class="price-card featured">
+        <span class="price-badge">メインサービス</span>
+        <div class="price-name">1ページHP制作</div>
+        <div class="price-amount"><span>¥</span>50,000<span>円〜</span></div>
+        <p class="price-note">企画〜公開まで一括対応</p>
+        <ul class="price-features">
+          <li>サイト目的・構成の整理</li>
+          <li>デザイン・レイアウト作成</li>
+          <li>Web実装</li>
+          <li>公開対応</li>
+          <li>修正2回まで込み</li>
+        </ul>
+      </div>
+      <div class="price-card">
+        <div class="price-name">LP制作</div>
+        <div class="price-amount"><span>¥</span>50,000<span>円〜</span></div>
+        <p class="price-note">商品・サービス紹介用LP</p>
+        <ul class="price-features">
+          <li>ターゲット・訴求整理</li>
+          <li>デザイン・レイアウト作成</li>
+          <li>Web実装</li>
+          <li>公開対応</li>
+          <li>修正2回まで込み</li>
+        </ul>
+      </div>
+      <div class="price-card">
+        <div class="price-name">サイト運用</div>
+        <div class="price-amount"><span>月額 ¥</span>10,000</div>
+        <p class="price-note">公開後の基本運用・管理費</p>
+        <ul class="price-features">
+          <li>公開状態の確認・管理</li>
+          <li>基本的な運用サポート</li>
+          <li>簡易相談対応</li>
+        </ul>
+      </div>
+    </div>
+    <div class="price-table-wrap">
+      <table class="price-table">
+        <thead>
+          <tr>
+            <th>メニュー</th>
+            <th>内容</th>
+            <th>料金</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>追加ページ制作</td>
+            <td>会社概要・実績紹介・FAQ・サービス詳細など</td>
+            <td>個別見積もり</td>
+          </tr>
+          <tr>
+            <td>保守対応</td>
+            <td>文言修正・画像差し替え・ページ追加・不具合対応など</td>
+            <td>別途見積もり</td>
+          </tr>
+          <tr>
+            <td>サーバー・ドメイン費用</td>
+            <td>利用サービスに応じて発生</td>
+            <td>実費</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="font-size:13px;color:var(--grey);margin-top:16px;text-align:center;">※ 修正3回目以降・構成変更・ページ追加・機能追加は別途お見積もりとなります。</p>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq" class="section" style="background:var(--grey-light)">
+  <div class="container">
+    <span class="section-label">よくある質問</span>
+    <h2 class="section-title">FAQ</h2>
+    <p class="section-desc">お客様からよくいただく質問をまとめました。</p>
+    <div class="faq-list">
+      <details>
+        <summary>まだ内容が決まっていないのですが、相談できますか？</summary>
+        <p class="faq-answer">はい、もちろん大丈夫です。「何を載せるか分からない」状態からでもご相談いただけます。サイトの目的・ターゲット・掲載内容を一緒に整理するところから対応します。まずはLINEでお気軽にご連絡ください。</p>
+      </details>
+      <details>
+        <summary>料金はどのくらいかかりますか？</summary>
+        <p class="faq-answer">1ページHP制作・LP制作は50,000円〜となります。追加ページや特殊な機能が必要な場合は個別にお見積もりします。まずはどんなサイトを作りたいかをLINEでお聞かせいただければ、概算をお伝えできます。</p>
+      </details>
+      <details>
+        <summary>どのくらいの期間で完成しますか？</summary>
+        <p class="faq-answer">相談〜公開まで目安として約1ヶ月です。内容の規模や修正の状況によって変動することがあります。急ぎの場合はその旨をご相談ください。</p>
+      </details>
+      <details>
+        <summary>修正は何回までできますか？</summary>
+        <p class="faq-answer">基本料金内で2回まで対応しています。3回目以降は別途お見積もりとなります。大幅な構成変更・ページ追加・機能追加なども個別にご相談ください。</p>
+      </details>
+      <details>
+        <summary>サーバーやドメインの準備も必要ですか？</summary>
+        <p class="faq-answer">はい、公開にはサーバーとドメインが必要です。どこを使うかはご要望やご予算に応じてご相談のうえ決めます。費用は実費でご負担いただきます。手続きのサポートも可能ですのでご相談ください。</p>
+      </details>
+      <details>
+        <summary>公開後に文言や画像を修正したい場合はどうすればよいですか？</summary>
+        <p class="faq-answer">公開後の修正・更新は保守対応として別途お見積もりで対応します。また、月額10,000円のサイト運用プランにご加入いただくと、簡易相談や基本的な管理も含めてサポートします。</p>
+      </details>
+      <details>
+        <summary>問い合わせフォームは設置できますか？</summary>
+        <p class="faq-answer">本サービスではLINEでの問い合わせを基本としています。フォーム設置はご要望に応じて別途ご相談ください。</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <p>© 2026 HP・LP制作サービス. All rights reserved.</p>
+  <p style="margin-top:8px;font-size:12px;">
+    <a href="#hero">トップへ戻る</a>
+  </p>
+</footer>
+
+<script>
+  // Smooth scroll for anchor links
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    if (a.getAttribute('href') === '#') return;
+    a.addEventListener('click', e => {
+      const target = document.querySelector(a.getAttribute('href'));
+      if (target) {
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+</script>
+</body>
+</html>
