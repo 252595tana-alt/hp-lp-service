@@ -220,6 +220,21 @@ body {
   box-shadow: 0 1px 0 #1c7a94, 0 0 10px rgba(126, 249, 255, 0.4);
 }
 
+/* サブ操作（ホームに戻る等）は主要ボタンより控えめなデザインにする */
+.ghost-button {
+  margin-top: 4px;
+  color: #aab4d4;
+  background: transparent;
+  border: 2px solid #3b5578;
+  box-shadow: none;
+}
+
+.ghost-button:active {
+  transform: translateY(3px);
+  background: rgba(59, 85, 120, 0.25);
+  box-shadow: none;
+}
+
 /* ===================== 横画面警告（縦画面専用） ===================== */
 #rotate-warning {
   display: none;
