@@ -54,6 +54,20 @@
         <p>左右ボタンで移動、発射ボタンで弾を撃つ</p>
         <p>敵を全滅させてボスを倒そう！</p>
       </div>
+
+      <!-- ボス画像カスタマイズ（任意）：写真の顔部分を自動で切り出してボス画像にする -->
+      <div class="face-upload">
+        <p class="face-upload-label">▼ ボス画像を設定（任意・端末内だけで処理されます）</p>
+        <div class="face-upload-row">
+          <img id="face-preview" class="face-preview hidden" alt="ボス画像プレビュー">
+          <div class="face-upload-buttons">
+            <label for="boss-face-input" class="ghost-button small-button">写真を選ぶ</label>
+            <input type="file" id="boss-face-input" accept="image/*" class="visually-hidden">
+            <button id="btn-face-reset" class="ghost-button small-button" type="button">リセット</button>
+          </div>
+        </div>
+        <p id="face-upload-status" class="face-upload-status"></p>
+      </div>
     </div>
 
     <!-- ゲームオーバー画面 -->
