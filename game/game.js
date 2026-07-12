@@ -415,6 +415,16 @@ function setupInput() {
   document.addEventListener('touchmove', (e) => e.preventDefault(), { passive: false });
   document.addEventListener('gesturestart', (e) => e.preventDefault());
   document.addEventListener('contextmenu', (e) => e.preventDefault());
+
+  // iOSのdouble-tap-to-zoomはtouch-action:noneだけでは抑止しきれない端末があるため、
+  // 短時間内の連続タップを検知して2回目のtouchendを明示的にキャンセルする
+  let lastTouchEnd = 0;
+  document.addEventListener('touchend', (e) => {
+    const now = Date.now();
+    if (now - lastTouchEnd <= 350) e.preventDefault();
+    lastTouchEnd = now;
+  }, { passive: false });
+
   // 最初のユーザー操作でオーディオを解放する
   document.addEventListener('pointerdown', () => AudioEngine.unlock(), { once: true });
 }
