@@ -1,0 +1,307 @@
+/* ==========================================================================
+   STAR INVADERS - スタイルシート
+   縦画面のスマートフォンで遊ぶことを前提としたレトロ風デザイン
+   ========================================================================== */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  /* ダブルタップによる拡大やコールアウトを防止 */
+  -webkit-touch-callout: none;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  overscroll-behavior: none;
+  /* 操作中に画面がスクロール／バウンスしないようにする */
+  touch-action: none;
+  background: #05050f;
+}
+
+body {
+  font-family: 'Courier New', 'MS Gothic', monospace;
+  color: #e8f0ff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100dvh;
+  overflow: hidden;
+}
+
+#app {
+  width: 100%;
+  max-width: 520px;
+  height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  background: #05050f;
+  position: relative;
+  padding-top: env(safe-area-inset-top);
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+/* ===================== HUD（上部情報表示） ===================== */
+#hud {
+  flex: 0 0 auto;
+  padding: 8px 12px 6px;
+  background: linear-gradient(180deg, #0a0a1a 0%, #05050f 100%);
+  border-bottom: 2px solid #2a2a4a;
+  z-index: 5;
+}
+
+#hud-row-main {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: clamp(12px, 3.6vw, 15px);
+  font-weight: bold;
+  letter-spacing: 0.03em;
+}
+
+.hud-item {
+  color: #7ef9ff;
+  text-shadow: 0 0 6px rgba(126, 249, 255, 0.6);
+  white-space: nowrap;
+}
+
+#hud-life {
+  color: #ff5d8f;
+  text-shadow: 0 0 6px rgba(255, 93, 143, 0.6);
+}
+
+#boss-hp-wrap {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 6px;
+}
+
+#boss-hp-wrap.hidden { display: none; }
+
+#boss-hp-label {
+  font-size: 11px;
+  color: #ff4757;
+  font-weight: bold;
+}
+
+#boss-hp-bar-bg {
+  flex: 1;
+  height: 10px;
+  background: #1a1a2e;
+  border: 1px solid #ff4757;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+#boss-hp-bar {
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(90deg, #ff4757, #ff9f43);
+  transition: width 0.15s ease-out;
+}
+
+/* ===================== ゲーム描画エリア ===================== */
+#game-area {
+  position: relative;
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow: hidden;
+  background: #000;
+}
+
+#game-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  touch-action: none;
+}
+
+/* ===================== ステージ切り替えバナー ===================== */
+#stage-banner {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 20;
+  pointer-events: none;
+  background: rgba(0, 0, 0, 0.35);
+}
+
+#stage-banner.hidden { display: none; }
+
+#stage-banner-text {
+  font-size: clamp(24px, 8vw, 40px);
+  font-weight: bold;
+  color: #fff700;
+  text-shadow: 0 0 12px rgba(255, 247, 0, 0.8), 0 0 24px rgba(255, 247, 0, 0.5);
+  letter-spacing: 0.08em;
+  animation: bannerPop 0.35s ease-out;
+}
+
+@keyframes bannerPop {
+  from { transform: scale(0.6); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+/* ===================== 各種オーバーレイ画面共通 ===================== */
+.screen {
+  position: absolute;
+  inset: 0;
+  z-index: 30;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  padding: 24px;
+  text-align: center;
+  background: radial-gradient(ellipse at center, rgba(15, 15, 40, 0.96) 0%, rgba(2, 2, 10, 0.98) 100%);
+}
+
+.screen.hidden { display: none; }
+
+.title-logo {
+  font-size: clamp(28px, 9vw, 44px);
+  color: #7ef9ff;
+  text-shadow: 0 0 10px #7ef9ff, 0 0 24px rgba(126, 249, 255, 0.6);
+  letter-spacing: 0.05em;
+}
+
+.title-logo.small {
+  font-size: clamp(24px, 8vw, 36px);
+  color: #ff5d5d;
+  text-shadow: 0 0 10px #ff5d5d, 0 0 24px rgba(255, 93, 93, 0.6);
+}
+
+.sub-logo {
+  color: #aab4d4;
+  font-size: clamp(12px, 3.6vw, 15px);
+  margin-top: -6px;
+}
+
+.result-line {
+  font-size: clamp(15px, 4.4vw, 18px);
+  color: #e8f0ff;
+}
+
+.howto {
+  margin-top: 10px;
+  color: #8b95c0;
+  font-size: clamp(11px, 3.2vw, 13px);
+  line-height: 1.8;
+}
+
+.big-button {
+  margin-top: 8px;
+  padding: 14px 36px;
+  font-size: clamp(15px, 4.4vw, 18px);
+  font-weight: bold;
+  font-family: inherit;
+  color: #05050f;
+  background: linear-gradient(180deg, #7ef9ff, #38b6d6);
+  border: none;
+  border-radius: 8px;
+  box-shadow: 0 4px 0 #1c7a94, 0 0 18px rgba(126, 249, 255, 0.5);
+  cursor: pointer;
+  touch-action: manipulation;
+}
+
+.big-button:active {
+  transform: translateY(3px);
+  box-shadow: 0 1px 0 #1c7a94, 0 0 10px rgba(126, 249, 255, 0.4);
+}
+
+/* ===================== 横画面警告（縦画面専用） ===================== */
+#rotate-warning {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  background: #05050f;
+  color: #e8f0ff;
+  text-align: center;
+  font-size: 18px;
+  padding: 24px;
+}
+
+#rotate-warning p:first-child { font-size: 48px; }
+
+@media (orientation: landscape) and (max-height: 500px) {
+  #rotate-warning { display: flex; }
+  #app { display: none; }
+}
+
+/* ===================== 下部操作パネル ===================== */
+#controls {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 14px 18px calc(14px + env(safe-area-inset-bottom));
+  background: linear-gradient(0deg, #0a0a1a 0%, #05050f 100%);
+  border-top: 2px solid #2a2a4a;
+  z-index: 10;
+}
+
+.ctrl-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-family: inherit;
+  border-radius: 50%;
+  user-select: none;
+  touch-action: none;
+  transition: transform 0.08s ease, background 0.08s ease;
+}
+
+.move-btn {
+  width: 22vw;
+  height: 22vw;
+  max-width: 88px;
+  max-height: 88px;
+  min-width: 64px;
+  min-height: 64px;
+  font-size: clamp(22px, 7vw, 30px);
+  color: #7ef9ff;
+  background: radial-gradient(circle at 35% 30%, #223050, #101828);
+  border: 2px solid #3b5578;
+}
+
+.fire-btn {
+  width: 26vw;
+  height: 26vw;
+  max-width: 104px;
+  max-height: 104px;
+  min-width: 76px;
+  min-height: 76px;
+  font-size: clamp(14px, 4.4vw, 18px);
+  color: #ffe28a;
+  background: radial-gradient(circle at 35% 30%, #5a2030, #2a0f18);
+  border: 2px solid #a8425a;
+}
+
+.ctrl-btn.active {
+  transform: scale(0.9);
+}
+
+.move-btn.active {
+  background: radial-gradient(circle at 35% 30%, #35507e, #182338);
+}
+
+.fire-btn.active {
+  background: radial-gradient(circle at 35% 30%, #8a2f45, #4a1622);
+}
