@@ -287,13 +287,21 @@ body {
   text-align: center;
 }
 
-.visually-hidden {
-  position: absolute;
-  width: 1px;
-  height: 1px;
+/* 「写真を選ぶ」ボタン：ネイティブのファイル入力をボタンの上に透明に重ねて配置する。
+   input自体を隠すのではなく透明化して重ねることで、ブラウザ標準の
+   ファイル選択ボタン（「ファイルを選択」等）が二重に見えてしまうことがないようにする */
+.file-picker-btn {
+  position: relative;
   overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
+}
+
+.file-input-overlay {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
 }
 
 .face-upload-status {

@@ -9,7 +9,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="theme-color" content="#05050f">
 <title>STAR INVADERS - スマホ用シューティングゲーム</title>
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="style.css?v=7">
 </head>
 <body>
 
@@ -61,8 +61,10 @@
         <div class="face-upload-row">
           <img id="face-preview" class="face-preview hidden" alt="ボス画像プレビュー">
           <div class="face-upload-buttons">
-            <label for="boss-face-input" class="ghost-button small-button">写真を選ぶ</label>
-            <input type="file" id="boss-face-input" accept="image/*" class="visually-hidden">
+            <div class="file-picker-btn ghost-button small-button">
+              写真を選ぶ
+              <input type="file" id="boss-face-input" accept="image/*" class="file-input-overlay">
+            </div>
             <button id="btn-face-reset" class="ghost-button small-button" type="button">リセット</button>
           </div>
         </div>
@@ -98,6 +100,6 @@
 
 </div>
 
-<script src="game.js"></script>
+<script src="game.js?v=7"></script>
 </body>
 </html>
