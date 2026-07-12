@@ -511,6 +511,8 @@ const Game = {
     document.getElementById('btn-start').addEventListener('click', () => this.startGame());
     document.getElementById('btn-retry-over').addEventListener('click', () => this.startGame());
     document.getElementById('btn-retry-clear').addEventListener('click', () => this.startGame());
+    document.getElementById('btn-home-over').addEventListener('click', () => this.returnToHome());
+    document.getElementById('btn-home-clear').addEventListener('click', () => this.returnToHome());
 
     this.lastTime = performance.now();
     requestAnimationFrame((t) => this.loop(t));
@@ -554,6 +556,20 @@ const Game = {
 
   hideBanner() {
     this.dom.stageBanner.classList.add('hidden');
+  },
+
+  // ゲームオーバー／クリア画面からタイトル（スタート画面）に戻る
+  returnToHome() {
+    this.state = 'START';
+    this.player = null;
+    this.enemies = [];
+    this.boss = null;
+    this.playerBullets = [];
+    this.enemyBullets = [];
+    this.explosions = [];
+    this.hideBanner();
+    this.dom.bossHpWrap.classList.add('hidden');
+    this.showScreen('start');
   },
 
   startGame() {
