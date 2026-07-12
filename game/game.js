@@ -29,7 +29,7 @@ const CONFIG = {
     height: 22,
     hitboxScale: 0.72,   // 見た目より少し小さい当たり判定
   },
-  // ステージ1・ステージ2の編成
+  // ステージ編成（このステージをすべてクリアするとボス戦へ進む）
   stages: [
     {
       label: 'STAGE 1',
@@ -41,17 +41,6 @@ const CONFIG = {
       fireChancePerSec: 0.55, // 敵全体での発射確率係数
       maxEnemyBullets: 5,
       bulletSpeedMul: 1,
-    },
-    {
-      label: 'STAGE 2',
-      rows: 4,
-      cols: 6,
-      hp: (r, c) => ((r + c) % 3 === 0 ? 2 : 1), // 一部の敵は2回攻撃で撃破
-      moveSpeed: 72,
-      dropAmount: 18,
-      fireChancePerSec: 1.1,
-      maxEnemyBullets: 9,
-      bulletSpeedMul: 1.2,
     },
   ],
   boss: {
@@ -606,7 +595,8 @@ const Game = {
   H: 0,
 
   state: 'START', // START / BANNER / PLAYING / BOSS_DEFEAT / GAMEOVER / GAMECLEAR
-  stageIndex: 0,  // 0:STAGE1 1:STAGE2 2:BOSS
+  // CONFIG.stages のインデックス(0..length-1)が通常ステージ、length に達するとボス戦
+  stageIndex: 0,
   score: 0,
   startTime: 0,
   clearTimeSec: 0,
@@ -767,7 +757,7 @@ const Game = {
   },
 
   spawnBoss() {
-    this.stageIndex = 2;
+    this.stageIndex = CONFIG.stages.length;
     this.boss = new Boss(this.W);
     this.dom.bossHpWrap.classList.remove('hidden');
     this.updateBossHpBar();
@@ -838,7 +828,7 @@ const Game = {
     this.explosions.forEach((e) => e.update(dt));
     this.explosions = this.explosions.filter((e) => !e.done);
 
-    if (this.stageIndex < 2) {
+    if (this.stageIndex < CONFIG.stages.length) {
       this.updateNormalStage(dt);
     } else {
       this.updateBossStage(dt);
@@ -922,7 +912,7 @@ const Game = {
 
   handleCollisions() {
     // プレイヤー弾 vs 通常敵
-    if (this.stageIndex < 2) {
+    if (this.stageIndex < CONFIG.stages.length) {
       for (const bullet of this.playerBullets) {
         if (bullet.dead) continue;
         for (const enemy of this.enemies) {
@@ -945,7 +935,7 @@ const Game = {
     }
 
     // プレイヤー弾 vs ボス
-    if (this.stageIndex === 2 && this.boss && this.boss.alive) {
+    if (this.stageIndex === CONFIG.stages.length && this.boss && this.boss.alive) {
       for (const bullet of this.playerBullets) {
         if (bullet.dead) continue;
         if (aabbHit(bullet.hitbox, this.boss.hitbox)) {
@@ -972,7 +962,7 @@ const Game = {
     this.enemyBullets = this.enemyBullets.filter((b) => !b.dead);
 
     // 通常敵 vs プレイヤー（直接衝突）
-    if (this.stageIndex < 2) {
+    if (this.stageIndex < CONFIG.stages.length) {
       for (const enemy of this.enemies) {
         if (!enemy.alive) continue;
         if (aabbHit(enemy.hitbox, this.player.hitbox)) {
@@ -997,9 +987,10 @@ const Game = {
 
   onStageCleared() {
     AudioEngine.stageClear();
-    if (this.stageIndex === 0) {
+    const nextIndex = this.stageIndex + 1;
+    if (nextIndex < CONFIG.stages.length) {
       this.showBanner('STAGE CLEAR', 1100, () => {
-        this.showBanner(CONFIG.stages[1].label, 1300, () => this.spawnStage(1));
+        this.showBanner(CONFIG.stages[nextIndex].label, 1300, () => this.spawnStage(nextIndex));
       });
     } else {
       this.showBanner('STAGE CLEAR', 1100, () => {
@@ -1037,7 +1028,7 @@ const Game = {
   /* ---------------- HUD ---------------- */
 
   updateHud() {
-    const stageLabel = this.stageIndex === 2 ? 'BOSS' : `STAGE ${this.stageIndex + 1}`;
+    const stageLabel = this.stageIndex >= CONFIG.stages.length ? 'BOSS' : `STAGE ${this.stageIndex + 1}`;
     this.dom.hudStage.textContent = stageLabel;
     this.dom.hudScore.textContent = `SCORE ${this.score}`;
     this.dom.hudLife.textContent = 'LIFE ' + '❤'.repeat(Math.max(0, this.player ? this.player.life : 0));
