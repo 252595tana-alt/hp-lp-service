@@ -486,15 +486,30 @@ const BossFaceUpload = {
     preview.classList.remove('hidden');
   },
 
+  maxFileSizeBytes: 25 * 1024 * 1024, // 25MB。極端に大きい写真での固まりを防ぐための上限
+  maxSourceDimension: 1600, // 顔検出・トリミング処理に使う元画像の最大辺(px)。大きい写真は先に縮小する
+
   async handleFile(file) {
     if (!file.type || !file.type.startsWith('image/')) {
       this.setStatus('画像ファイルを選択してください');
       return;
     }
+    if (file.size > this.maxFileSizeBytes) {
+      this.setStatus('画像のファイルサイズが大きすぎます（25MB以下の写真をお選びください）');
+      return;
+    }
     this.setStatus('画像を読み込み中…');
+    // 巨大な写真でメインスレッドが固まらないよう、読み込み中である旨を描画してから処理を始める
+    await new Promise((resolve) => requestAnimationFrame(() => requestAnimationFrame(resolve)));
+
+    // FileReaderでのbase64化は大きな写真ほど時間・メモリを消費するため、
+    // 軽量なobjectURLで画像を読み込む
+    const objectUrl = URL.createObjectURL(file);
     try {
-      const dataUrl = await this.readFileAsDataUrl(file);
-      const img = await this.loadImage(dataUrl);
+      const rawImg = await this.loadImage(objectUrl);
+      // 高解像度の写真（iPhoneの4800万画素など）をそのまま処理すると重くなるため、
+      // 顔検出・トリミングの前に一定サイズまで縮小した作業用画像を作る
+      const img = this.downscaleIfNeeded(rawImg);
       const region = await this.detectFaceRegion(img);
       const croppedDataUrl = this.cropToSquare(img, region);
 
@@ -508,16 +523,24 @@ const BossFaceUpload = {
     } catch (err) {
       console.error('ボス画像の処理に失敗:', err);
       this.setStatus('画像の処理に失敗しました。別の画像でお試しください');
+    } finally {
+      URL.revokeObjectURL(objectUrl);
     }
   },
 
-  readFileAsDataUrl(file) {
-    return new Promise((resolve, reject) => {
-      const reader = new FileReader();
-      reader.onload = () => resolve(reader.result);
-      reader.onerror = () => reject(reader.error || new Error('ファイル読み込みエラー'));
-      reader.readAsDataURL(file);
-    });
+  // 元画像が大きすぎる場合、最大辺がmaxSourceDimensionに収まるように
+  // Canvasへ縮小描画した画像（Canvas自体をdrawImageのソースとして使える）を返す
+  downscaleIfNeeded(img) {
+    const w = img.naturalWidth, h = img.naturalHeight;
+    const longSide = Math.max(w, h);
+    if (longSide <= this.maxSourceDimension) return img;
+    const scale = this.maxSourceDimension / longSide;
+    const canvas = document.createElement('canvas');
+    canvas.width = Math.round(w * scale);
+    canvas.height = Math.round(h * scale);
+    const ctx = canvas.getContext('2d');
+    ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+    return canvas;
   },
 
   loadImage(src) {
@@ -531,21 +554,23 @@ const BossFaceUpload = {
 
   // 顔領域を検出する。対応端末ではShape Detection APIを使用し、
   // 非対応・検出失敗時はフォールバック領域を返す
+  // img は縮小処理により HTMLImageElement または HTMLCanvasElement のいずれか
   async detectFaceRegion(img) {
+    const imgW = img.width, imgH = img.height;
     if ('FaceDetector' in window) {
       try {
         const detector = new window.FaceDetector({ fastMode: true, maxDetectedFaces: 1 });
         const faces = await detector.detect(img);
         if (faces && faces.length > 0) {
           const box = faces[0].boundingBox;
-          const region = this.expandToSquare(box.x, box.y, box.width, box.height, img.naturalWidth, img.naturalHeight);
+          const region = this.expandToSquare(box.x, box.y, box.width, box.height, imgW, imgH);
           return { ...region, detected: true };
         }
       } catch (err) {
         // 検出に失敗した場合はフォールバックへ進む
       }
     }
-    return { ...this.fallbackRegion(img.naturalWidth, img.naturalHeight), detected: false };
+    return { ...this.fallbackRegion(imgW, imgH), detected: false };
   },
 
   // 検出したボックスに髪や輪郭が収まるよう余白を持たせつつ正方形化する
