@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<!-- スマホでのピンチズーム・二本指ズームを禁止し、ダブルタップ拡大も防止する -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="theme-color" content="#05050f">
+<title>STAR INVADERS - スマホ用シューティングゲーム</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- 横画面時に表示する回転案内（縦画面専用ゲームのため） -->
+<div id="rotate-warning">
+  <p>📱</p>
+  <p>このゲームは縦画面専用です。<br>端末を縦向きにしてください。</p>
+</div>
+
+<!-- ゲーム全体を包むルート要素。縦画面専用レイアウト -->
+<div id="app">
+
+  <!-- 上部HUD：ステージ / スコア / ライフ / ボスHPゲージ -->
+  <div id="hud">
+    <div id="hud-row-main">
+      <div class="hud-item" id="hud-stage">STAGE 1</div>
+      <div class="hud-item" id="hud-score">SCORE 0</div>
+      <div class="hud-item" id="hud-life">LIFE ❤❤❤</div>
+    </div>
+    <div id="boss-hp-wrap" class="hidden">
+      <div id="boss-hp-label">BOSS</div>
+      <div id="boss-hp-bar-bg"><div id="boss-hp-bar"></div></div>
+    </div>
+  </div>
+
+  <!-- ゲーム描画領域 -->
+  <div id="game-area">
+    <canvas id="game-canvas"></canvas>
+
+    <!-- ステージ切り替え演出 -->
+    <div id="stage-banner" class="hidden">
+      <div id="stage-banner-text">STAGE 1</div>
+    </div>
+
+    <!-- スタート画面 -->
+    <div id="screen-start" class="screen">
+      <h1 class="title-logo">STAR INVADERS</h1>
+      <p class="sub-logo">スマホ専用シューティング</p>
+      <button id="btn-start" class="big-button">ゲームスタート</button>
+      <div class="howto">
+        <p>▼ 操作方法</p>
+        <p>左右ボタンで移動、発射ボタンで弾を撃つ</p>
+        <p>敵を全滅させてボスを倒そう！</p>
+      </div>
+    </div>
+
+    <!-- ゲームオーバー画面 -->
+    <div id="screen-gameover" class="screen hidden">
+      <h1 class="title-logo small">GAME OVER</h1>
+      <p class="result-line">SCORE: <span id="over-score">0</span></p>
+      <button id="btn-retry-over" class="big-button">もう一度遊ぶ</button>
+    </div>
+
+    <!-- ゲームクリア画面 -->
+    <div id="screen-clear" class="screen hidden">
+      <h1 class="title-logo small">GAME CLEAR</h1>
+      <p class="result-line">SCORE: <span id="clear-score">0</span></p>
+      <p class="result-line">LIFE: <span id="clear-life">0</span></p>
+      <p class="result-line">TIME: <span id="clear-time">0.0</span> 秒</p>
+      <button id="btn-retry-clear" class="big-button">もう一度遊ぶ</button>
+    </div>
+  </div>
+
+  <!-- 下部操作パネル：片手操作を想定した大きめのボタン -->
+  <div id="controls">
+    <div id="ctrl-left" class="ctrl-btn move-btn" data-action="left">◀</div>
+    <div id="ctrl-fire" class="ctrl-btn fire-btn" data-action="fire">FIRE</div>
+    <div id="ctrl-right" class="ctrl-btn move-btn" data-action="right">▶</div>
+  </div>
+
+</div>
+
+<script src="game.js"></script>
+</body>
+</html>
