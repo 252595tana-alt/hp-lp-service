@@ -417,12 +417,22 @@ function setupInput() {
   document.addEventListener('contextmenu', (e) => e.preventDefault());
 
   // iOSのdouble-tap-to-zoomはtouch-action:noneだけでは抑止しきれない端末があるため、
-  // 短時間内の連続タップを画面全体（キャプチャフェーズ）で検知し、2回目のtouchendを明示的にキャンセルする
+  // 「短時間・ほぼ同じ位置」の連続タップだけをズーム操作とみなしてtouchendをキャンセルする。
+  // 位置を見ずに時間だけで判定すると、別々のボタンへの素早い連続タップまで
+  // キャンセルしてしまう（例：ホームに戻る→別ボタン）ため、距離も必ず併せて判定する。
   let lastTouchEnd = 0;
+  let lastTouchX = 0;
+  let lastTouchY = 0;
   document.addEventListener('touchend', (e) => {
     const now = Date.now();
-    if (now - lastTouchEnd <= 500) e.preventDefault();
+    const touch = e.changedTouches && e.changedTouches[0];
+    const x = touch ? touch.clientX : 0;
+    const y = touch ? touch.clientY : 0;
+    const distance = Math.hypot(x - lastTouchX, y - lastTouchY);
+    if (now - lastTouchEnd <= 500 && distance < 40) e.preventDefault();
     lastTouchEnd = now;
+    lastTouchX = x;
+    lastTouchY = y;
   }, { passive: false, capture: true });
   // 一部ブラウザが発火させる合成dblclickイベントによる拡大も念のため防止
   document.addEventListener('dblclick', (e) => e.preventDefault(), { passive: false });
@@ -441,6 +451,150 @@ const BossImage = {
 BossImage.el.onload = () => { BossImage.loaded = true; };
 BossImage.el.onerror = () => { BossImage.loaded = false; };
 BossImage.el.src = CONFIG.boss.imagePath;
+
+/* ==========================================================================
+   6.5 ボス画像アップロード＆顔検出（任意機能）
+   スタート画面から人物写真を選ぶと、顔部分を検出して正方形に切り出し、
+   ボス画像として利用する。画像は端末内だけで処理され、外部へは送信しない。
+   対応端末（一部のChromeなど）ではShape Detection APIで顔を検出し、
+   非対応端末（iOS Safari等）では写真上部中央を顔とみなして切り出す。
+   ========================================================================== */
+const CUSTOM_BOSS_STORAGE_KEY = 'starInvaders_customBossFace';
+
+const BossFaceUpload = {
+  outputSize: 480, // 生成する正方形画像の一辺(px)
+
+  init() {
+    const input = document.getElementById('boss-face-input');
+    const resetBtn = document.getElementById('btn-face-reset');
+    if (!input || !resetBtn) return;
+
+    input.addEventListener('change', (e) => {
+      const file = e.target.files && e.target.files[0];
+      if (file) this.handleFile(file);
+      input.value = ''; // 同じファイルを選び直しても change が発火するようにする
+    });
+    resetBtn.addEventListener('click', () => this.reset());
+
+    // 前回選択した画像が保存されていれば復元する
+    let saved = null;
+    try { saved = localStorage.getItem(CUSTOM_BOSS_STORAGE_KEY); } catch (err) { /* プライベートモード等は無視 */ }
+    if (saved) {
+      BossImage.el.src = saved;
+      this.showPreview(saved);
+    }
+  },
+
+  setStatus(text) {
+    const el = document.getElementById('face-upload-status');
+    if (el) el.textContent = text;
+  },
+
+  showPreview(dataUrl) {
+    const preview = document.getElementById('face-preview');
+    if (!preview) return;
+    preview.src = dataUrl;
+    preview.classList.remove('hidden');
+  },
+
+  async handleFile(file) {
+    if (!file.type || !file.type.startsWith('image/')) {
+      this.setStatus('画像ファイルを選択してください');
+      return;
+    }
+    this.setStatus('画像を読み込み中…');
+    try {
+      const dataUrl = await this.readFileAsDataUrl(file);
+      const img = await this.loadImage(dataUrl);
+      const region = await this.detectFaceRegion(img);
+      const croppedDataUrl = this.cropToSquare(img, region);
+
+      BossImage.el.src = croppedDataUrl;
+      this.showPreview(croppedDataUrl);
+      try { localStorage.setItem(CUSTOM_BOSS_STORAGE_KEY, croppedDataUrl); } catch (err) { /* 容量超過等は無視 */ }
+
+      this.setStatus(region.detected
+        ? '顔を検出してボス画像に設定しました'
+        : 'この端末では自動検出に対応していないため、中央付近を切り出しました');
+    } catch (err) {
+      console.error('ボス画像の処理に失敗:', err);
+      this.setStatus('画像の処理に失敗しました。別の画像でお試しください');
+    }
+  },
+
+  readFileAsDataUrl(file) {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onload = () => resolve(reader.result);
+      reader.onerror = () => reject(reader.error || new Error('ファイル読み込みエラー'));
+      reader.readAsDataURL(file);
+    });
+  },
+
+  loadImage(src) {
+    return new Promise((resolve, reject) => {
+      const img = new Image();
+      img.onload = () => resolve(img);
+      img.onerror = () => reject(new Error('画像の読み込みに失敗しました'));
+      img.src = src;
+    });
+  },
+
+  // 顔領域を検出する。対応端末ではShape Detection APIを使用し、
+  // 非対応・検出失敗時はフォールバック領域を返す
+  async detectFaceRegion(img) {
+    if ('FaceDetector' in window) {
+      try {
+        const detector = new window.FaceDetector({ fastMode: true, maxDetectedFaces: 1 });
+        const faces = await detector.detect(img);
+        if (faces && faces.length > 0) {
+          const box = faces[0].boundingBox;
+          const region = this.expandToSquare(box.x, box.y, box.width, box.height, img.naturalWidth, img.naturalHeight);
+          return { ...region, detected: true };
+        }
+      } catch (err) {
+        // 検出に失敗した場合はフォールバックへ進む
+      }
+    }
+    return { ...this.fallbackRegion(img.naturalWidth, img.naturalHeight), detected: false };
+  },
+
+  // 検出したボックスに髪や輪郭が収まるよう余白を持たせつつ正方形化する
+  expandToSquare(x, y, w, h, imgW, imgH) {
+    const pad = Math.max(w, h) * 0.5;
+    let size = Math.min(Math.max(w, h) + pad * 2, imgW, imgH);
+    const cx = x + w / 2;
+    const cy = y + h / 2 - size * 0.05; // 頭頂部が入るよう少し上寄りにする
+    const sx = clamp(cx - size / 2, 0, imgW - size);
+    const sy = clamp(cy - size / 2, 0, imgH - size);
+    return { sx, sy, size };
+  },
+
+  // 顔検出非対応端末向け：人物写真は顔が上部中央にあることが多いと仮定して切り出す
+  fallbackRegion(imgW, imgH) {
+    const size = Math.min(imgW, imgH * 0.9);
+    const sx = clamp((imgW - size) / 2, 0, imgW - size);
+    const sy = clamp(imgH * 0.05, 0, imgH - size);
+    return { sx, sy, size };
+  },
+
+  cropToSquare(img, region) {
+    const canvas = document.createElement('canvas');
+    canvas.width = this.outputSize;
+    canvas.height = this.outputSize;
+    const ctx = canvas.getContext('2d');
+    ctx.drawImage(img, region.sx, region.sy, region.size, region.size, 0, 0, this.outputSize, this.outputSize);
+    return canvas.toDataURL('image/jpeg', 0.85);
+  },
+
+  reset() {
+    try { localStorage.removeItem(CUSTOM_BOSS_STORAGE_KEY); } catch (err) { /* 無視 */ }
+    BossImage.el.src = CONFIG.boss.imagePath;
+    const preview = document.getElementById('face-preview');
+    if (preview) preview.classList.add('hidden');
+    this.setStatus('デフォルトのボス画像に戻しました');
+  },
+};
 
 /* ==========================================================================
    7. ゲーム本体
@@ -930,6 +1084,7 @@ const Game = {
 window.addEventListener('DOMContentLoaded', () => {
   try {
     Game.init();
+    BossFaceUpload.init();
   } catch (err) {
     // 想定外のエラーでも真っ黒画面のまま固まらないよう最低限の表示を行う
     console.error('ゲーム初期化エラー:', err);
