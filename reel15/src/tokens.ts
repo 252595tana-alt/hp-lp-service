@@ -23,7 +23,7 @@ export const SHOTS = {
   s4: { from: 195, dur: 90 }, // 6.5 - 9.5s
   s5: { from: 285, dur: 75 }, // 9.5 - 12.0s
   s6: { from: 360, dur: 60 }, // 12.0 - 14.0s
-  s7: { from: 420, dur: 30 }, // 14.0 - 15.0s
+  s7: { from: 420, dur: 80 }, // 14.0 - 16.67s (held to cover narration)
 };
 
-export const TOTAL_FRAMES = 450;
+export const TOTAL_FRAMES = 500;

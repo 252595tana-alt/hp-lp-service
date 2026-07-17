@@ -1,4 +1,4 @@
-import { AbsoluteFill, Sequence } from "remotion";
+import { AbsoluteFill, Audio, Sequence, staticFile } from "remotion";
 import { COLORS, SHOTS } from "./tokens";
 import { Shot1 } from "./shots/Shot1";
 import { Shot2 } from "./shots/Shot2";
@@ -11,6 +11,7 @@ import { Shot7 } from "./shots/Shot7";
 export const Reel: React.FC = () => {
   return (
     <AbsoluteFill style={{ backgroundColor: COLORS.navy }}>
+      <Audio src={staticFile("audio/narration.mp3")} />
       <Sequence from={SHOTS.s1.from} durationInFrames={SHOTS.s1.dur}>
         <Shot1 />
       </Sequence>
