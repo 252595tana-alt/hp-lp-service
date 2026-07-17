@@ -8,7 +8,7 @@ import {
 import { COLORS, FONT } from "../tokens";
 
 const NODES = ["SNS", "ホームページ", "信頼", "問い合わせ", "売上"];
-const BEAT = 17; // ~0.55s per node
+const BEAT = 19; // ~0.63s per node, scaled to the shot's retimed duration
 const NODE_H = 170;
 const GAP = 96; // space for arrow between nodes
 

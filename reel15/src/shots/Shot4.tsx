@@ -13,7 +13,7 @@ const CARDS = [
   { num: "③", title: "行動", sub: "問い合わせ・購入" },
 ];
 
-const STAGGER = 10; // 0.35s ≈ 10-11 frames
+const STAGGER = 8; // scaled to the shot's retimed (shorter) duration
 
 export const Shot4: React.FC = () => {
   const frame = useCurrentFrame();

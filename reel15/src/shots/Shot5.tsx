@@ -170,7 +170,7 @@ export const Shot5: React.FC = () => {
 
           {/* Feature rows */}
           {FEATURES.map((f, i) => {
-            const delay = 16 + i * 8;
+            const delay = 24 + i * 12; // scaled to the shot's retimed (longer) duration
             const s = spring({
               frame: frame - delay,
               fps,
