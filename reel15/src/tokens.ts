@@ -25,7 +25,9 @@ export const SHOTS = {
   s4: { from: 211, dur: 69 }, // 7.03 - 9.33s
   s5: { from: 280, dur: 113 }, // 9.33 - 13.10s
   s6: { from: 393, dur: 74 }, // 13.10 - 15.57s
-  s7: { from: 467, dur: 33 }, // 15.57 - 16.67s
+  s7: { from: 467, dur: 78 }, // 15.57 - 18.17s (extra hold so the URL is readable after narration ends)
 };
 
-export const TOTAL_FRAMES = 500;
+export const TOTAL_FRAMES = 545;
+
+export const SITE_URL = "252595tana-alt.github.io/hp-lp-service";

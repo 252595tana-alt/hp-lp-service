@@ -5,13 +5,17 @@ import {
   useCurrentFrame,
   useVideoConfig,
 } from "remotion";
-import { COLORS, FONT } from "../tokens";
+import { COLORS, FONT, SITE_URL } from "../tokens";
 
 export const Shot7: React.FC = () => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
 
   const textOp = interpolate(frame, [0, 8], [0, 1], { extrapolateRight: "clamp" });
+  const urlOp = interpolate(frame, [40, 52], [0, 1], {
+    extrapolateLeft: "clamp",
+    extrapolateRight: "clamp",
+  });
 
   const pop = (delay: number) => {
     const s = spring({
@@ -95,6 +99,19 @@ export const Shot7: React.FC = () => {
               />
             </svg>
           </div>
+        </div>
+        <div
+          style={{
+            marginTop: 56,
+            fontFamily: FONT,
+            fontWeight: 700,
+            fontSize: 38,
+            color: COLORS.white,
+            opacity: urlOp,
+            letterSpacing: "0.02em",
+          }}
+        >
+          {SITE_URL}
         </div>
       </div>
     </AbsoluteFill>
