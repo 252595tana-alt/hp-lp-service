@@ -1,5 +1,5 @@
-import { AbsoluteFill, Audio, Sequence, staticFile } from "remotion";
-import { COLORS, SHOTS } from "./tokens";
+import { AbsoluteFill, Audio, Sequence, interpolate, staticFile } from "remotion";
+import { COLORS, SHOTS, TOTAL_FRAMES } from "./tokens";
 import { Shot1 } from "./shots/Shot1";
 import { Shot2 } from "./shots/Shot2";
 import { Shot3 } from "./shots/Shot3";
@@ -12,6 +12,18 @@ export const Reel: React.FC = () => {
   return (
     <AbsoluteFill style={{ backgroundColor: COLORS.navy }}>
       <Audio src={staticFile("audio/narration.mp3")} />
+      {/* BGM ducked well under the narration, with a short fade-in/out */}
+      <Audio
+        src={staticFile("audio/bgm.mp3")}
+        volume={(f) =>
+          interpolate(
+            f,
+            [0, 15, TOTAL_FRAMES - 20, TOTAL_FRAMES],
+            [0, 0.16, 0.16, 0],
+            { extrapolateLeft: "clamp", extrapolateRight: "clamp" },
+          )
+        }
+      />
       <Sequence from={SHOTS.s1.from} durationInFrames={SHOTS.s1.dur}>
         <Shot1 />
       </Sequence>
