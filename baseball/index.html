@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<!-- スマホでのピンチズーム・二本指ズームを禁止し、ダブルタップ拡大も防止する -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="theme-color" content="#eef2f7">
+<title>タッチで打て！野球盤ゲーム - スマホ専用</title>
+<link rel="stylesheet" href="style.css?v=2">
+</head>
+<body>
+
+<!-- 横画面時に表示する回転案内（縦画面専用ゲームのため） -->
+<div id="rotate-warning">
+  <p>📱</p>
+  <p>このゲームは縦画面専用です。<br>端末を縦向きにしてください。</p>
+</div>
+
+<!-- ゲーム全体を包むルート要素。縦画面専用レイアウト -->
+<div id="app">
+
+  <!-- ===================== タイトル画面 ===================== -->
+  <div id="screen-title" class="screen">
+    <header class="screen-header">
+      <div>
+        <p class="eyebrow">MOBILE BASEBALL GAME</p>
+        <h1>タッチで打て！<br>野球盤ゲーム</h1>
+      </div>
+    </header>
+
+    <div class="hero-field">
+      <div class="hero-chip">3 INNINGS</div>
+      <svg viewBox="0 0 340 270" role="img" aria-label="ピッチャーとバッターが向き合う野球場">
+        <path d="M170 250 L24 108 Q170 0 316 108 Z" fill="#dcefe3" stroke="#cbd5e1" stroke-width="2"/>
+        <path d="M170 224 L82 140 L170 58 L258 140 Z" fill="#fff" stroke="#cbd5e1" stroke-width="2"/>
+        <path d="M170 208 L107 144 L170 81 L233 144 Z" fill="none" stroke="#cbd5e1" stroke-width="2" stroke-dasharray="5 7"/>
+        <circle cx="170" cy="73" r="31" fill="#e8f0ff" stroke="#2563eb" stroke-width="3"/>
+        <circle cx="170" cy="69" r="12" fill="#64748b" opacity=".42"/>
+        <path d="M151 97c3-12 10-18 19-18s16 6 19 18" fill="#64748b" opacity=".42"/>
+        <path d="M140 108 Q170 126 200 108 L210 171 L130 171 Z" fill="#2563eb"/>
+        <circle cx="170" cy="192" r="23" fill="#fff" stroke="#cbd5e1" stroke-width="2"/>
+        <path d="M151 211 L139 249 L201 249 L189 211 Z" fill="#122033" opacity=".82"/>
+        <line x1="192" y1="218" x2="234" y2="179" stroke="#718096" stroke-width="9" stroke-linecap="round"/>
+        <circle cx="170" cy="139" r="7" fill="#fff" stroke="#2563eb" stroke-width="2"/>
+      </svg>
+    </div>
+
+    <div class="metrics">
+      <div class="metric"><span class="metric-label">BEST</span><span class="metric-value" id="title-best">0</span></div>
+      <div class="metric"><span class="metric-label">HR</span><span class="metric-value" id="title-hr">0</span></div>
+      <div class="metric"><span class="metric-label">PLAY</span><span class="metric-value" id="title-play">0</span></div>
+    </div>
+
+    <div class="button-stack">
+      <button id="btn-start" type="button" class="primary-button">ゲームスタート</button>
+      <button id="btn-howto" type="button" class="secondary-button">遊び方</button>
+      <button id="btn-pitcher-setting" type="button" class="secondary-button secondary-row">
+        <span>
+          <span class="secondary-title">ピッチャーの顔を変更</span>
+          <span class="secondary-help">スマホの写真から設定できます</span>
+        </span>
+        <span aria-hidden="true">›</span>
+      </button>
+    </div>
+
+    <div class="toggle-row">
+      <button id="btn-toggle-sound" class="toggle-button" type="button">🔊 音声: ON</button>
+      <button id="btn-toggle-vibration" class="toggle-button" type="button">📳 振動: ON</button>
+    </div>
+  </div>
+
+  <!-- ===================== 遊び方画面 ===================== -->
+  <div id="screen-howto" class="screen hidden">
+    <header class="screen-header">
+      <button id="btn-howto-back" type="button" class="icon-button" aria-label="ホームへ戻る">‹</button>
+      <h2>遊び方</h2>
+      <span class="header-spacer"></span>
+    </header>
+    <div class="control-card howto-card">
+      <p>①「投げる」ボタンでピッチャーが投球します。</p>
+      <p>②ボールがホームベースに来るタイミングに合わせて「スイング」ボタンをタップ！</p>
+      <p>③タイミングが合うほど良い打撃結果（ヒット〜ホームラン）になります。</p>
+      <p>④ズレが大きいと空振り・ファウル・アウトになります。</p>
+      <p>⑤3ストライクでアウト、3アウトでチェンジ。3イニング終了で試合終了です。</p>
+    </div>
+    <div class="button-stack">
+      <button id="btn-howto-close" class="primary-button">とじる</button>
+    </div>
+  </div>
+
+  <!-- ===================== ピッチャー設定画面 ===================== -->
+  <div id="screen-pitcher" class="screen hidden">
+    <header class="screen-header">
+      <button id="btn-pitcher-back" type="button" class="icon-button" aria-label="ホームへ戻る">‹</button>
+      <h2>ピッチャー設定</h2>
+      <span class="header-spacer"></span>
+    </header>
+
+    <div class="pitcher-editor">
+      <div class="portrait-ring">
+        <div class="portrait-viewport">
+          <canvas id="pitcher-edit-canvas" width="300" height="300"></canvas>
+        </div>
+      </div>
+      <p class="helper">ドラッグで位置調整、スライダーやピンチ操作で拡大縮小できます。写真は端末内だけで処理され、外部へは送信されません。</p>
+    </div>
+
+    <div class="control-card">
+      <div class="control-group">
+        <div class="control-label"><span>写真を選択</span></div>
+        <div class="file-picker-btn secondary-button">
+          写真を選ぶ
+          <input type="file" id="pitcher-face-input" accept="image/jpeg,image/jpg,image/png" class="file-input-overlay">
+        </div>
+      </div>
+      <div class="control-group">
+        <label class="control-label" for="pitcher-zoom-slider"><span>拡大率</span><span class="control-value">🔍−　🔍+</span></label>
+        <input type="range" id="pitcher-zoom-slider" min="0" max="100" value="0">
+      </div>
+    </div>
+
+    <p id="pitcher-status" class="notice" aria-live="polite"></p>
+
+    <div class="dual-buttons">
+      <button id="btn-pitcher-reset" type="button" class="secondary-button">リセット</button>
+      <button id="btn-pitcher-save" type="button" class="primary-button" disabled>保存する</button>
+    </div>
+  </div>
+
+  <!-- ===================== ゲーム画面 ===================== -->
+  <div id="screen-game" class="screen hidden no-pad">
+    <div class="game-header-wrap">
+      <div class="scoreboard">
+        <div class="scoreboard-grid">
+          <div>
+            <div class="score-small" id="hud-inning">1回 / 3回</div>
+            <div class="score-main">SCORE <span id="hud-score-value">0</span></div>
+          </div>
+          <div class="counts" aria-label="カウント">
+            <div class="count-row"><span>S</span><span id="strike-dot-1" class="dot"></span><span id="strike-dot-2" class="dot"></span><span id="strike-dot-3" class="dot"></span></div>
+            <div class="count-row"><span>O</span><span id="out-dot-1" class="dot"></span><span id="out-dot-2" class="dot"></span><span id="out-dot-3" class="dot"></span></div>
+          </div>
+          <button id="btn-pause" type="button" class="icon-button" aria-label="一時停止">Ⅱ</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="game-field" class="game-field">
+      <canvas id="game-canvas"></canvas>
+      <div id="result-message" class="hidden"><span></span></div>
+      <div id="inning-banner" class="hidden"><span></span></div>
+    </div>
+
+    <div class="game-actions">
+      <button id="btn-pitch" class="secondary-button action-button" type="button">投げる</button>
+      <button id="btn-swing" class="primary-button action-button" type="button" disabled>スイング</button>
+    </div>
+  </div>
+
+  <!-- ===================== 一時停止画面 ===================== -->
+  <div id="screen-pause" class="screen overlay-screen hidden">
+    <div class="pause-card">
+      <h2>一時停止</h2>
+      <div class="button-stack">
+        <button id="btn-resume" class="primary-button">ゲームを再開</button>
+        <button id="btn-restart" class="secondary-button">最初からやり直す</button>
+        <button id="btn-pause-title" class="secondary-button">タイトルへ戻る</button>
+      </div>
+      <div class="toggle-row">
+        <button id="btn-toggle-sound-pause" class="toggle-button" type="button">🔊 音声: ON</button>
+        <button id="btn-toggle-vibration-pause" class="toggle-button" type="button">📳 振動: ON</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================== リザルト画面 ===================== -->
+  <div id="screen-result" class="screen hidden">
+    <div class="result-wrap">
+      <div class="trophy" aria-hidden="true">
+        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+          <path d="M8 21h8M12 17v4M7 4h10v5a5 5 0 0 1-10 0V4Z"/>
+          <path d="M7 6H4v2a4 4 0 0 0 4 4M17 6h3v2a4 4 0 0 1-4 4"/>
+        </svg>
+      </div>
+      <p class="final-label">FINAL SCORE</p>
+      <div id="result-score" class="final-score">0</div>
+      <p class="result-copy" id="result-copy">ナイスバッティング！</p>
+      <p class="result-copy">ハイスコア: <strong id="result-highscore">0</strong></p>
+
+      <div class="result-grid">
+        <div class="result-card"><span class="metric-label">ヒット</span><span class="metric-value" id="result-hit">0</span></div>
+        <div class="result-card"><span class="metric-label">二塁打</span><span class="metric-value" id="result-double">0</span></div>
+        <div class="result-card"><span class="metric-label">三塁打</span><span class="metric-value" id="result-triple">0</span></div>
+        <div class="result-card"><span class="metric-label">ホームラン</span><span class="metric-value" id="result-homerun">0</span></div>
+        <div class="result-card"><span class="metric-label">最大連続</span><span class="metric-value" id="result-streak">0</span></div>
+        <div class="result-card"><span class="metric-label">タイミング</span><span class="metric-value" id="result-grade">-</span></div>
+      </div>
+
+      <p id="result-best-callout" class="best-callout hidden">ベストスコアを更新しました</p>
+
+      <div class="button-stack">
+        <button id="btn-play-again" class="primary-button">もう一度遊ぶ</button>
+        <button id="btn-result-title" class="secondary-button">ホームへ戻る</button>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script src="game.js?v=2"></script>
+</body>
+</html>
