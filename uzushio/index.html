@@ -87,36 +87,11 @@
   <!-- ===== ① Hero / First View ===== -->
   <section class="hero" id="hero">
     <div class="hero-visual" aria-hidden="true">
-      <div class="hero-sky"></div>
-      <div class="hero-sun"></div>
-      <svg class="hero-waves hero-waves--back" viewBox="0 0 1600 300" preserveAspectRatio="none">
-        <path d="M0 120 C 200 80 400 160 600 120 C 800 80 1000 160 1200 120 C 1350 95 1500 130 1600 115 L1600 300 L0 300 Z"/>
-      </svg>
-      <svg class="hero-waves hero-waves--front" viewBox="0 0 1600 300" preserveAspectRatio="none">
-        <path d="M0 170 C 220 210 380 140 620 175 C 860 210 1020 150 1260 180 C 1400 197 1520 175 1600 185 L1600 300 L0 300 Z"/>
-      </svg>
+      <img class="hero-photo" src="assets/hero-photo.jpg" alt="">
       <div class="hero-sparkle s1"></div>
       <div class="hero-sparkle s2"></div>
       <div class="hero-sparkle s3"></div>
       <div class="hero-sparkle s4"></div>
-      <svg class="hero-fisherman" viewBox="0 0 420 460">
-        <path class="hf-boat" d="M30 356 C 90 372 330 372 390 356 L 352 402 C 300 414 120 414 68 402 Z"/>
-        <path class="hf-boat-rim" d="M30 356 C 90 372 330 372 390 356" fill="none"/>
-        <path class="hf-net" d="M150 355 C 130 300 120 250 150 190 C 165 160 175 140 185 115" fill="none"/>
-        <g class="hf-wakame">
-          <path d="M140 300c-18-10-24-30-14-46 12 6 20 22 14 46z"/>
-          <path d="M158 260c-20-4-32-22-26-40 14 3 26 20 26 40z"/>
-          <path d="M132 240c-16-12-18-32-6-46 12 8 16 28 6 46z"/>
-          <path d="M170 300c-4-20 6-38 24-44 4 16-4 36-24 44z"/>
-        </g>
-        <g class="hf-figure">
-          <circle cx="190" cy="95" r="18"/>
-          <path d="M172 100c-6 30-4 70 6 110 4 16 30 16 34 0 8-40 8-80 2-112z"/>
-          <path d="M178 118c-16 6-28 24-32 46" fill="none"/>
-          <path d="M204 118c14 8 22 20 22 34" fill="none"/>
-          <path d="M180 214l-8 46M204 214l6 46"/>
-        </g>
-      </svg>
       <div class="hero-scrim"></div>
     </div>
 
@@ -153,7 +128,10 @@
       </div>
       <div class="grid-3">
         <article class="feature-card reveal">
-          <div class="feature-media feature-media--sea"><svg class="icon icon-lg"><use href="#i-leaf"/></svg></div>
+          <div class="feature-media">
+            <img src="assets/feature-1.jpg" alt="鳴門の海で育つわかめ">
+            <span class="feature-icon feature-icon--sea"><svg class="icon"><use href="#i-leaf"/></svg></span>
+          </div>
           <div class="feature-body">
             <span class="feature-no">01</span>
             <h3>鳴門わかめ専門メーカー</h3>
@@ -161,7 +139,10 @@
           </div>
         </article>
         <article class="feature-card reveal">
-          <div class="feature-media feature-media--boat"><svg class="icon icon-lg"><use href="#i-anchor"/></svg></div>
+          <div class="feature-media">
+            <img src="assets/feature-2.jpg" alt="水揚げしたわかめを選別するスタッフ">
+            <span class="feature-icon feature-icon--boat"><svg class="icon"><use href="#i-anchor"/></svg></span>
+          </div>
           <div class="feature-body">
             <span class="feature-no">02</span>
             <h3>漁から加工まで一貫管理</h3>
@@ -169,7 +150,10 @@
           </div>
         </article>
         <article class="feature-card reveal">
-          <div class="feature-media feature-media--cert"><svg class="icon icon-lg"><use href="#i-shield"/></svg></div>
+          <div class="feature-media">
+            <img src="assets/process-4.jpg" alt="品質検査を行うスタッフ">
+            <span class="feature-icon feature-icon--cert"><svg class="icon"><use href="#i-shield"/></svg></span>
+          </div>
           <div class="feature-body">
             <span class="feature-no">03</span>
             <h3>徳島県認証・品質管理</h3>
@@ -193,7 +177,7 @@
       </div>
       <div class="products-grid">
         <article class="product-card reveal">
-          <div class="product-media product-media--nama"><span>生わかめ</span></div>
+          <div class="product-media"><img src="assets/product-nama.jpg" alt="生わかめ"><span>生わかめ</span></div>
           <div class="product-body">
             <h3>生わかめ</h3>
             <p>水揚げ当日に加工。肉厚でシャキシャキとした食感が自慢です。</p>
@@ -201,7 +185,7 @@
           </div>
         </article>
         <article class="product-card reveal">
-          <div class="product-media product-media--enzo"><span>塩蔵わかめ</span></div>
+          <div class="product-media"><img src="assets/product-enzo.jpg" alt="塩蔵わかめ"><span>塩蔵わかめ</span></div>
           <div class="product-body">
             <h3>塩蔵わかめ</h3>
             <p>保存性に優れ、使いやすい定番商品。業務用にも適しています。</p>
@@ -209,7 +193,7 @@
           </div>
         </article>
         <article class="product-card reveal">
-          <div class="product-media product-media--boil"><span>ボイルわかめ</span></div>
+          <div class="product-media"><img src="assets/product-boil.jpg" alt="ボイルわかめ"><span>ボイルわかめ</span></div>
           <div class="product-body">
             <h3>ボイルわかめ</h3>
             <p>鮮やかな緑色と食感を活かし、和え物やサラダに最適です。</p>
@@ -217,7 +201,7 @@
           </div>
         </article>
         <article class="product-card reveal">
-          <div class="product-media product-media--dry"><span>乾燥わかめ</span></div>
+          <div class="product-media"><img src="assets/product-dry.jpg" alt="乾燥わかめ"><span>乾燥わかめ</span></div>
           <div class="product-body">
             <h3>乾燥わかめ</h3>
             <p>長期保存が可能で、必要な分だけ手軽に使える定番商品。</p>
@@ -226,7 +210,7 @@
         </article>
         <article class="product-card product-card--oem reveal">
           <div class="oem-ribbon">ご相談受付中</div>
-          <div class="product-media product-media--oem"><span>OEM・業務用</span></div>
+          <div class="product-media"><img src="assets/product-oem.jpg" alt="OEM・業務用"><span>OEM・業務用</span></div>
           <div class="product-body">
             <h3>OEM・業務用</h3>
             <p>規格・容量・パッケージまで、用途に合わせた商品開発をご相談いただけます。</p>
@@ -247,35 +231,35 @@
       </div>
       <div class="process-track">
         <article class="process-step reveal">
-          <div class="process-media"><svg class="icon icon-lg"><use href="#i-anchor"/></svg></div>
+          <div class="process-media"><img src="assets/process-1.jpg" alt="鳴門海峡でのわかめ漁獲"><span class="process-icon"><svg class="icon"><use href="#i-anchor"/></svg></span></div>
           <span class="process-no">01</span>
           <h3>漁獲</h3>
           <p>鳴門海峡の急流で育った、旬のわかめを水揚げします。</p>
         </article>
         <div class="process-arrow" aria-hidden="true"><svg class="icon"><use href="#i-arrow-r"/></svg></div>
         <article class="process-step reveal">
-          <div class="process-media"><svg class="icon icon-lg"><use href="#i-boat"/></svg></div>
+          <div class="process-media"><img src="assets/process-2.jpg" alt="漁船からの仕入れ"><span class="process-icon"><svg class="icon"><use href="#i-boat"/></svg></span></div>
           <span class="process-no">02</span>
           <h3>仕入れ</h3>
           <p>提携漁師から直接買い付け、鮮度を保ったまま工場へ。</p>
         </article>
         <div class="process-arrow" aria-hidden="true"><svg class="icon"><use href="#i-arrow-r"/></svg></div>
         <article class="process-step reveal">
-          <div class="process-media"><svg class="icon icon-lg"><use href="#i-factory"/></svg></div>
+          <div class="process-media"><img src="assets/process-3.jpg" alt="工場での加工の様子"><span class="process-icon"><svg class="icon"><use href="#i-factory"/></svg></span></div>
           <span class="process-no">03</span>
           <h3>加工</h3>
           <p>自社工場にて、生・塩蔵・ボイル・乾燥など用途別に加工。</p>
         </article>
         <div class="process-arrow" aria-hidden="true"><svg class="icon"><use href="#i-arrow-r"/></svg></div>
         <article class="process-step reveal">
-          <div class="process-media"><svg class="icon icon-lg"><use href="#i-search"/></svg></div>
+          <div class="process-media"><img src="assets/process-4.jpg" alt="品質検査の様子"><span class="process-icon"><svg class="icon"><use href="#i-search"/></svg></span></div>
           <span class="process-no">04</span>
           <h3>品質検査</h3>
           <p>異物・塩分・水分など複数項目を自社基準で厳しく検査。</p>
         </article>
         <div class="process-arrow" aria-hidden="true"><svg class="icon"><use href="#i-arrow-r"/></svg></div>
         <article class="process-step reveal">
-          <div class="process-media"><svg class="icon icon-lg"><use href="#i-truck"/></svg></div>
+          <div class="process-media"><img src="assets/process-5.jpg" alt="出荷用トラックへの積み込み"><span class="process-icon"><svg class="icon"><use href="#i-truck"/></svg></span></div>
           <span class="process-no">05</span>
           <h3>出荷</h3>
           <p>鮮度を保つ管理体制のもと、全国の取引先へお届けします。</p>
@@ -383,14 +367,7 @@
         <p class="section-lead">創業から今日まで、鳴門の海と漁師とともに歩んできました。</p>
       </div>
       <div class="story-banner reveal">
-        <svg class="story-visual" viewBox="0 0 1200 480" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-          <rect width="1200" height="480" class="sv-sky"/>
-          <circle cx="980" cy="150" r="90" class="sv-sun"/>
-          <path d="M0 300 C 200 260 400 320 600 290 C 800 260 1000 320 1200 290 L1200 480 L0 480 Z" class="sv-sea1"/>
-          <path d="M0 340 C 220 380 420 320 640 350 C 860 380 1020 330 1200 355 L1200 480 L0 480 Z" class="sv-sea2"/>
-          <path d="M120 300 L520 300 L470 340 L170 340Z" class="sv-boat"/>
-          <path d="M320 300V210M320 220l60 25M320 235l-50 20" class="sv-mast"/>
-        </svg>
+        <img class="story-visual" src="assets/news-photo.jpg" alt="鳴門の海でわかめを水揚げする漁師">
         <blockquote class="story-quote">
           「渦潮が育てた恵みを、<br class="only-desktop">できる限りそのままの形で届けたい。」
         </blockquote>
@@ -463,23 +440,7 @@
         </div>
       </div>
       <div class="cta-visual reveal" aria-hidden="true">
-        <svg viewBox="0 0 360 360">
-          <circle cx="180" cy="180" r="150" class="cv-bg"/>
-          <g class="cv-steam">
-            <path d="M140 150c-8-14-4-26 6-36" />
-            <path d="M180 140c-8-14-4-28 6-38" />
-            <path d="M220 150c-8-14-4-26 6-36" />
-          </g>
-          <path d="M60 235 A120 34 0 0 0 300 235 L282 258 A100 26 0 0 1 78 258 Z" class="cv-bowl-body"/>
-          <ellipse cx="180" cy="235" rx="120" ry="34" class="cv-bowl-rim"/>
-          <g class="cv-wakame">
-            <path d="M138 224c-14-18-12-40 4-54 12 12 12 36-4 54z"/>
-            <path d="M168 214c-4-20 6-40 24-48 8 18 0 40-24 48z"/>
-            <path d="M200 218c10-18 8-40-6-52-10 14-10 36 6 52z"/>
-            <path d="M228 226c14-14 16-36 4-52-12 10-16 34-4 52z"/>
-            <path d="M182 232c-2-16 6-30 20-36 4 14-2 30-20 36z"/>
-          </g>
-        </svg>
+        <img src="assets/cta-photo.jpg" alt="">
       </div>
     </div>
   </section>
