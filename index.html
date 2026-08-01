@@ -633,18 +633,79 @@
       box-shadow: 0 18px 40px rgba(6,199,85,0.38);
     }
 
-    #worries { background: linear-gradient(180deg, #f5f8fc 0%, #fff 100%); }
-    .worry-grid { gap: 22px; }
-    .worry-card {
-      height: 210px;
-      border-radius: 22px;
-      border: 1px solid rgba(21,46,79,0.08);
-      box-shadow: 0 16px 42px rgba(16,40,76,0.09);
-      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    #worries {
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 8% 8%, rgba(66,139,255,0.12), transparent 24%),
+        radial-gradient(circle at 92% 88%, rgba(84,217,255,0.1), transparent 22%),
+        linear-gradient(180deg, #f4f7fb 0%, #fff 100%);
     }
-    .worry-card:hover { transform: translateY(-4px); box-shadow: 0 22px 50px rgba(16,40,76,0.14); }
-    .worry-card::after { background: linear-gradient(90deg, rgba(255,255,255,0.97) 0%, rgba(255,255,255,0.84) 48%, rgba(255,255,255,0.18) 100%); }
-    .worry-text { left: 30px; font-weight: 700; color: #142943; }
+    #worries > .container { position: relative; z-index: 1; }
+    #worries .section-title { max-width: 780px; margin-bottom: 18px; }
+    .worries-intro {
+      max-width: 660px;
+      margin-bottom: 44px;
+      color: #5b6e86;
+      font-size: 15px;
+      line-height: 1.9;
+    }
+    .worry-grid {
+      counter-reset: worry;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 20px;
+    }
+    .worry-card {
+      counter-increment: worry;
+      isolation: isolate;
+      height: 244px;
+      padding: 26px;
+      display: flex;
+      align-items: flex-end;
+      border-radius: 24px;
+      border: 1px solid rgba(255,255,255,0.24);
+      background-color: #0b1f3a;
+      box-shadow: 0 18px 42px rgba(12,35,67,0.16);
+      transition: transform 0.28s ease, box-shadow 0.28s ease;
+    }
+    .worry-card::before {
+      content: '0' counter(worry);
+      position: absolute;
+      z-index: 3;
+      top: 20px;
+      left: 20px;
+      padding: 5px 11px;
+      border: 1px solid rgba(255,255,255,0.25);
+      border-radius: 999px;
+      background: rgba(7,24,48,0.58);
+      color: #9ed9ff;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+    }
+    .worry-card::after {
+      z-index: 1;
+      background:
+        linear-gradient(to top, rgba(3,14,31,0.96) 0%, rgba(5,22,45,0.62) 54%, rgba(5,22,45,0.12) 100%),
+        linear-gradient(135deg, rgba(40,112,231,0.18), transparent 50%);
+      transition: background 0.28s ease;
+    }
+    .worry-card:hover { transform: translateY(-7px); box-shadow: 0 26px 56px rgba(12,35,67,0.24); }
+    .worry-card:hover::after { background: linear-gradient(to top, rgba(3,14,31,0.95) 0%, rgba(5,22,45,0.48) 58%, rgba(5,22,45,0.05) 100%); }
+    .worry-text {
+      position: relative;
+      z-index: 2;
+      left: auto;
+      top: auto;
+      transform: none;
+      max-width: 100%;
+      color: #fff;
+      font-size: 16px;
+      font-weight: 700;
+      line-height: 1.65;
+      text-shadow: 0 3px 14px rgba(0,0,0,0.4);
+    }
 
     .service-grid { gap: 24px; }
     .service-card {
@@ -778,6 +839,10 @@
     footer { background: #050e1d; padding: 38px 24px; }
     a:focus-visible, summary:focus-visible { outline: 3px solid #79cfff; outline-offset: 4px; }
 
+    @media (max-width: 900px) {
+      .worry-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+
     @media (max-width: 760px) {
       .profile-grid { grid-template-columns: 1fr; gap: 24px; margin-bottom: 60px; }
       .profile-photo-card { max-width: 420px; width: 100%; margin: 0 auto; }
@@ -799,7 +864,10 @@
       .hero-desc { margin: 0 auto 28px; font-size: 14px; line-height: 1.85; }
       .hero-price { margin-bottom: 28px; }
       .cta-btn { width: 100%; max-width: 360px; justify-content: center; padding: 15px 20px; font-size: 15px; }
-      .worry-card { height: 160px; }
+      .worries-intro { margin-bottom: 30px; }
+      .worry-grid { grid-template-columns: 1fr; gap: 16px; }
+      .worry-card { height: 190px; padding: 22px; }
+      .worry-text { font-size: 15px; }
       .service-card { min-height: 280px; }
       .flow-content { padding: 18px; }
       .price-table { min-width: 680px; }
@@ -845,8 +913,9 @@
 <!-- Worries -->
 <section id="worries" class="section">
   <div class="container">
-    <span class="section-label">こんなお悩みありませんか？</span>
-    <h2 class="section-title">「HP を作りたいけど、<br>何から始めればいいか分からない」</h2>
+    <span class="section-label">制作前のよくあるお悩み</span>
+    <h2 class="section-title">「何から始めればいい？」を、<br>ひとつずつ整理します。</h2>
+    <p class="worries-intro">掲載内容や予算がまだ決まっていなくても大丈夫です。よくある不安を一緒に整理し、必要なものだけを分かりやすく形にします。</p>
     <div class="worry-grid">
       <div class="worry-card" style="background-image:url('https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?w=600&q=70')">
         <p class="worry-text">HPを作りたいけど、何を載せればいいか分からない</p>
