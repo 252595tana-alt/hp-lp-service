@@ -667,20 +667,65 @@
     }
     #services > .container, #flow > .container, #faq > .container { position: relative; z-index: 1; }
 
-    /* 5 service cards: 3 on top, 2 centred underneath */
-    .service-grid { grid-template-columns: repeat(6, minmax(0, 1fr)); }
-    .service-card { grid-column: span 2; }
-    .service-card:nth-child(4) { grid-column: 2 / span 2; }
-    .service-card:nth-child(5) { grid-column: 4 / span 2; }
+    /* 6 service cards in a 3 x 2 grid */
+    .service-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 
     /* Works */
     .work-body { display: flex; flex-direction: column; align-items: flex-start; }
     .work-desc { flex: 1; line-height: 1.8; }
 
-    /* Pricing: keep the three cards on one row and equal height */
-    .price-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); align-items: stretch; }
-    .price-card { display: flex; flex-direction: column; }
+    /* Profile — compact dark band that anchors the middle of the page */
+    #profile {
+      position: relative;
+      overflow: hidden;
+      padding: 84px 0;
+      color: var(--white);
+      background:
+        radial-gradient(circle at 8% 10%, rgba(37,99,235,0.22), transparent 32%),
+        radial-gradient(circle at 92% 90%, rgba(73,198,255,0.12), transparent 30%),
+        #0a1d38;
+    }
+    #profile > .container { position: relative; z-index: 1; }
+    #profile .section-label {
+      background: rgba(255,255,255,0.12);
+      border-color: rgba(255,255,255,0.18);
+      color: #93c5fd;
+    }
+    #profile .section-title { color: var(--white); }
+    .profile-row {
+      display: grid;
+      grid-template-columns: 200px minmax(0, 1fr);
+      gap: 46px;
+      align-items: center;
+    }
+    .profile-figure { margin: 0; }
+    .profile-photo {
+      display: block;
+      width: 200px;
+      height: 200px;
+      object-fit: cover;
+      object-position: 62% 20%;
+      border-radius: 50%;
+      border: 6px solid rgba(116,185,255,0.18);
+      box-shadow: 0 20px 48px rgba(0,0,0,0.36);
+    }
+    .profile-body .section-title {
+      margin-bottom: 16px;
+      font-size: clamp(21px, 2.8vw, 28px);
+    }
+    .profile-lead {
+      max-width: 640px;
+      color: rgba(255,255,255,0.8);
+      font-size: 15px;
+      line-height: 1.95;
+    }
+
+    /* Pricing: four equal-height cards on one row */
+    .price-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); align-items: stretch; }
+    .price-card { display: flex; flex-direction: column; padding: 30px 22px; }
+    .price-amount { font-size: 31px; }
     .price-features { margin-top: auto; }
+    .price-features li { font-size: 13px; }
 
     /* Closing CTA */
     #contact .cta-btn { font-size: 18px; padding: 19px 40px; }
@@ -715,10 +760,9 @@
 
     @media (max-width: 900px) {
       .service-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-      .service-card,
-      .service-card:nth-child(4),
-      .service-card:nth-child(5) { grid-column: auto; }
-      .price-grid { grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
+      .price-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .profile-row { gap: 32px; grid-template-columns: 160px minmax(0, 1fr); }
+      .profile-photo { width: 160px; height: 160px; border-width: 5px; }
     }
 
     @media (max-width: 900px) {
@@ -754,6 +798,10 @@
       .hero-price { margin: 0 auto 28px; }
       .cta-btn { width: 100%; max-width: 360px; justify-content: center; padding: 15px 20px; font-size: 15px; }
       .section-head { margin-bottom: 34px; }
+      #profile { padding: 60px 0; }
+      .profile-row { grid-template-columns: 1fr; gap: 24px; justify-items: center; text-align: center; }
+      .profile-body .section-title { font-size: 21px; }
+      .profile-lead { font-size: 14px; line-height: 1.9; }
       .service-grid { grid-template-columns: 1fr; }
       .service-card { min-height: 280px; }
       .flow-content { padding: 18px; }
@@ -837,6 +885,10 @@
         <div class="service-name">サイト運用</div>
         <p class="service-desc">公開後の運用・保守・管理を月額でサポート。安心してサービスに集中できます。</p>
       </div>
+      <div class="service-card" style="background-image:url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=70')">
+        <div class="service-name">サイト分析・改善</div>
+        <p class="service-desc">Googleアナリティクスを導入し、アクセス状況をもとに改善を継続。運用・保守もまとめて対応します。</p>
+      </div>
     </div>
   </div>
 </section>
@@ -877,6 +929,22 @@
             <span class="work-tag">実装</span>
           </div>
         </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Profile -->
+<section id="profile">
+  <div class="container">
+    <div class="profile-row">
+      <figure class="profile-figure">
+        <img class="profile-photo" src="public/images/profile-fishing.jpg" alt="制作者のプロフィール写真" loading="lazy" width="200" height="200">
+      </figure>
+      <div class="profile-body">
+        <span class="section-label">制作者について</span>
+        <h2 class="section-title">現場と業務整理の経験を、そのまま制作に活かします</h2>
+        <p class="profile-lead">製造・生産管理・物流改善など複数のメーカーで現場改善に携わり、現在はコンサルティング会社で業務分析と課題整理を担当しています。「複雑なことを分かりやすく整理する」のが本業です。何を載せるか決まっていない段階から、事業の魅力が伝わる形を一緒に組み立てます。</p>
       </div>
     </div>
   </div>
@@ -961,6 +1029,18 @@
           <li>文言修正・画像差し替え対応</li>
         </ul>
       </div>
+      <div class="price-card">
+        <div class="price-name">サイト分析・改善</div>
+        <div class="price-amount"><span>月額 ¥</span>50,000</div>
+        <p class="price-note">サイト運用に、分析と改善までを加えたプラン</p>
+        <ul class="price-features">
+          <li>サイト運用プランの内容すべて</li>
+          <li>Googleアナリティクス導入・設定</li>
+          <li>アクセス状況の分析・レポート</li>
+          <li>数値にもとづく改善のご提案</li>
+          <li>提案内容の修正・反映対応</li>
+        </ul>
+      </div>
     </div>
     <div class="price-table-wrap">
       <table class="price-table">
@@ -989,8 +1069,8 @@
           </tr>
           <tr>
             <td>サーバー・ドメイン費用</td>
-            <td>月額サイト運用プランに含まれます</td>
-            <td>月額10,000円に込み</td>
+            <td>月額プラン（サイト運用／サイト分析・改善）に含まれます</td>
+            <td>月額プランに込み</td>
           </tr>
         </tbody>
       </table>
@@ -1022,7 +1102,11 @@
       </details>
       <details>
         <summary>サーバーやドメインの準備も必要ですか？</summary>
-        <p class="faq-answer">はい、公開にはサーバーとドメインが必要です。費用は月額10,000円のサイト運用プランに含まれています。選定や手続きもサポートします。</p>
+        <p class="faq-answer">はい、公開にはサーバーとドメインが必要です。費用は月額のサイト運用プラン（10,000円〜）に含まれています。選定や手続きもサポートします。</p>
+      </details>
+      <details>
+        <summary>公開したあと、効果は分かるのですか？</summary>
+        <p class="faq-answer">月額50,000円の「サイト分析・改善」プランでは、Googleアナリティクスを導入し、どのページがどれだけ見られているかを継続して分析します。数値をもとに改善のご提案と修正まで対応するため、公開して終わりになりません。</p>
       </details>
     </div>
   </div>
@@ -1081,7 +1165,7 @@
   (function () {
     if (!('IntersectionObserver' in window)) return;
     const targets = document.querySelectorAll(
-      '.section-head, .service-card, .work-card, .flow-item, .price-card, .price-table-wrap, .faq-list > details, #contact > .container > *'
+      '.section-head, .service-card, .work-card, .profile-figure, .profile-body, .flow-item, .price-card, .price-table-wrap, .faq-list > details, #contact > .container > *'
     );
     targets.forEach(el => el.classList.add('reveal'));
 
