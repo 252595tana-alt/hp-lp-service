@@ -164,37 +164,6 @@
     }
     .hero-price strong { font-size: 22px; }
 
-    /* ===== Worries ===== */
-    #worries { background: var(--grey-light); }
-    .worry-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 16px;
-    }
-    .worry-card {
-      position: relative;
-      border-radius: 12px;
-      overflow: hidden;
-      height: 180px;
-      background-size: cover;
-      background-position: center;
-    }
-    .worry-card::after {
-      content: '';
-      position: absolute; inset: 0;
-      background: linear-gradient(to right, rgba(255,255,255,0.92) 55%, rgba(255,255,255,0.3));
-    }
-    .worry-text {
-      position: absolute; z-index: 1;
-      left: 24px; top: 50%; transform: translateY(-50%);
-      font-size: 15px; font-weight: 500; color: var(--text);
-      max-width: 58%; line-height: 1.55;
-    }
-    @media (max-width: 600px) {
-      .worry-grid { grid-template-columns: 1fr; }
-      .worry-card { height: 130px; }
-    }
-
     /* ===== Services ===== */
     .service-grid {
       display: grid;
@@ -228,94 +197,6 @@
     }
     .service-name { font-size: 20px; font-weight: 700; color: #fff; margin-bottom: 8px; }
     .service-desc { font-size: 14px; color: rgba(255,255,255,0.82); }
-
-    /* ===== Reasons ===== */
-    #reasons { background: var(--navy); color: var(--white); }
-    #reasons .section-title { color: var(--white); }
-    #reasons .section-desc { color: rgba(255,255,255,0.7); }
-    #reasons .section-label { background: rgba(255,255,255,0.12); color: #93c5fd; }
-    .profile-grid {
-      display: grid;
-      grid-template-columns: minmax(250px, 320px) minmax(0, 1fr);
-      gap: 42px;
-      align-items: stretch;
-      margin-bottom: 72px;
-    }
-    .profile-photo-card,
-    .profile-copy {
-      background: rgba(255,255,255,0.08);
-      border: 1px solid rgba(255,255,255,0.16);
-      box-shadow: 0 16px 40px rgba(3,12,28,0.22);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-    }
-    .profile-photo-card {
-      align-self: center;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      background: transparent;
-      border: 0;
-      box-shadow: none;
-      backdrop-filter: none;
-      -webkit-backdrop-filter: none;
-    }
-    .profile-photo {
-      display: block;
-      width: 280px;
-      height: 280px;
-      object-fit: cover;
-      object-position: 62% 20%;
-      border: 8px solid rgba(255,255,255,0.14);
-      border-radius: 50%;
-      box-shadow: 0 16px 40px rgba(3,12,28,0.35);
-    }
-    .profile-caption {
-      max-width: 280px;
-      padding: 18px 8px 0;
-      color: rgba(255,255,255,0.7);
-      font-size: 12px;
-      line-height: 1.7;
-      text-align: center;
-    }
-    .profile-copy {
-      border-radius: 20px;
-      padding: 36px 40px;
-    }
-    .profile-copy .section-title {
-      max-width: 620px;
-      margin-bottom: 24px;
-      font-size: clamp(23px, 3.5vw, 32px);
-    }
-    .profile-text {
-      display: grid;
-      gap: 16px;
-      max-width: 640px;
-      color: rgba(255,255,255,0.8);
-      font-size: 14px;
-      line-height: 1.9;
-    }
-    .strengths-heading { margin-bottom: 40px; }
-    .strengths-heading .section-desc { margin-bottom: 0; }
-    .reason-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-      gap: 24px;
-    }
-    .reason-card {
-      background: rgba(255,255,255,0.08);
-      border: 1px solid rgba(255,255,255,0.15);
-      border-radius: 16px;
-      padding: 32px 24px;
-      text-align: center;
-    }
-    .reason-num {
-      font-size: 13px; font-weight: 700; letter-spacing: 0.1em;
-      color: #93c5fd; margin-bottom: 8px;
-    }
-    .reason-title { font-size: 20px; font-weight: 700; margin-bottom: 12px; }
-    .reason-desc { font-size: 14px; color: rgba(255,255,255,0.75); line-height: 1.6; }
 
     /* ===== Works ===== */
     #works { background: var(--grey-light); }
@@ -646,6 +527,8 @@
       line-height: 2;
     }
     .hero-price {
+      display: block;
+      width: fit-content;
       margin-bottom: 30px;
       padding: 10px 20px;
       border-radius: 999px;
@@ -666,80 +549,6 @@
       filter: brightness(1.04);
       transform: translateY(-3px);
       box-shadow: 0 18px 40px rgba(6,199,85,0.38);
-    }
-
-    #worries {
-      overflow: hidden;
-      background:
-        radial-gradient(circle at 8% 8%, rgba(66,139,255,0.12), transparent 24%),
-        radial-gradient(circle at 92% 88%, rgba(84,217,255,0.1), transparent 22%),
-        linear-gradient(180deg, #f4f7fb 0%, #fff 100%);
-    }
-    #worries > .container { position: relative; z-index: 1; }
-    #worries .section-title { max-width: 780px; margin-bottom: 18px; }
-    .worries-intro {
-      max-width: 660px;
-      margin-bottom: 44px;
-      color: #5b6e86;
-      font-size: 15px;
-      line-height: 1.9;
-    }
-    .worry-grid {
-      counter-reset: worry;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 20px;
-    }
-    .worry-card {
-      counter-increment: worry;
-      isolation: isolate;
-      height: 244px;
-      padding: 26px;
-      display: flex;
-      align-items: flex-end;
-      border-radius: 24px;
-      border: 1px solid rgba(255,255,255,0.24);
-      background-color: #0b1f3a;
-      box-shadow: 0 18px 42px rgba(12,35,67,0.16);
-      transition: transform 0.28s ease, box-shadow 0.28s ease;
-    }
-    .worry-card::before {
-      content: '0' counter(worry);
-      position: absolute;
-      z-index: 3;
-      top: 20px;
-      left: 20px;
-      padding: 5px 11px;
-      border: 1px solid rgba(255,255,255,0.25);
-      border-radius: 999px;
-      background: rgba(7,24,48,0.58);
-      color: #9ed9ff;
-      font-size: 11px;
-      font-weight: 800;
-      letter-spacing: 0.12em;
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
-    }
-    .worry-card::after {
-      z-index: 1;
-      background:
-        linear-gradient(to top, rgba(3,14,31,0.96) 0%, rgba(5,22,45,0.62) 54%, rgba(5,22,45,0.12) 100%),
-        linear-gradient(135deg, rgba(40,112,231,0.18), transparent 50%);
-      transition: background 0.28s ease;
-    }
-    .worry-card:hover { transform: translateY(-7px); box-shadow: 0 26px 56px rgba(12,35,67,0.24); }
-    .worry-card:hover::after { background: linear-gradient(to top, rgba(3,14,31,0.95) 0%, rgba(5,22,45,0.48) 58%, rgba(5,22,45,0.05) 100%); }
-    .worry-text {
-      position: relative;
-      z-index: 2;
-      left: auto;
-      top: auto;
-      transform: none;
-      max-width: 100%;
-      color: #fff;
-      font-size: 16px;
-      font-weight: 700;
-      line-height: 1.65;
-      text-shadow: 0 3px 14px rgba(0,0,0,0.4);
     }
 
     .service-grid { gap: 24px; }
@@ -766,37 +575,6 @@
     .service-card:hover { transform: translateY(-7px); box-shadow: 0 26px 58px rgba(12,33,65,0.22); }
     .service-name { font-size: 23px; letter-spacing: -0.02em; }
     .service-desc { line-height: 1.8; }
-
-    #reasons {
-      overflow: hidden;
-      background:
-        radial-gradient(circle at 10% 5%, rgba(37,99,235,0.24), transparent 28%),
-        radial-gradient(circle at 90% 85%, rgba(73,198,255,0.12), transparent 28%),
-        #0a1d38;
-    }
-    #reasons > .container { position: relative; z-index: 1; }
-    .profile-copy { border-radius: 28px; background: rgba(255,255,255,0.075); }
-    .profile-photo { border-color: rgba(116,185,255,0.2); box-shadow: 0 24px 60px rgba(0,0,0,0.38), 0 0 0 1px rgba(255,255,255,0.1); }
-    .reason-grid { gap: 20px; }
-    .reason-card {
-      position: relative;
-      overflow: hidden;
-      padding: 34px 24px;
-      border-radius: 22px;
-      background: linear-gradient(145deg, rgba(255,255,255,0.1), rgba(255,255,255,0.045));
-      transition: transform 0.25s ease, border-color 0.25s ease, background 0.25s ease;
-    }
-    .reason-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 22%;
-      right: 22%;
-      height: 2px;
-      background: linear-gradient(90deg, transparent, #70cfff, transparent);
-    }
-    .reason-card:hover { transform: translateY(-5px); border-color: rgba(112,207,255,0.4); background: rgba(255,255,255,0.12); }
-    .reason-num { color: #75d1ff; }
 
     #works { background: linear-gradient(180deg, #f1f5fa 0%, #f8fafc 100%); }
     .works-grid { gap: 28px; }
@@ -874,6 +652,75 @@
     footer { background: #050e1d; padding: 38px 24px; }
     a:focus-visible, summary:focus-visible { outline: 3px solid #79cfff; outline-offset: 4px; }
 
+    /* ===== Layout & rhythm refinement ===== */
+    .section-head { max-width: 720px; margin-bottom: 52px; }
+    .section-head .section-desc { margin-bottom: 0; }
+    .section-title { position: relative; }
+
+    /* Light sections get a soft ambient wash so they never read as flat white */
+    #services, #flow, #faq {
+      position: relative;
+      background:
+        radial-gradient(circle at 88% 0%, rgba(66,139,255,0.07), transparent 42%),
+        radial-gradient(circle at 0% 100%, rgba(84,217,255,0.06), transparent 38%),
+        #fff;
+    }
+    #services > .container, #flow > .container, #faq > .container { position: relative; z-index: 1; }
+
+    /* 5 service cards: 3 on top, 2 centred underneath */
+    .service-grid { grid-template-columns: repeat(6, minmax(0, 1fr)); }
+    .service-card { grid-column: span 2; }
+    .service-card:nth-child(4) { grid-column: 2 / span 2; }
+    .service-card:nth-child(5) { grid-column: 4 / span 2; }
+
+    /* Works */
+    .work-body { display: flex; flex-direction: column; align-items: flex-start; }
+    .work-desc { flex: 1; line-height: 1.8; }
+
+    /* Pricing: keep the three cards on one row and equal height */
+    .price-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); align-items: stretch; }
+    .price-card { display: flex; flex-direction: column; }
+    .price-features { margin-top: auto; }
+
+    /* Closing CTA */
+    #contact .cta-btn { font-size: 18px; padding: 19px 40px; }
+    .contact-point::before {
+      content: '';
+      width: 6px; height: 6px; flex-shrink: 0;
+      border-radius: 50%;
+      background: #6ee7a8;
+      box-shadow: 0 0 10px rgba(110,231,168,0.9);
+    }
+
+    /* Footer */
+    footer { line-height: 2; }
+    .footer-nav {
+      display: flex; flex-wrap: wrap;
+      justify-content: center; gap: 8px 22px;
+      margin-bottom: 18px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid rgba(255,255,255,0.09);
+    }
+    .footer-nav a { color: rgba(255,255,255,0.66); font-size: 13px; transition: color 0.2s ease; }
+    .footer-nav a:hover { color: #fff; }
+
+    /* Scroll reveal (class is applied by JS, so no-JS users see everything) */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.75s cubic-bezier(0.22,0.61,0.36,1), transform 0.75s cubic-bezier(0.22,0.61,0.36,1);
+      will-change: opacity, transform;
+    }
+    .reveal.is-visible { opacity: 1; transform: none; }
+
+    @media (max-width: 900px) {
+      .service-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .service-card,
+      .service-card:nth-child(4),
+      .service-card:nth-child(5) { grid-column: auto; }
+      .price-grid { grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
+    }
+
     @media (max-width: 900px) {
       header { flex-wrap: wrap; row-gap: 9px; }
       .header-nav {
@@ -891,16 +738,6 @@
       .header-nav a { flex: 0 0 auto; padding: 6px 10px; }
       section[id] { scroll-margin-top: 112px; }
       #hero { min-height: calc(100svh - 102px); }
-      .worry-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-    }
-
-    @media (max-width: 760px) {
-      .profile-grid { grid-template-columns: 1fr; gap: 24px; margin-bottom: 60px; }
-      .profile-photo-card { max-width: 420px; width: 100%; margin: 0 auto; }
-      .profile-photo { width: 240px; height: 240px; }
-      .profile-copy { padding: 28px 24px; }
-      .profile-copy .section-title { font-size: 23px; }
-      .profile-text { gap: 14px; line-height: 1.85; }
     }
 
     /* ===== Responsive ===== */
@@ -909,26 +746,28 @@
       header { padding: 10px 16px; }
       .header-name { font-size: 12px; gap: 7px; }
       .header-cta { padding: 7px 13px; font-size: 11px; }
-      #hero { padding: 72px 20px 64px; text-align: center; }
+      #hero { padding: 72px 12px 64px; text-align: center; }
       #hero::before { background: linear-gradient(180deg, rgba(4,15,31,0.76), rgba(4,15,31,0.72)); }
+      .hero-badge { padding: 6px 14px; font-size: 11px; letter-spacing: 0.04em; }
       .hero-title { font-size: clamp(32px, 10vw, 45px); letter-spacing: -0.045em; }
       .hero-desc { margin: 0 auto 28px; font-size: 14px; line-height: 1.85; }
-      .hero-price { margin-bottom: 28px; }
+      .hero-price { margin: 0 auto 28px; }
       .cta-btn { width: 100%; max-width: 360px; justify-content: center; padding: 15px 20px; font-size: 15px; }
-      .worries-intro { margin-bottom: 30px; }
-      .worry-grid { grid-template-columns: 1fr; gap: 16px; }
-      .worry-card { height: 190px; padding: 22px; }
-      .worry-text { font-size: 15px; }
+      .section-head { margin-bottom: 34px; }
+      .service-grid { grid-template-columns: 1fr; }
       .service-card { min-height: 280px; }
       .flow-content { padding: 18px; }
       .price-table { min-width: 680px; }
-      .reason-grid, .service-grid { grid-template-columns: 1fr; }
       .price-grid { grid-template-columns: 1fr; }
       .works-grid { grid-template-columns: 1fr; }
+      #contact .cta-btn { font-size: 16px; padding: 16px 20px; }
+      .contact-points { gap: 10px; }
+      .contact-point { font-size: 13px; padding: 7px 16px; }
     }
 
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after { scroll-behavior: auto !important; transition-duration: 0.01ms !important; }
+      .reveal { opacity: 1 !important; transform: none !important; }
     }
   </style>
 </head>
@@ -938,13 +777,12 @@
 <header>
   <a href="#hero" class="header-name">Web制作・集客サポート</a>
   <nav class="header-nav" aria-label="ページ内メニュー">
-    <a href="#worries">課題から探す</a>
     <a href="#services">対応サービス</a>
-    <a href="#reasons">選ばれる理由</a>
     <a href="#works">制作実績</a>
     <a href="#flow">ご依頼の流れ</a>
     <a href="#pricing">料金プラン</a>
     <a href="#faq">よくある質問</a>
+    <a href="#contact">お問い合わせ</a>
   </nav>
   <a href="https://lin.ee/qhkzGX5" class="header-cta" target="_blank" rel="noopener noreferrer">LINEで無料相談</a>
 </header>
@@ -962,7 +800,7 @@
     <p class="hero-desc">
       「何を載せたらいいか分からない」状態でも大丈夫。<br>掲載内容の整理から、デザイン・制作・公開まで一緒に進めます。
     </p>
-    <div class="hero-price">HP制作 <strong>50,000円〜</strong></div><br>
+    <div class="hero-price">HP制作 <strong>50,000円〜</strong></div>
     <a href="https://lin.ee/qhkzGX5" class="cta-btn" target="_blank" rel="noopener noreferrer">
       <svg viewBox="0 0 24 24"><path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.630 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63h2.386c.349 0 .63.285.63.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63.349 0 .631.285.631.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.282.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/></svg>
       <span>LINEで無料相談・お見積もり<span class="cta-sub">内容がまだ固まっていなくてもOK</span></span>
@@ -970,13 +808,14 @@
   </div>
 </section>
 
-<!-- Worries -->
 <!-- Services -->
 <section id="services" class="section">
   <div class="container">
-    <span class="section-label">サービス内容</span>
-    <h2 class="section-title">提供しているサービス</h2>
-    <p class="section-desc">企画・構成から公開まで、HP・LP・LINEの集客導線づくりを一括で対応します。</p>
+    <div class="section-head">
+      <span class="section-label">サービス内容</span>
+      <h2 class="section-title">提供しているサービス</h2>
+      <p class="section-desc">企画・構成から公開まで、HP・LP・LINEの集客導線づくりを一括で対応します。</p>
+    </div>
     <div class="service-grid">
       <div class="service-card" style="background-image:url('service-hp.webp')">
         <div class="service-name">HP制作</div>
@@ -986,7 +825,7 @@
         <div class="service-name">LP制作</div>
         <p class="service-desc">商品・サービス紹介用のランディングページ制作。ターゲットに刺さるデザインと導線で問い合わせへつなげます。</p>
       </div>
-      <div class="service-card" style="background-image:url('service-operation.webp')">
+      <div class="service-card" style="background-image:url('service-pages.webp')">
         <div class="service-name">LINE構築</div>
         <p class="service-desc">LINE公式アカウントの初期設定から、友だち追加・問い合わせにつながる集客導線まで設計します。</p>
       </div>
@@ -1005,9 +844,11 @@
 <!-- Works -->
 <section id="works" class="section">
   <div class="container">
-    <span class="section-label">制作実績</span>
-    <h2 class="section-title">実績紹介</h2>
-    <p class="section-desc">制作したサイトの一部をご紹介します。</p>
+    <div class="section-head">
+      <span class="section-label">制作実績</span>
+      <h2 class="section-title">実績紹介</h2>
+      <p class="section-desc">制作したサイトの一部をご紹介します。</p>
+    </div>
     <div class="works-grid">
       <div class="work-card">
         <img class="work-image" src="work-2face.webp" alt="ボートシーバスガイド 2FACEのホームページ制作実績" loading="lazy" width="1600" height="755">
@@ -1044,9 +885,11 @@
 <!-- Flow -->
 <section id="flow" class="section">
   <div class="container">
-    <span class="section-label">制作の流れ</span>
-    <h2 class="section-title">相談から公開までの流れ</h2>
-    <p class="section-desc">まずはLINEで気軽にご相談ください。内容未定・検討中でも大丈夫です。</p>
+    <div class="section-head">
+      <span class="section-label">制作の流れ</span>
+      <h2 class="section-title">相談から公開までの流れ</h2>
+      <p class="section-desc">まずはLINEで気軽にご相談ください。内容未定・検討中でも大丈夫です。</p>
+    </div>
     <div class="flow-list">
       <div class="flow-item">
         <div class="flow-num">1</div>
@@ -1076,9 +919,11 @@
 <!-- Pricing -->
 <section id="pricing" class="section">
   <div class="container">
-    <span class="section-label">料金</span>
-    <h2 class="section-title">制作費用・料金一覧</h2>
-    <p class="section-desc">明確な料金体系でご安心いただけます。詳細はLINEでご相談ください。</p>
+    <div class="section-head">
+      <span class="section-label">料金</span>
+      <h2 class="section-title">制作費用・料金一覧</h2>
+      <p class="section-desc">明確な料金体系でご安心いただけます。詳細はLINEでご相談ください。</p>
+    </div>
     <div class="price-grid">
       <div class="price-card featured">
         <span class="price-badge">メインサービス</span>
@@ -1155,11 +1000,13 @@
 </section>
 
 <!-- FAQ -->
-<section id="faq" class="section" style="background:var(--grey-light)">
+<section id="faq" class="section">
   <div class="container">
-    <span class="section-label">よくある質問</span>
-    <h2 class="section-title">FAQ</h2>
-    <p class="section-desc">お客様からよくいただく質問をまとめました。</p>
+    <div class="section-head">
+      <span class="section-label">よくある質問</span>
+      <h2 class="section-title">FAQ</h2>
+      <p class="section-desc">お客様からよくいただく質問をまとめました。</p>
+    </div>
     <div class="faq-list">
       <details>
         <summary>まだ内容が決まっていないのですが、相談できますか？</summary>
@@ -1181,10 +1028,37 @@
   </div>
 </section>
 
+<!-- Contact -->
+<section id="contact" class="section">
+  <div class="container">
+    <span class="section-label">お問い合わせ</span>
+    <h2 class="section-title">まずは、LINEで気軽にご相談ください</h2>
+    <p class="contact-desc">「何から始めればいいか分からない」段階で大丈夫です。ご相談・お見積もりは無料。しつこい営業は一切いたしません。</p>
+    <div class="contact-points">
+      <div class="contact-point">相談・お見積もり無料</div>
+      <div class="contact-point">目安1ヶ月で公開</div>
+      <div class="contact-point">HP制作 50,000円〜</div>
+    </div>
+    <a href="https://lin.ee/qhkzGX5" class="cta-btn" target="_blank" rel="noopener noreferrer">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.630 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63h2.386c.349 0 .63.285.63.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63.349 0 .631.285.631.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.282.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/></svg>
+      <span>LINEで無料相談・お見積もり<span class="cta-sub">内容がまだ固まっていなくてもOK</span></span>
+    </a>
+    <p class="cta-note">友だち追加後、そのままトークでご相談いただけます。</p>
+  </div>
+</section>
+
 <!-- Footer -->
 <footer>
+  <nav class="footer-nav" aria-label="フッターメニュー">
+    <a href="#services">対応サービス</a>
+    <a href="#works">制作実績</a>
+    <a href="#flow">ご依頼の流れ</a>
+    <a href="#pricing">料金プラン</a>
+    <a href="#faq">よくある質問</a>
+    <a href="#contact">お問い合わせ</a>
+  </nav>
   <p>© 2026 HP・LP制作サービス. All rights reserved.</p>
-  <p style="margin-top:8px;font-size:12px;">
+  <p style="margin-top:6px;font-size:12px;">
     <a href="#hero">トップへ戻る</a>
   </p>
 </footer>
@@ -1201,6 +1075,29 @@
       }
     });
   });
+
+  // Fade sections in as they scroll into view.
+  // Classes are added here so the page stays fully visible without JS.
+  (function () {
+    if (!('IntersectionObserver' in window)) return;
+    const targets = document.querySelectorAll(
+      '.section-head, .service-card, .work-card, .flow-item, .price-card, .price-table-wrap, .faq-list > details, #contact > .container > *'
+    );
+    targets.forEach(el => el.classList.add('reveal'));
+
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('is-visible');
+        io.unobserve(entry.target);
+      });
+    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
+
+    targets.forEach((el, i) => {
+      el.style.transitionDelay = (i % 3) * 90 + 'ms';
+      io.observe(el);
+    });
+  })();
 </script>
 </body>
 </html>
