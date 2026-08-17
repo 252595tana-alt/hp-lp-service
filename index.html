@@ -720,12 +720,19 @@
       line-height: 1.95;
     }
 
-    /* Pricing: four equal-height cards on one row */
-    .price-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); align-items: stretch; }
-    .price-card { display: flex; flex-direction: column; padding: 30px 22px; }
-    .price-amount { font-size: 31px; }
+    /* Pricing: three equal-height制作 cards, monthly/optional menus in the table below */
+    .price-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); align-items: stretch; }
+    .price-card { display: flex; flex-direction: column; }
     .price-features { margin-top: auto; }
-    .price-features li { font-size: 13px; }
+    .price-options-head {
+      margin: 44px 0 16px;
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .price-options-title { font-size: 18px; font-weight: 700; color: var(--navy); }
+    .price-options-note { font-size: 13px; color: var(--grey); }
 
     /* Closing CTA */
     #contact .cta-btn { font-size: 18px; padding: 19px 40px; }
@@ -1019,28 +1026,21 @@
         </ul>
       </div>
       <div class="price-card">
-        <div class="price-name">サイト運用</div>
-        <div class="price-amount"><span>月額 ¥</span>10,000</div>
-        <p class="price-note">サーバー・ドメイン費用込みの運用・保守費</p>
+        <div class="price-name">既存サイト改善</div>
+        <div class="price-amount"><span>¥</span>50,000<span>円〜</span></div>
+        <p class="price-note">今のサイトを活かしたリニューアル</p>
         <ul class="price-features">
-          <li>サーバー・ドメイン費用込み</li>
-          <li>公開状態の確認・管理</li>
-          <li>基本的な運用・保守サポート</li>
-          <li>文言修正・画像差し替え対応</li>
+          <li>現状サイトの課題整理</li>
+          <li>構成・導線の見直し</li>
+          <li>デザイン・レイアウト改善</li>
+          <li>公開対応</li>
+          <li>修正2回まで込み</li>
         </ul>
       </div>
-      <div class="price-card">
-        <div class="price-name">サイト分析・改善</div>
-        <div class="price-amount"><span>月額 ¥</span>50,000</div>
-        <p class="price-note">サイト運用に、分析と改善までを加えたプラン</p>
-        <ul class="price-features">
-          <li>サイト運用プランの内容すべて</li>
-          <li>Googleアナリティクス導入・設定</li>
-          <li>アクセス状況の分析・レポート</li>
-          <li>数値にもとづく改善のご提案</li>
-          <li>提案内容の修正・反映対応</li>
-        </ul>
-      </div>
+    </div>
+    <div class="price-options-head">
+      <span class="price-options-title">月額プラン・オプション</span>
+      <span class="price-options-note">公開後の運用や、必要に応じて追加できるメニューです。</span>
     </div>
     <div class="price-table-wrap">
       <table class="price-table">
@@ -1053,6 +1053,21 @@
         </thead>
         <tbody>
           <tr>
+            <td>サイト運用</td>
+            <td>サーバー・ドメイン費用込み。公開状態の確認・管理、運用保守、文言修正・画像差し替え対応</td>
+            <td>月額10,000円</td>
+          </tr>
+          <tr>
+            <td>サイト分析・改善</td>
+            <td>サイト運用の内容すべて＋Googleアナリティクス導入・設定、アクセス分析レポート、数値にもとづく改善提案と反映</td>
+            <td>月額50,000円</td>
+          </tr>
+          <tr>
+            <td>LINE構築 / Lステップ構築</td>
+            <td>LINE公式アカウントの初期設定・集客導線設計、シナリオ配信・タグ管理・自動化設計</td>
+            <td>50,000円</td>
+          </tr>
+          <tr>
             <td>AI動画生成</td>
             <td>AI動画の生成・挿入</td>
             <td>10,000円</td>
@@ -1061,11 +1076,6 @@
             <td>AIイラスト挿入</td>
             <td>AIイラストの生成・挿入</td>
             <td>1点につき5,000円</td>
-          </tr>
-          <tr>
-            <td>LINE構築 / Lステップ構築</td>
-            <td>LINE公式アカウントの初期設定・集客導線設計、シナリオ配信・タグ管理・自動化設計</td>
-            <td>50,000円</td>
           </tr>
           <tr>
             <td>サーバー・ドメイン費用</td>
@@ -1165,7 +1175,7 @@
   (function () {
     if (!('IntersectionObserver' in window)) return;
     const targets = document.querySelectorAll(
-      '.section-head, .service-card, .work-card, .profile-figure, .profile-body, .flow-item, .price-card, .price-table-wrap, .faq-list > details, #contact > .container > *'
+      '.section-head, .service-card, .work-card, .profile-figure, .profile-body, .flow-item, .price-card, .price-options-head, .price-table-wrap, .faq-list > details, #contact > .container > *'
     );
     targets.forEach(el => el.classList.add('reveal'));
 
