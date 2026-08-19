@@ -233,7 +233,6 @@
     }
     .work-name { font-size: 16px; font-weight: 700; color: var(--navy); margin-bottom: 6px; }
     .work-meta { font-size: 13px; color: var(--grey); }
-    .work-desc { margin-top: 10px; font-size: 14px; color: var(--grey); }
     .work-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
     .work-tag {
       font-size: 12px; color: var(--grey);
@@ -674,7 +673,7 @@
 
     /* Works */
     .work-body { display: flex; flex-direction: column; align-items: flex-start; }
-    .work-desc { flex: 1; line-height: 1.8; }
+    .work-detail { flex: 1; }
 
     /* Profile — compact dark band that anchors the middle of the page */
     #profile {
@@ -767,6 +766,81 @@
     }
     .reveal.is-visible { opacity: 1; transform: none; }
 
+    /* ===== Hero assurances ===== */
+    .hero-assurances {
+      display: flex; flex-wrap: wrap;
+      gap: 8px 20px;
+      margin-bottom: 30px;
+      font-size: 13px;
+      color: rgba(255,255,255,0.88);
+    }
+    .hero-assurance { display: inline-flex; align-items: center; gap: 6px; }
+    .hero-assurance::before { content: '\2713'; color: #6ee7a8; font-weight: 700; }
+
+    /* ===== Reasons ===== */
+    #reasons { background: linear-gradient(180deg, #f8fafc 0%, #eef3f9 100%); }
+    .reason-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px;
+    }
+    .reason-card {
+      background: var(--white);
+      border: 1px solid #e4ebf3;
+      border-radius: 18px;
+      padding: 26px 26px 30px;
+      box-shadow: 0 14px 34px rgba(20,45,82,0.07);
+      display: flex; flex-direction: column;
+    }
+    .reason-worry {
+      font-size: 13px; line-height: 1.75;
+      color: var(--grey);
+      background: #f1f5f9;
+      border-left: 3px solid #cbd5e1;
+      border-radius: 0 8px 8px 0;
+      padding: 10px 14px;
+      margin-bottom: 18px;
+    }
+    .reason-title {
+      font-size: 18px; font-weight: 700; color: var(--navy);
+      line-height: 1.5; margin-bottom: 10px;
+    }
+    .reason-desc { font-size: 14px; color: var(--grey); line-height: 1.85; }
+
+    /* ===== Work detail ===== */
+    .work-detail { margin-top: 14px; display: flex; flex-direction: column; gap: 12px; }
+    .work-detail dt {
+      display: inline-block;
+      font-size: 11px; font-weight: 700; letter-spacing: 0.06em;
+      color: var(--blue); background: var(--blue-light);
+      padding: 3px 9px; border-radius: 4px; margin-bottom: 5px;
+    }
+    .work-detail dd { margin: 0; font-size: 13.5px; color: var(--grey); line-height: 1.8; }
+
+    /* ===== Pricing scope ===== */
+    .price-scope {
+      display: grid; grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 20px; margin-top: 34px;
+    }
+    .price-scope-box {
+      background: var(--white);
+      border: 1px solid #e4ebf3;
+      border-radius: 14px;
+      padding: 22px 24px;
+    }
+    .price-scope-title {
+      font-size: 15px; font-weight: 700; color: var(--navy);
+      margin-bottom: 12px;
+    }
+    .price-scope-box ul { list-style: none; }
+    .price-scope-box li {
+      font-size: 13.5px; color: var(--grey); line-height: 1.75;
+      padding: 5px 0 5px 20px; position: relative;
+    }
+    .price-scope-box li::before { position: absolute; left: 0; top: 5px; font-weight: 700; }
+    .price-scope-box.included li::before { content: '\2713'; color: var(--blue); }
+    .price-scope-box.extra li::before { content: '\FF0B'; color: #94a3b8; }
+
     @media (max-width: 900px) {
       .service-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .price-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -817,6 +891,9 @@
       .price-table { min-width: 680px; }
       .price-grid { grid-template-columns: 1fr; }
       .works-grid { grid-template-columns: 1fr; }
+      .hero-assurances { justify-content: center; gap: 8px 14px; font-size: 12.5px; }
+      .reason-grid { grid-template-columns: 1fr; }
+      .price-scope { grid-template-columns: 1fr; }
       #contact .cta-btn { font-size: 16px; padding: 16px 20px; }
       .contact-points { gap: 10px; }
       .contact-point { font-size: 13px; padding: 7px 16px; }
@@ -834,6 +911,7 @@
 <header>
   <a href="#hero" class="header-name">Web制作・集客サポート</a>
   <nav class="header-nav" aria-label="ページ内メニュー">
+    <a href="#reasons">選ばれる理由</a>
     <a href="#services">対応サービス</a>
     <a href="#works">制作実績</a>
     <a href="#flow">ご依頼の流れ</a>
@@ -852,16 +930,49 @@
   <div class="container">
     <span class="hero-badge">徳島・四国の小さなお店・個人事業主さまへ</span>
     <h1 class="hero-title">
-      ホームページで、<br><span>地元のお店やサービスの魅力</span>を<br>しっかり伝えます
+      お店の良さが<br><span>きちんと伝わる</span><br>ホームページに。
     </h1>
     <p class="hero-desc">
-      「何を載せたらいいか分からない」状態でも大丈夫。<br>掲載内容の整理から、デザイン・制作・公開まで一緒に進めます。
+      「何を載せたらいいか分からない」状態からで大丈夫です。掲載内容の整理・構成づくりから、デザイン・制作・公開まで、一つひとつ一緒に決めていきます。
     </p>
     <div class="hero-price">HP制作 <strong>50,000円〜</strong></div>
+    <div class="hero-assurances">
+      <span class="hero-assurance">ご相談・お見積もり無料</span>
+      <span class="hero-assurance">しつこい営業は一切なし</span>
+      <span class="hero-assurance">公開まで目安1ヶ月</span>
+    </div>
     <a href="https://lin.ee/qhkzGX5" class="cta-btn" target="_blank" rel="noopener noreferrer">
       <svg viewBox="0 0 24 24"><path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.630 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63h2.386c.349 0 .63.285.63.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63.349 0 .631.285.631.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.282.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/></svg>
       <span>LINEで無料相談・お見積もり<span class="cta-sub">内容がまだ固まっていなくてもOK</span></span>
     </a>
+  </div>
+</section>
+
+<!-- Reasons -->
+<section id="reasons" class="section">
+  <div class="container">
+    <div class="section-head">
+      <span class="section-label">選ばれる理由</span>
+      <h2 class="section-title">「よく分からないまま進む」を、なくします</h2>
+      <p class="section-desc">徳島を拠点に、小さなお店・個人事業主さま向けのホームページを制作しています。ご相談から公開後の運用まで、窓口はすべて同じ担当者です。</p>
+    </div>
+    <div class="reason-grid">
+      <div class="reason-card">
+        <p class="reason-worry">「何を載せればいいのか、自分でも整理できていない」</p>
+        <h3 class="reason-title">掲載内容の整理から、一緒に考えます</h3>
+        <p class="reason-desc">業務分析・課題整理を本業にしてきた経験を活かし、事業の強みや伝えるべき情報を対話しながら言葉にしていきます。原稿が白紙の状態からのご相談で問題ありません。</p>
+      </div>
+      <div class="reason-card">
+        <p class="reason-worry">「制作会社に頼むと高そう。見積もりを取るのも気が重い」</p>
+        <h3 class="reason-title">HP制作50,000円〜。別途費用の範囲も先にお伝えします</h3>
+        <p class="reason-desc">ご相談から制作・公開まで個人で直接対応するため、営業コストや中間マージンがかかりません。料金は着手前にすべてお伝えし、別途お見積もりになる範囲も先に明示します。</p>
+      </div>
+      <div class="reason-card">
+        <p class="reason-worry">「作ったあと、更新できずに放置してしまいそう」</p>
+        <h3 class="reason-title">公開後の運用・更新まで引き受けます</h3>
+        <p class="reason-desc">月額プランで、サーバー・ドメインの管理から文言修正・画像差し替えまで対応。Googleアナリティクスでアクセスを見ながら改善を続けるプランもご用意しています。</p>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -916,8 +1027,17 @@
         <div class="work-body">
           <span class="work-type">HP制作</span>
           <div class="work-name">ボートシーバスガイド「2FACE」</div>
-          <p class="work-meta">業種：釣り・レジャー</p>
-          <p class="work-desc">徳島・吉野川のボートシーバスガイドサイト。予約導線と空き状況をファーストビューに分かりやすく整理しました。</p>
+          <p class="work-meta">業種：釣り・レジャー／徳島・吉野川</p>
+          <dl class="work-detail">
+            <div>
+              <dt>整理したポイント</dt>
+              <dd>予約を検討している方が最初に知りたい「空き状況」と「申し込み方法」に、迷わずたどり着けること。</dd>
+            </div>
+            <div>
+              <dt>対応したこと</dt>
+              <dd>予約導線と空き状況をファーストビューに配置し、フィールドの魅力が伝わる写真構成と組み合わせて整理しました。</dd>
+            </div>
+          </dl>
           <div class="work-tags">
             <span class="work-tag">構成</span>
             <span class="work-tag">デザイン</span>
@@ -931,7 +1051,16 @@
           <span class="work-type">HP制作</span>
           <div class="work-name">株式会社八坂</div>
           <p class="work-meta">業種：製缶・溶接・機械器具設置</p>
-          <p class="work-desc">ものづくりの現場を支える技術力が伝わるコーポレートサイト。力強いビジュアルと明快な導線で、事業内容や施工実績、お問い合わせ先を分かりやすく整理しました。</p>
+          <dl class="work-detail">
+            <div>
+              <dt>整理したポイント</dt>
+              <dd>製缶・溶接・機械器具設置という専門性の高い事業内容を、業界の外の方にも一目で伝えること。</dd>
+            </div>
+            <div>
+              <dt>対応したこと</dt>
+              <dd>ものづくりの現場が伝わる力強いビジュアルで技術力を印象づけつつ、事業内容・施工実績・お問い合わせ先へ最短で進める導線に整理しました。</dd>
+            </div>
+          </dl>
           <div class="work-tags">
             <span class="work-tag">構成</span>
             <span class="work-tag">デザイン</span>
@@ -939,6 +1068,13 @@
           </div>
         </div>
       </div>
+    </div>
+    <div class="cta-wrap">
+      <a href="https://lin.ee/qhkzGX5" class="cta-btn" target="_blank" rel="noopener noreferrer">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.630 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63h2.386c.349 0 .63.285.63.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63.349 0 .631.285.631.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.282.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/></svg>
+        <span>うちの場合はどうなる？を相談する<span class="cta-sub">見積もりだけのご相談でも大丈夫です</span></span>
+      </a>
+      <p class="cta-note">業種・ご予算をお伝えいただければ、進め方の目安をお返しします。</p>
     </div>
   </div>
 </section>
@@ -1087,7 +1223,29 @@
         </tbody>
       </table>
     </div>
-    <p style="font-size:13px;color:var(--grey);margin-top:16px;text-align:center;">※ 修正3回目以降・構成変更・機能追加は別途お見積もりとなります。</p>
+    <div class="price-scope">
+      <div class="price-scope-box included">
+        <div class="price-scope-title">制作費（50,000円〜）に含まれるもの</div>
+        <ul>
+          <li>目的・ターゲット・掲載内容のヒアリングと整理</li>
+          <li>ページ構成（どこに何を置くか）の作成</li>
+          <li>デザイン・レイアウト作成</li>
+          <li>スマートフォン表示に対応した実装</li>
+          <li>公開作業</li>
+          <li>公開前の修正 2回まで</li>
+        </ul>
+      </div>
+      <div class="price-scope-box extra">
+        <div class="price-scope-title">別途お見積もりになるもの</div>
+        <ul>
+          <li>修正3回目以降</li>
+          <li>公開後の構成変更・ページ追加</li>
+          <li>予約システム・ECカートなどの機能追加</li>
+          <li>AI動画・AIイラストの挿入（上記の料金表のとおり）</li>
+        </ul>
+      </div>
+    </div>
+    <p style="font-size:13px;color:var(--grey);margin-top:20px;text-align:center;">※ 別途費用が発生する場合は、着手前に必ずお見積もりをお出しします。ご承諾なしに追加のご請求をすることはありません。</p>
   </div>
 </section>
 
@@ -1117,6 +1275,26 @@
         <p class="faq-answer">はい、公開にはサーバーとドメインが必要です。費用は月額のサイト運用プラン（10,000円〜）に含まれています。選定や手続きもサポートします。</p>
       </details>
       <details>
+        <summary>パソコンやITが苦手でも依頼できますか？</summary>
+        <p class="faq-answer">はい。やりとりはLINEが中心で、専門用語を使わずに進めます。公開後の文言修正や画像の差し替えも、月額のサイト運用プランでこちらが代行しますので、ご自身で管理画面を操作する必要はありません。</p>
+      </details>
+      <details>
+        <summary>徳島以外からでも依頼できますか？</summary>
+        <p class="faq-answer">はい。ご相談から公開まで、LINE・オンラインで完結できます。徳島県内であれば、直接お伺いしての打ち合わせもご相談ください。</p>
+      </details>
+      <details>
+        <summary>途中で追加費用が発生することはありますか？</summary>
+        <p class="faq-answer">ご承諾なしに追加のご請求をすることはありません。制作費に含まれる範囲と、別途お見積もりになる範囲（修正3回目以降・構成変更・機能追加など）は料金セクションに明記しています。範囲を超える作業が必要になった場合は、着手前に必ずお見積もりをお出しします。</p>
+      </details>
+      <details>
+        <summary>今あるサイトのリニューアルもお願いできますか？</summary>
+        <p class="faq-answer">はい。「既存サイト改善」として50,000円〜で承ります。今のサイトの課題を整理したうえで、構成・導線・デザインを見直します。ゼロから作り直すより費用を抑えられる場合もありますので、まずは現在のサイトのURLをお送りください。</p>
+      </details>
+      <details>
+        <summary>月額プランには必ず入る必要がありますか？</summary>
+        <p class="faq-answer">サイトの公開にはサーバーとドメインが必要で、その費用と管理を月額プラン（10,000円〜）に含めています。そのため基本的には月額プランとあわせてのご提供となりますが、すでにサーバー・ドメインをお持ちの場合や、ご自身で管理されたい場合はご相談ください。</p>
+      </details>
+      <details>
         <summary>公開したあと、効果は分かるのですか？</summary>
         <p class="faq-answer">月額50,000円の「サイト分析・改善」プランでは、Googleアナリティクスを導入し、どのページがどれだけ見られているかを継続して分析します。数値をもとに改善のご提案と修正まで対応するため、公開して終わりになりません。</p>
       </details>
@@ -1129,7 +1307,7 @@
   <div class="container">
     <span class="section-label">お問い合わせ</span>
     <h2 class="section-title">まずは、LINEで気軽にご相談ください</h2>
-    <p class="contact-desc">「何から始めればいいか分からない」段階で大丈夫です。ご相談・お見積もりは無料。しつこい営業は一切いたしません。</p>
+    <p class="contact-desc">「何から始めればいいか分からない」段階で大丈夫です。ご相談・お見積もりは無料。しつこい営業は一切いたしません。<br>友だち追加だけしておいて、後から質問していただくのでも構いません。</p>
     <div class="contact-points">
       <div class="contact-point">相談・お見積もり無料</div>
       <div class="contact-point">目安1ヶ月で公開</div>
@@ -1139,13 +1317,14 @@
       <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.630 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63h2.386c.349 0 .63.285.63.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63.349 0 .631.285.631.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.282.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/></svg>
       <span>LINEで無料相談・お見積もり<span class="cta-sub">内容がまだ固まっていなくてもOK</span></span>
     </a>
-    <p class="cta-note">友だち追加後、そのままトークでご相談いただけます。</p>
+    <p class="cta-note">友だち追加後、そのままトークでご相談いただけます。<br>業種・やりたいこと・ご予算のいずれかをひと言お送りいただければ、進め方の目安をお返しします。</p>
   </div>
 </section>
 
 <!-- Footer -->
 <footer>
   <nav class="footer-nav" aria-label="フッターメニュー">
+    <a href="#reasons">選ばれる理由</a>
     <a href="#services">対応サービス</a>
     <a href="#works">制作実績</a>
     <a href="#flow">ご依頼の流れ</a>
@@ -1177,7 +1356,7 @@
   (function () {
     if (!('IntersectionObserver' in window)) return;
     const targets = document.querySelectorAll(
-      '.section-head, .service-card, .work-card, .profile-figure, .profile-body, .flow-item, .price-card, .price-options-head, .price-table-wrap, .faq-list > details, #contact > .container > *'
+      '.section-head, .reason-card, .service-card, .work-card, .profile-figure, .profile-body, .flow-item, .price-card, .price-options-head, .price-table-wrap, .price-scope-box, .faq-list > details, #contact > .container > *'
     );
     targets.forEach(el => el.classList.add('reveal'));
 
