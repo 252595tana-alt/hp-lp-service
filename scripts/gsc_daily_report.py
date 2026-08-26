@@ -12,6 +12,12 @@ DEFAULT_REPORT_DIR = Path("reports/seo")
 SCOPES = ["https://www.googleapis.com/auth/webmasters.readonly"]
 
 
+if hasattr(sys.stdout, "reconfigure"):
+    sys.stdout.reconfigure(encoding="utf-8")
+if hasattr(sys.stderr, "reconfigure"):
+    sys.stderr.reconfigure(encoding="utf-8")
+
+
 def require_google_libraries():
     try:
         from google.oauth2 import service_account
