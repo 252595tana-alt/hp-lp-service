@@ -1,2 +1,3 @@
 User-agent: *
 Allow: /
+Sitemap: https://252595tana-alt.github.io/hp-lp-service/sitemap.xml
