@@ -5,3 +5,10 @@ hp_lp_requirements_v1_0.pdf
 e93d26e1-4821-41c0-ab49-1a97b68efe43.png
 hero-bg.png
 image-1782626549777.webp
+
+# Local API credentials and generated SEO reports
+secrets/
+reports/
+.venv-gsc/
+__pycache__/
+*.pyc
