@@ -437,6 +437,20 @@
     .service-box strong { display: block; font-size: 20px; margin-bottom: 18px; }
     .service-box ul { list-style: none; padding: 0; color: var(--muted); font-size: 15px; }
     .service-box li { padding: 9px 0; border-top: 1px solid rgba(16, 19, 18, 0.1); }
+    .insight-card {
+      color: inherit;
+      text-decoration: none;
+      transition: background 0.2s ease, transform 0.2s ease;
+    }
+    .insight-card:hover {
+      background: rgba(255, 255, 255, 0.62);
+      transform: translateY(-3px);
+    }
+    .insight-card p {
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.9;
+    }
 
     .strength { color: var(--paper); background: var(--deep); overflow: hidden; }
     .strength .kicker { color: #9ac9b9; }
@@ -853,6 +867,32 @@
       </div>
     </section>
 
+    <section id="insights" class="section">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <p class="kicker reveal">SEO / Insights</p>
+            <h2 class="display small reveal"><span class="line">相談前に、</span><span class="line">知っておきたいこと。</span></h2>
+          </div>
+          <p class="lead reveal">徳島でホームページ制作やWeb集客を考える方に向けて、費用、SEO、MEO、依頼前の整理ポイントをまとめています。</p>
+        </div>
+        <div class="service-columns">
+          <a class="service-box insight-card reveal" href="tokushima-homepage.html">
+            <div><h3>Local</h3><strong>徳島でホームページ制作を依頼する前に</strong></div>
+            <p>目的、ターゲット、問い合わせ導線など、作り始める前に整理したいことをまとめました。</p>
+          </a>
+          <a class="service-box insight-card reveal" href="homepage-cost.html">
+            <div><h3>Cost</h3><strong>ホームページ制作の費用は何で変わる？</strong></div>
+            <p>ページ数、写真、文章、予約導線、公開後の改善など、費用が変わる理由を整理しています。</p>
+          </a>
+          <a class="service-box insight-card reveal" href="seo-meo.html">
+            <div><h3>Search</h3><strong>SEOとMEOの違い</strong></div>
+            <p>地域ビジネスで検索とGoogleマップをどう使い分けるか、最初に考えるポイントです。</p>
+          </a>
+        </div>
+      </div>
+    </section>
+
     <section id="faq" class="section">
       <div class="container">
         <div class="section-head">
@@ -891,6 +931,7 @@
           <a href="#philosophy">About</a>
           <a href="#service">Service</a>
           <a href="#works">Works</a>
+          <a href="#insights">Insights</a>
           <a href="https://lin.ee/qhkzGX5" target="_blank" rel="noopener noreferrer">LINE</a>
           <a href="#top">Top</a>
         </nav>
