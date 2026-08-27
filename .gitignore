@@ -12,3 +12,7 @@ reports/
 .venv-gsc/
 __pycache__/
 *.pyc
+
+# Campaign Concept Studio local files
+campaign-concept-studio/.env
+campaign-concept-studio/node_modules/

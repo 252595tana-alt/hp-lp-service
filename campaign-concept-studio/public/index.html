@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Campaign Concept Studio</title>
+  <meta name="description" content="Generate campaign concepts, copy variants, launch checklists, and visual directions with the OpenAI Responses API.">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="app-shell">
+    <section class="workspace" aria-label="Campaign concept workspace">
+      <header class="masthead">
+        <div>
+          <p class="eyebrow">Responses API Studio</p>
+          <h1>Campaign Concept Studio</h1>
+          <p class="lede">Turn a rough brief into a strategic campaign concept, channel-ready copy, launch tasks, and generated visual directions.</p>
+        </div>
+        <div class="status-card">
+          <span class="pulse"></span>
+          <div>
+            <strong>Server-side AI flow</strong>
+            <p>API key stays off the browser.</p>
+          </div>
+        </div>
+      </header>
+
+      <div class="layout">
+        <form id="campaign-form" class="panel form-panel">
+          <div class="panel-head">
+            <p class="label">Input</p>
+            <h2>Campaign brief</h2>
+          </div>
+
+          <label>
+            Short campaign brief
+            <textarea name="brief" rows="4" required placeholder="Launch a premium reusable bottle for urban commuters who want hydration without plastic waste."></textarea>
+          </label>
+
+          <label>
+            Target audience
+            <input name="audience" required placeholder="Busy urban professionals, 25-40, sustainability-minded">
+          </label>
+
+          <label>
+            Product details
+            <textarea name="product" rows="3" required placeholder="Insulated stainless steel bottle, modular lid, 24-hour cold retention, recycled packaging."></textarea>
+          </label>
+
+          <div class="field-grid">
+            <label>
+              Tone
+              <select name="tone" required>
+                <option>Confident and refined</option>
+                <option>Playful and optimistic</option>
+                <option>Bold and disruptive</option>
+                <option>Warm and human</option>
+                <option>Minimal and premium</option>
+              </select>
+            </label>
+
+            <label>
+              Channels
+              <input name="channels" required placeholder="Paid social, email, landing page, OOH">
+            </label>
+          </div>
+
+          <button type="submit" id="submit-button">
+            <span>Generate campaign</span>
+            <span aria-hidden="true">→</span>
+          </button>
+        </form>
+
+        <section class="panel output-panel" aria-live="polite">
+          <div id="empty-state" class="state">
+            <div class="orbital-mark"></div>
+            <h2>Ready for a sharper direction.</h2>
+            <p>Add a brief and generate a complete campaign package. Results will appear here with copy, checklist, image prompts, and generated visuals.</p>
+          </div>
+
+          <div id="loading-state" class="state hidden">
+            <div class="loader"></div>
+            <h2>Building the campaign system...</h2>
+            <p>Writing the concept, shaping copy, planning launch work, and generating visual directions.</p>
+          </div>
+
+          <div id="error-state" class="state hidden error-state">
+            <h2>Something needs attention.</h2>
+            <p id="error-message">The request could not be completed.</p>
+          </div>
+
+          <div id="results" class="results hidden">
+            <div class="result-hero">
+              <p class="label">Concept</p>
+              <h2 id="concept-name"></h2>
+              <p id="concept-line" class="concept-line"></p>
+              <div class="strategy-grid">
+                <div>
+                  <span>Rationale</span>
+                  <p id="concept-rationale"></p>
+                </div>
+                <div>
+                  <span>Audience promise</span>
+                  <p id="concept-promise"></p>
+                </div>
+              </div>
+            </div>
+
+            <section>
+              <div class="section-title">
+                <p class="label">Copy</p>
+                <h3>Headline and body variants</h3>
+              </div>
+              <div id="copy-list" class="copy-list"></div>
+            </section>
+
+            <section>
+              <div class="section-title">
+                <p class="label">Launch</p>
+                <h3>Checklist</h3>
+              </div>
+              <div id="checklist" class="checklist"></div>
+            </section>
+
+            <section>
+              <div class="section-title">
+                <p class="label">Visual direction</p>
+                <h3>Generated images and prompts</h3>
+              </div>
+              <div id="image-grid" class="image-grid"></div>
+            </section>
+          </div>
+        </section>
+      </div>
+    </section>
+  </main>
+  <script src="app.js" type="module"></script>
+</body>
+</html>

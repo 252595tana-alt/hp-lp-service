@@ -1,0 +1,14 @@
+{
+  "name": "campaign-concept-studio",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "node --env-file-if-exists=.env server.js",
+    "start": "node --env-file-if-exists=.env server.js",
+    "validate": "node --check server.js"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
