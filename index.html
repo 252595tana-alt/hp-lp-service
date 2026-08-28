@@ -451,6 +451,12 @@
       font-size: 15px;
       line-height: 1.9;
     }
+    .insights-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border-top: 1px solid var(--line);
+      border-left: 1px solid var(--line);
+    }
 
     .strength { color: var(--paper); background: var(--deep); overflow: hidden; }
     .strength .kicker { color: #9ac9b9; }
@@ -631,7 +637,7 @@
       .hero { padding-top: 104px; }
       .hero-meta { border-left: 0; border-top: 1px solid rgba(255, 255, 255, 0.3); padding: 18px 0 0; }
       .story-list, .flow-strip, .approach-list { grid-template-columns: repeat(2, 1fr); }
-      .service-columns, .strength-grid, .faq-grid { grid-template-columns: 1fr; }
+      .service-columns, .insights-grid, .strength-grid, .faq-grid { grid-template-columns: 1fr; }
       .flow-step:nth-child(2n), .approach-item:nth-child(2n) { border-right: 0; }
       .photo-frame, .vision .photo-frame { min-height: 420px; }
     }
@@ -876,7 +882,7 @@
           </div>
           <p class="lead reveal">徳島でホームページ制作やWeb集客を考える方に向けて、費用、SEO、MEO、依頼前の整理ポイントをまとめています。</p>
         </div>
-        <div class="service-columns">
+        <div class="insights-grid">
           <a class="service-box insight-card reveal" href="tokushima-homepage.html">
             <div><h3>Local</h3><strong>徳島でホームページ制作を依頼する前に</strong></div>
             <p>目的、ターゲット、問い合わせ導線など、作り始める前に整理したいことをまとめました。</p>
@@ -888,6 +894,14 @@
           <a class="service-box insight-card reveal" href="seo-meo.html">
             <div><h3>Search</h3><strong>SEOとMEOの違い</strong></div>
             <p>地域ビジネスで検索とGoogleマップをどう使い分けるか、最初に考えるポイントです。</p>
+          </a>
+          <a class="service-box insight-card reveal" href="web-consultation.html">
+            <div><h3>Consult</h3><strong>徳島でWeb制作を相談するときの進め方</strong></div>
+            <p>まだ内容が固まっていない段階で、何を相談すればいいかを整理しています。</p>
+          </a>
+          <a class="service-box insight-card reveal" href="homepage-improvement.html">
+            <div><h3>Improve</h3><strong>問い合わせが来ないホームページの改善ポイント</strong></div>
+            <p>公開後に見るべき導線、文章、検索、アクセス分析の基本をまとめました。</p>
           </a>
         </div>
       </div>
