@@ -759,7 +759,7 @@
       <a href="#works">WORKS</a>
       <a href="#contact">CONTACT</a>
     </nav>
-    <a class="header-cta" href="https://lin.ee/qhkzGX5" target="_blank" rel="noopener noreferrer">LINE</a>
+    <a class="header-cta" href="https://lin.ee/qhkzGX5" target="_blank" rel="noopener noreferrer" data-ga-event="line_click" data-ga-location="header">LINE</a>
   </header>
 
   <main id="top">
@@ -777,7 +777,7 @@
             徳島のホームページ制作・Web制作を、目的にしない。事業の課題を整理し、必要な仕組みを一緒につくる。集客、採用、業務改善までつなげて考えます。
           </p>
           <div class="hero-actions">
-            <a class="button line" href="https://lin.ee/qhkzGX5" target="_blank" rel="noopener noreferrer">相談してみる <span class="arrow">→</span></a>
+            <a class="button line" href="https://lin.ee/qhkzGX5" target="_blank" rel="noopener noreferrer" data-ga-event="line_click" data-ga-location="hero">相談してみる <span class="arrow">→</span></a>
             <a class="button" href="#philosophy">考え方を見る <span class="arrow">↓</span></a>
           </div>
           <p class="scroll-hint">SCROLL TO STORY</p>
@@ -985,7 +985,7 @@
         <h2 class="display contact-title reveal"><span class="line">何から、</span><span class="line contact-question"><span class="piece">考えていき</span><span class="piece">ましょうか？</span></span></h2>
         <p class="lead reveal">Web、集客、採用、業務改善。まだ相談内容がまとまっていなくても問題ありません。まずは今のお悩みを聞かせてください。</p>
         <div class="contact-points reveal"><span>相談無料</span><span>無理な営業は行いません</span><span>徳島を拠点に全国対応</span></div>
-        <a class="button line reveal" href="https://lin.ee/qhkzGX5" target="_blank" rel="noopener noreferrer">LINEで相談する <span class="arrow">→</span></a>
+        <a class="button line reveal" href="https://lin.ee/qhkzGX5" target="_blank" rel="noopener noreferrer" data-ga-event="line_click" data-ga-location="contact">LINEで相談する <span class="arrow">→</span></a>
       </div>
     </section>
   </main>
@@ -999,7 +999,7 @@
           <a href="#service">Service</a>
           <a href="#works">Works</a>
           <a href="#insights">Insights</a>
-          <a href="https://lin.ee/qhkzGX5" target="_blank" rel="noopener noreferrer">LINE</a>
+          <a href="https://lin.ee/qhkzGX5" target="_blank" rel="noopener noreferrer" data-ga-event="line_click" data-ga-location="footer">LINE</a>
           <a href="#top">Top</a>
         </nav>
         <p>© 2026 SHOTA TANAKA</p>
@@ -1025,6 +1025,15 @@
     };
     updateHeader();
     window.addEventListener("scroll", updateHeader, { passive: true });
+
+    document.querySelectorAll('[data-ga-event="line_click"]').forEach((link) => {
+      link.addEventListener("click", () => {
+        if (typeof gtag !== "function") return;
+        gtag("event", "line_click", {
+          link_location: link.dataset.gaLocation
+        });
+      });
+    });
 
     if ("IntersectionObserver" in window) {
       const targets = document.querySelectorAll(".reveal");
