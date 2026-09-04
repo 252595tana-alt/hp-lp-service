@@ -35,7 +35,7 @@
       "publisher": {"@type": "Organization", "name": "Web工房 田中翔大"},
       "image": "https://252595tana-alt.github.io/hp-lp-service/hero-v2.png",
       "datePublished": "2026-08-26",
-      "dateModified": "2026-09-01",
+      "dateModified": "2026-09-04",
       "mainEntityOfPage": "https://252595tana-alt.github.io/hp-lp-service/seo-meo.html"
     }
   </script>
@@ -46,6 +46,38 @@
       "itemListElement": [
         {"@type": "ListItem", "position": 1, "name": "トップ", "item": "https://252595tana-alt.github.io/hp-lp-service/"},
         {"@type": "ListItem", "position": 2, "name": "SEOとMEOの違い", "item": "https://252595tana-alt.github.io/hp-lp-service/seo-meo.html"}
+      ]
+    }
+  </script>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "SEOとMEOはどちらから始めるべきですか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "店舗への来店や地域内への訪問が中心なら、Googleビジネスプロフィールの基本情報と、ホームページのサービス内容・問い合わせ導線を並行して整えます。オンライン中心のサービスでは、検索意図に合うページを作るSEOから優先する方法があります。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Googleビジネスプロフィールはどのくらいの頻度で更新しますか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "毎日更新する必要はありません。少なくとも月1回を目安に基本情報を確認し、営業時間やサービス内容に変更があればその都度更新します。写真、投稿、口コミへの返信も定期的に見直します。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "MEOをすればホームページは不要ですか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Googleマップは場所、営業時間、写真、口コミの確認に向いています。ホームページはサービスの詳細、費用、相談の流れ、制作事例などを詳しく伝えられます。役割が違うため、地域ビジネスでは両方をつなぐことが大切です。"
+          }
+        }
       ]
     }
   </script>
@@ -61,10 +93,22 @@
     h1 { font-size: clamp(38px, 7vw, 76px); line-height: 1.08; letter-spacing: 0; margin-bottom: 28px; }
     .lead { font-size: clamp(17px, 2vw, 21px); color: #4f544f; margin-bottom: 48px; }
     h2 { font-size: clamp(26px, 4vw, 40px); line-height: 1.25; margin: 54px 0 18px; }
+    h3 { font-size: 21px; line-height: 1.5; }
     p, li { font-size: 16px; }
-    ul { padding-left: 1.2em; }
+    ul, ol { padding-left: 1.2em; }
     li + li { margin-top: 10px; }
     .box { border-top: 1px solid rgba(16, 19, 18, 0.16); border-bottom: 1px solid rgba(16, 19, 18, 0.16); padding: 26px 0; margin: 42px 0; }
+    .box h2 { margin-top: 0; }
+    .box p { margin-bottom: 18px; color: #4f544f; }
+    .monthly-check li::marker { color: #0f6b57; font-weight: 900; }
+    .faq { margin-top: 62px; }
+    .faq > h2 { margin-top: 0; }
+    .faq-item { padding: 24px 0; border-top: 1px solid rgba(16, 19, 18, 0.16); }
+    .faq-item:last-child { border-bottom: 1px solid rgba(16, 19, 18, 0.16); }
+    .faq-item h3 { margin-bottom: 8px; }
+    .faq-item p { color: #4f544f; }
+    .related-links { margin-top: 34px; color: #4f544f; }
+    .related-links a { color: #0f6b57; font-weight: 900; }
     .cta { display: inline-flex; align-items: center; gap: 12px; margin-top: 36px; padding: 13px 22px; border: 1px solid #101312; border-radius: 999px; text-decoration: none; font-weight: 900; }
     footer { color: #f7f5ef; background: #090c0b; padding: 34px 0; }
     footer nav { display: flex; flex-wrap: wrap; gap: 18px; }
@@ -109,6 +153,38 @@
         <li>口コミへの返信で、地域名やサービス内容が自然に伝わるようにする</li>
         <li>ホームページ側にも対応エリア、相談内容、問い合わせ導線を明記する</li>
       </ul>
+
+      <div class="box">
+        <h2>月1回を目安に確認したいMEO運用</h2>
+        <p>情報を登録したままにせず、実際の営業内容とGoogleビジネスプロフィール、ホームページの表示をそろえておくことが大切です。</p>
+        <ol class="monthly-check">
+          <li>店名、住所、電話番号、営業時間に変更がないか確認する</li>
+          <li>主なカテゴリとサービス内容が現在の事業に合っているか見直す</li>
+          <li>外観、店内、商品、仕事風景など最近の写真を追加する</li>
+          <li>休業日や期間限定の案内があれば営業時間や投稿へ反映する</li>
+          <li>新しい口コミを確認し、内容に合わせて丁寧に返信する</li>
+          <li>ホームページへのアクセスと問い合わせの変化を確認する</li>
+        </ol>
+      </div>
+
+      <section class="faq" aria-labelledby="meo-faq-title">
+        <h2 id="meo-faq-title">SEO・MEOのよくある質問</h2>
+        <div class="faq-item">
+          <h3>SEOとMEOはどちらから始めるべきですか？</h3>
+          <p>店舗への来店や地域内への訪問が中心なら、Googleビジネスプロフィールの基本情報と、ホームページのサービス内容・問い合わせ導線を並行して整えます。オンライン中心のサービスでは、検索意図に合うページを作るSEOから優先する方法があります。</p>
+        </div>
+        <div class="faq-item">
+          <h3>Googleビジネスプロフィールはどのくらいの頻度で更新しますか？</h3>
+          <p>毎日更新する必要はありません。少なくとも月1回を目安に基本情報を確認し、営業時間やサービス内容に変更があればその都度更新します。写真、投稿、口コミへの返信も定期的に見直します。</p>
+        </div>
+        <div class="faq-item">
+          <h3>MEOをすればホームページは不要ですか？</h3>
+          <p>Googleマップは場所、営業時間、写真、口コミの確認に向いています。ホームページはサービスの詳細、費用、相談の流れ、制作事例などを詳しく伝えられます。役割が違うため、地域ビジネスでは両方をつなぐことが大切です。</p>
+        </div>
+      </section>
+
+      <p class="related-links">具体的な見せ方は<a href="tokushima-homepage-works.html">徳島のホームページ制作事例</a>、問い合わせまでの見直し方は<a href="homepage-improvement.html">ホームページの改善ポイント</a>で確認できます。</p>
+
       <h2>まずは土台を作る</h2>
       <p>SEOもMEOも、すぐに順位が上がる魔法ではありません。まずはページを分かりやすく整え、Googleに登録し、必要な情報を少しずつ増やしていくことが大切です。</p>
 
