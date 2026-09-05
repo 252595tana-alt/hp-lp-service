@@ -700,6 +700,8 @@
       .site-header { padding-inline: 14px; }
       .brand { min-width: 132px; font-size: 13px; }
       .header-cta { margin-left: auto; padding: 9px 12px; font-size: 11px; }
+      .hero-media { background: url("public/images/hero-mobile-poster.jpg") center / cover no-repeat; }
+      .hero-media video { display: none; }
       .hero::after { display: none; }
       .hero h1 { font-size: clamp(54px, 22vw, 92px); }
       .display { font-size: clamp(39px, 16vw, 68px); }
@@ -766,7 +768,7 @@
     <section class="hero" aria-label="ファーストビュー">
       <div class="hero-media" aria-hidden="true">
         <video autoplay muted loop playsinline preload="metadata">
-          <source src="public/videos/hero-tokushima.mp4" type="video/mp4">
+          <source src="public/videos/hero-tokushima.mp4" type="video/mp4" media="(min-width: 641px)">
         </video>
       </div>
       <div class="container hero-grid">
