@@ -623,6 +623,10 @@
       inset: 0 0 0 49%;
       z-index: -2;
       background: url("public/images/message-session.jpg") center / cover no-repeat;
+      background-image: image-set(
+        url("public/images/message-session.webp") type("image/webp"),
+        url("public/images/message-session.jpg") type("image/jpeg")
+      );
       filter: saturate(0.88) contrast(1.04);
     }
     .message::after {
