@@ -35,7 +35,7 @@
       "url": "https://252595tana-alt.github.io/hp-lp-service/tokushima-homepage-works.html",
       "inLanguage": "ja",
       "datePublished": "2026-09-02",
-      "dateModified": "2026-09-02",
+      "dateModified": "2026-09-08",
       "author": {"@type": "Person", "name": "田中翔大"},
       "publisher": {"@type": "Organization", "name": "Web工房 田中翔大"},
       "primaryImageOfPage": "https://252595tana-alt.github.io/hp-lp-service/work-yasaka.webp",
@@ -44,12 +44,16 @@
           "@type": "CreativeWork",
           "name": "株式会社八坂 ホームページ制作",
           "description": "徳島の製缶・溶接・機械器具設置企業のコーポレートサイト制作事例。",
+          "url": "https://252595tana-alt.github.io/hp-lp-service/tokushima-homepage-works.html#yasaka",
+          "image": "https://252595tana-alt.github.io/hp-lp-service/work-yasaka.webp",
           "locationCreated": {"@type": "Place", "name": "徳島"}
         },
         {
           "@type": "CreativeWork",
           "name": "2FACE ホームページ制作",
           "description": "徳島の釣り・レジャーサービスのホームページ制作事例。",
+          "url": "https://252595tana-alt.github.io/hp-lp-service/tokushima-homepage-works.html#twoface",
+          "image": "https://252595tana-alt.github.io/hp-lp-service/work-2face.webp",
           "locationCreated": {"@type": "Place", "name": "徳島"}
         }
       ]
@@ -62,6 +66,38 @@
       "itemListElement": [
         {"@type": "ListItem", "position": 1, "name": "トップ", "item": "https://252595tana-alt.github.io/hp-lp-service/"},
         {"@type": "ListItem", "position": 2, "name": "徳島のホームページ制作事例", "item": "https://252595tana-alt.github.io/hp-lp-service/tokushima-homepage-works.html"}
+      ]
+    }
+  </script>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "徳島のどのようなホームページ制作事例を掲載していますか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "製缶・溶接・機械器具設置を行う株式会社八坂の企業サイトと、釣り・レジャーサービス2FACEのサービスサイトの2件です。どちらも徳島の事業者向けに制作したホームページです。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "制作事例では何を確認できますか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "事業ごとの課題、制作範囲、情報の整理方法、問い合わせ・予約導線で重視した点を確認できます。デザイン画像だけでなく、設計の考え方も紹介しています。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "掲載内容や必要なページが決まっていなくても相談できますか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "はい。現在の課題、ホームページで実現したいこと、必要な問い合わせ・予約方法から順に整理できます。"
+          }
+        }
       ]
     }
   </script>
@@ -115,6 +151,14 @@
     .principles-list { display: grid; gap: 26px; }
     .principles-list div { padding-bottom: 24px; border-bottom: 1px solid rgba(255, 255, 255, 0.18); }
     .principles-list p { margin-top: 8px; color: #c8d1cd; }
+    .faq { padding: 92px 0; background: #eef3f0; }
+    .faq-layout { display: grid; grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr); gap: 64px; }
+    .faq .kicker { color: var(--green); }
+    .faq-intro { margin-top: 16px; color: var(--muted); }
+    .faq-list { border-top: 1px solid var(--line); }
+    .faq-item { padding: 24px 0; border-bottom: 1px solid var(--line); }
+    .faq-item h3 { font-size: 22px; }
+    .faq-item p { margin-top: 10px; color: var(--muted); }
     .next { padding: 92px 0; }
     .next-inner { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 48px; align-items: end; }
     .next p { max-width: 700px; margin-top: 16px; color: var(--muted); }
@@ -132,8 +176,8 @@
       .hero { padding: 64px 0 72px; }
       h1 { font-size: 42px; }
       .hero .lead { font-size: 18px; }
-      .case, .principles, .next { padding: 70px 0; }
-      .case-head, .case-details, .principles-grid, .next-inner { grid-template-columns: 1fr; gap: 30px; }
+      .case, .principles, .faq, .next { padding: 70px 0; }
+      .case-head, .case-details, .principles-grid, .faq-layout, .next-inner { grid-template-columns: 1fr; gap: 30px; }
       h2 { font-size: 32px; }
       .next-inner { align-items: start; }
     }
@@ -176,7 +220,7 @@
         <div class="case-head">
           <div>
             <p class="case-number">Case 01 / Corporate Site</p>
-            <h2>株式会社八坂</h2>
+            <h2>株式会社八坂のホームページ制作事例</h2>
           </div>
           <p class="case-summary">製缶・溶接・機械器具設置の技術力と事業内容を、初めて訪れる人にも分かりやすく伝えるためのコーポレートサイトです。</p>
         </div>
@@ -204,7 +248,7 @@
         <div class="case-head">
           <div>
             <p class="case-number">Case 02 / Service Site</p>
-            <h2>2FACE</h2>
+            <h2>2FACEのホームページ制作事例</h2>
           </div>
           <p class="case-summary">釣り・レジャーサービスの魅力を伝えながら、利用を検討する人が情報確認から予約まで進みやすいように設計したサービスサイトです。</p>
         </div>
@@ -246,6 +290,30 @@
             <h3>次の行動を分かりやすくする</h3>
             <p>電話、メール、LINE、予約など、事業に合った問い合わせ導線を迷わず選べるように設計します。</p>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="faq" aria-labelledby="works-faq-title">
+      <div class="wrap faq-layout">
+        <div>
+          <p class="kicker">Works FAQ</p>
+          <h2 id="works-faq-title">徳島のホームページ制作事例について</h2>
+          <p class="faq-intro">掲載している実績と、制作相談前に確認できる内容をまとめました。</p>
+        </div>
+        <div class="faq-list">
+          <article class="faq-item">
+            <h3>徳島のどのようなホームページ制作事例を掲載していますか？</h3>
+            <p>製缶・溶接・機械器具設置を行う株式会社八坂の企業サイトと、釣り・レジャーサービス2FACEのサービスサイトの2件です。どちらも徳島の事業者向けに制作したホームページです。</p>
+          </article>
+          <article class="faq-item">
+            <h3>制作事例では何を確認できますか？</h3>
+            <p>事業ごとの課題、制作範囲、情報の整理方法、問い合わせ・予約導線で重視した点を確認できます。デザイン画像だけでなく、設計の考え方も紹介しています。</p>
+          </article>
+          <article class="faq-item">
+            <h3>掲載内容や必要なページが決まっていなくても相談できますか？</h3>
+            <p>はい。現在の課題、ホームページで実現したいこと、必要な問い合わせ・予約方法から順に整理できます。</p>
+          </article>
         </div>
       </div>
     </section>
