@@ -783,7 +783,7 @@
       <a href="#story">STORY</a>
       <a href="#service">SERVICE</a>
       <a href="#works">WORKS</a>
-      <a href="#contact">CONTACT</a>
+      <a href="#contact" data-ga-event="contact_intent_click" data-ga-location="navigation">CONTACT</a>
     </nav>
     <a class="header-cta" href="https://lin.ee/qhkzGX5" target="_blank" rel="noopener noreferrer" data-ga-event="line_click" data-ga-location="header">LINE</a>
   </header>
@@ -955,7 +955,7 @@
         <p class="kicker reveal">07 / Message</p>
         <h2 class="display small reveal"><span class="line">一緒に考えられる</span><span class="line">人でありたい。</span></h2>
         <p class="lead reveal">徳島でホームページ制作やWeb集客が必要かどうか、まだ決まっていなくても構いません。何に困っているのか。何から始めればいいのか。まず、そこから一緒に整理します。</p>
-        <a class="button reveal" href="#contact">相談へ進む <span class="arrow">→</span></a>
+        <a class="button reveal" href="#contact" data-ga-event="contact_intent_click" data-ga-location="message">相談へ進む <span class="arrow">→</span></a>
       </div>
     </section>
 
@@ -1059,10 +1059,10 @@
     updateHeader();
     window.addEventListener("scroll", updateHeader, { passive: true });
 
-    document.querySelectorAll('[data-ga-event="line_click"]').forEach((link) => {
+    document.querySelectorAll("[data-ga-event]").forEach((link) => {
       link.addEventListener("click", () => {
         if (typeof gtag !== "function") return;
-        gtag("event", "line_click", {
+        gtag("event", link.dataset.gaEvent, {
           link_location: link.dataset.gaLocation
         });
       });
