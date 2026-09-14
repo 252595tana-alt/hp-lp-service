@@ -35,9 +35,10 @@
       "url": "https://252595tana-alt.github.io/hp-lp-service/tokushima-homepage-works.html",
       "inLanguage": "ja",
       "datePublished": "2026-09-02",
-      "dateModified": "2026-09-08",
+      "dateModified": "2026-09-14",
+      "isPartOf": {"@id": "https://252595tana-alt.github.io/hp-lp-service/#website"},
       "author": {"@type": "Person", "name": "田中翔大"},
-      "publisher": {"@type": "Organization", "name": "Web工房 田中翔大"},
+      "publisher": {"@id": "https://252595tana-alt.github.io/hp-lp-service/#business"},
       "primaryImageOfPage": "https://252595tana-alt.github.io/hp-lp-service/work-yasaka.webp",
       "hasPart": [
         {
@@ -324,13 +325,14 @@
           <h2 id="next-title">ホームページ制作の相談へ</h2>
           <p>まだ掲載内容や必要なページが決まっていなくても、現在の課題と目的から整理できます。</p>
           <div class="text-links">
-            <a href="tokushima-homepage.html">依頼前に決めること</a>
-            <a href="homepage-cost.html">制作費用が変わるポイント</a>
-            <a href="web-consultation.html">相談の進め方</a>
-            <a href="homepage-improvement.html">公開後の改善ポイント</a>
+            <a href="tokushima-homepage.html">徳島でホームページ制作を依頼する前の整理</a>
+            <a href="homepage-cost.html">徳島のホームページ制作費用</a>
+            <a href="web-consultation.html">徳島でWeb制作を相談する流れ</a>
+            <a href="homepage-improvement.html">問い合わせを増やすホームページ改善</a>
+            <a href="seo-meo.html">徳島の地域集客で考えるSEO・MEO</a>
           </div>
         </div>
-        <a class="cta" href="index.html#contact">制作について相談する →</a>
+        <a class="cta" href="index.html#contact" data-ga-event="contact_intent_click" data-ga-location="works_page">制作について相談する →</a>
       </div>
     </section>
   </main>
@@ -345,5 +347,15 @@
       </nav>
     </div>
   </footer>
+  <script>
+    document.querySelectorAll("[data-ga-event]").forEach((link) => {
+      link.addEventListener("click", () => {
+        if (typeof gtag !== "function") return;
+        gtag("event", link.dataset.gaEvent, {
+          link_location: link.dataset.gaLocation
+        });
+      });
+    });
+  </script>
 </body>
 </html>
