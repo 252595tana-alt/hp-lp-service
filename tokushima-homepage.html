@@ -32,10 +32,11 @@
       "@type": "Article",
       "headline": "徳島でホームページ制作を依頼する前に決めること",
       "author": {"@type": "Person", "name": "田中翔大"},
-      "publisher": {"@type": "Organization", "name": "Web工房 田中翔大"},
+      "publisher": {"@id": "https://252595tana-alt.github.io/hp-lp-service/#business"},
+      "isPartOf": {"@id": "https://252595tana-alt.github.io/hp-lp-service/#website"},
       "image": "https://252595tana-alt.github.io/hp-lp-service/hero-v2.png",
       "datePublished": "2026-08-26",
-      "dateModified": "2026-09-02",
+      "dateModified": "2026-09-15",
       "mainEntityOfPage": "https://252595tana-alt.github.io/hp-lp-service/tokushima-homepage.html"
     }
   </script>
@@ -46,6 +47,38 @@
       "itemListElement": [
         {"@type": "ListItem", "position": 1, "name": "トップ", "item": "https://252595tana-alt.github.io/hp-lp-service/"},
         {"@type": "ListItem", "position": 2, "name": "徳島でホームページ制作を依頼する前に決めること", "item": "https://252595tana-alt.github.io/hp-lp-service/tokushima-homepage.html"}
+      ]
+    }
+  </script>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "ホームページ制作の相談前に掲載内容をすべて決める必要はありますか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "すべてを決めておく必要はありません。まず目的、見てほしい相手、問い合わせ方法を整理し、必要なページや文章、写真は相談しながら優先順位を決められます。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "徳島という地域名はホームページのどこに入れればよいですか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "タイトルや見出しに無理に繰り返すのではなく、対応エリア、事業内容、制作実績、お客様向けの説明など、地域との関係が分かる箇所へ自然に入れます。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "公開後のSEO・MEOはいつから始めればよいですか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "タイトル、説明文、内部リンク、サイトマップなどの基本は公開時に整えます。公開後は検索語句、閲覧ページ、問い合わせ導線を確認し、優先度の高い箇所から継続して改善します。"
+          }
+        }
       ]
     }
   </script>
@@ -65,6 +98,8 @@
     ul { padding-left: 1.2em; }
     li + li { margin-top: 10px; }
     .box { border-top: 1px solid rgba(16, 19, 18, 0.16); border-bottom: 1px solid rgba(16, 19, 18, 0.16); padding: 26px 0; margin: 42px 0; }
+    .faq h3 { font-size: 20px; line-height: 1.5; margin: 28px 0 8px; }
+    .faq p { color: #4f544f; }
     .cta { display: inline-flex; align-items: center; gap: 12px; margin-top: 36px; padding: 13px 22px; border: 1px solid #101312; border-radius: 999px; text-decoration: none; font-weight: 900; }
     footer { color: #f7f5ef; background: #090c0b; padding: 34px 0; }
     footer nav { display: flex; flex-wrap: wrap; gap: 18px; }
@@ -104,9 +139,29 @@
       <h2>作って終わりにしない</h2>
       <p>公開後に検索順位、アクセス、問い合わせ内容を見ながら改善することで、ホームページは少しずつ育ちます。徳島のホームページ制作では、最初から完璧を目指すより、目的に合わせて改善できる形にしておくことが大切です。</p>
 
-      <a class="cta" href="index.html#contact">ホームページ制作を相談する →</a>
+      <section class="faq" aria-labelledby="homepage-faq-title">
+        <h2 id="homepage-faq-title">徳島のホームページ制作を依頼する前のよくある質問</h2>
+        <h3>ホームページ制作の相談前に掲載内容をすべて決める必要はありますか？</h3>
+        <p>すべてを決めておく必要はありません。まず目的、見てほしい相手、問い合わせ方法を整理し、必要なページや文章、写真は相談しながら優先順位を決められます。</p>
+        <h3>徳島という地域名はホームページのどこに入れればよいですか？</h3>
+        <p>タイトルや見出しに無理に繰り返すのではなく、対応エリア、事業内容、制作実績、お客様向けの説明など、地域との関係が分かる箇所へ自然に入れます。</p>
+        <h3>公開後のSEO・MEOはいつから始めればよいですか？</h3>
+        <p>タイトル、説明文、内部リンク、サイトマップなどの基本は公開時に整えます。公開後は検索語句、閲覧ページ、問い合わせ導線を確認し、優先度の高い箇所から継続して改善します。</p>
+      </section>
+
+      <a class="cta" href="index.html#contact" data-ga-event="contact_intent_click" data-ga-location="tokushima_homepage_article">ホームページ制作を相談する →</a>
     </article>
   </main>
   <footer><div class="wrap"><nav><a href="index.html">Top</a><a href="homepage-cost.html">費用の考え方</a><a href="seo-meo.html">SEOとMEO</a></nav></div></footer>
+  <script>
+    document.querySelectorAll("[data-ga-event]").forEach((link) => {
+      link.addEventListener("click", () => {
+        if (typeof gtag !== "function") return;
+        gtag("event", link.dataset.gaEvent, {
+          link_location: link.dataset.gaLocation
+        });
+      });
+    });
+  </script>
 </body>
 </html>
