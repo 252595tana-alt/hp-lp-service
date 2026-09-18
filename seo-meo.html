@@ -4,20 +4,20 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>SEOとMEOの違い｜徳島の地域ビジネス向けWeb集客</title>
-  <meta name="description" content="SEOとMEOの違いを、徳島の店舗・サービス・個人事業主向けに分かりやすく整理。ホームページ制作とGoogleマップ導線の考え方を紹介します。">
+  <meta name="description" content="SEOとMEOの違いを徳島の店舗・サービス・個人事業主向けに解説。来店型・訪問型・オンライン型ごとの優先順位と、ホームページ・Googleマップで確認する指標が分かります。">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://252595tana-alt.github.io/hp-lp-service/seo-meo.html">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <meta property="og:type" content="article">
   <meta property="og:title" content="SEOとMEOの違い｜徳島の地域ビジネス向けWeb集客">
-  <meta property="og:description" content="検索とGoogleマップをどう使い分けるかを整理します。">
+  <meta property="og:description" content="徳島の地域ビジネス向けに、SEOとMEOの優先順位と確認する指標を整理します。">
   <meta property="og:url" content="https://252595tana-alt.github.io/hp-lp-service/seo-meo.html">
   <meta property="og:image" content="https://252595tana-alt.github.io/hp-lp-service/hero-v2.png">
   <meta property="og:locale" content="ja_JP">
   <meta property="og:site_name" content="Web工房 田中翔大">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="SEOとMEOの違い｜徳島の地域ビジネス向けWeb集客">
-  <meta name="twitter:description" content="徳島の店舗・サービス向けに、検索とGoogleマップの使い分けを整理します。">
+  <meta name="twitter:description" content="徳島の地域ビジネス向けに、SEOとMEOの優先順位と確認する指標を整理します。">
   <meta name="twitter:image" content="https://252595tana-alt.github.io/hp-lp-service/hero-v2.png">
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-2PYPCXBWYZ"></script>
   <script>
@@ -32,10 +32,11 @@
       "@type": "Article",
       "headline": "SEOとMEOの違い｜徳島の地域ビジネス向けWeb集客",
       "author": {"@type": "Person", "name": "田中翔大"},
-      "publisher": {"@type": "Organization", "name": "Web工房 田中翔大"},
+      "publisher": {"@id": "https://252595tana-alt.github.io/hp-lp-service/#business"},
+      "isPartOf": {"@id": "https://252595tana-alt.github.io/hp-lp-service/#website"},
       "image": "https://252595tana-alt.github.io/hp-lp-service/hero-v2.png",
       "datePublished": "2026-08-26",
-      "dateModified": "2026-09-04",
+      "dateModified": "2026-09-19",
       "mainEntityOfPage": "https://252595tana-alt.github.io/hp-lp-service/seo-meo.html"
     }
   </script>
@@ -100,6 +101,15 @@
     .box { border-top: 1px solid rgba(16, 19, 18, 0.16); border-bottom: 1px solid rgba(16, 19, 18, 0.16); padding: 26px 0; margin: 42px 0; }
     .box h2 { margin-top: 0; }
     .box p { margin-bottom: 18px; color: #4f544f; }
+    .priority-list { margin: 18px 0 0; }
+    .priority-list > div { display: grid; grid-template-columns: minmax(180px, 0.65fr) 1.35fr; gap: 28px; padding: 24px 0; border-top: 1px solid rgba(16, 19, 18, 0.16); }
+    .priority-list > div:last-child { border-bottom: 1px solid rgba(16, 19, 18, 0.16); }
+    .priority-list dt { font-size: 18px; font-weight: 900; }
+    .priority-list dd { color: #4f544f; }
+    .metric-table-wrap { margin-top: 22px; overflow-x: auto; }
+    .metric-table { width: 100%; min-width: 680px; border-collapse: collapse; }
+    .metric-table th, .metric-table td { padding: 15px 14px; border-bottom: 1px solid rgba(16, 19, 18, 0.16); text-align: left; vertical-align: top; }
+    .metric-table th { color: #0f6b57; font-size: 14px; }
     .monthly-check li::marker { color: #0f6b57; font-weight: 900; }
     .faq { margin-top: 62px; }
     .faq > h2 { margin-top: 0; }
@@ -113,6 +123,9 @@
     footer { color: #f7f5ef; background: #090c0b; padding: 34px 0; }
     footer nav { display: flex; flex-wrap: wrap; gap: 18px; }
     footer a { color: #f7f5ef; text-decoration: none; }
+    @media (max-width: 640px) {
+      .priority-list > div { grid-template-columns: 1fr; gap: 8px; }
+    }
   </style>
 </head>
 <body>
@@ -122,6 +135,25 @@
       <p class="kicker">SEO / MEO</p>
       <h1>SEOとMEOの違い。地域ビジネスではどう考える？</h1>
       <p class="lead">徳島でホームページ制作やWeb集客を考えるとき、SEOとMEOはどちらも大切です。違いを知っておくと、検索から問い合わせまでの導線を作りやすくなります。</p>
+
+      <section aria-labelledby="priority-title">
+        <h2 id="priority-title">SEOとMEO、どちらを先に整える？</h2>
+        <p>優先順位は、利用者がどこでサービスを受けるかで決めます。どの場合も、Googleビジネスプロフィールとホームページの名称・サービス内容・営業時間・対応地域を一致させることが土台です。</p>
+        <dl class="priority-list">
+          <div>
+            <dt>店舗へ来店してもらう</dt>
+            <dd>飲食、美容、教室などはMEOを先に確認します。カテゴリ、営業時間、写真、口コミ、地図からのWebサイト遷移を整え、ホームページにはメニュー・料金・予約方法を掲載します。</dd>
+          </div>
+          <div>
+            <dt>お客様の場所へ訪問する</dt>
+            <dd>修理、撮影、訪問サービスなどはSEOとMEOを並行します。ホームページで対応地域とサービス内容を明記し、Googleビジネスプロフィールにも訪問可能な地域とサービスを登録します。</dd>
+          </div>
+          <div>
+            <dt>オンラインで全国対応する</dt>
+            <dd>Web制作やオンライン相談などはSEOを優先します。相談者の課題ごとにページを分け、サービス内容、費用、実績、相談の流れを検索結果からたどれるようにします。</dd>
+          </div>
+        </dl>
+      </section>
 
       <h2>SEOは検索結果で見つけてもらう対策</h2>
       <p>SEOは、Google検索でページを見つけてもらうための取り組みです。ホームページのタイトル、説明文、本文、見出し、内部リンク、表示速度、スマホ対応などが関係します。徳島 ホームページ制作、徳島 Web制作のような検索語句では、ページの内容が分かりやすいことが重要です。</p>
@@ -167,6 +199,21 @@
         </ol>
       </div>
 
+      <h2>SEO・MEOの効果を判断する指標</h2>
+      <p>順位だけではなく、見つけてもらった後の行動まで分けて確認します。表示回数が少ない場合と、表示されても相談につながらない場合では、直す箇所が異なります。</p>
+      <div class="metric-table-wrap">
+        <table class="metric-table">
+          <thead>
+            <tr><th>確認する段階</th><th>主な指標</th><th>確認先</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>検索結果で見つかる</td><td>表示回数、クリック数、CTR、平均掲載順位、検索語句</td><td>Google Search Console</td></tr>
+            <tr><td>Googleマップで選ばれる</td><td>Webサイトクリック、通話、ルート検索、検索語句</td><td>Googleビジネスプロフィールのパフォーマンス</td></tr>
+            <tr><td>ページから相談へ進む</td><td>自然検索流入、閲覧ページ、相談CTAクリック、問い合わせ完了</td><td>Google Analytics</td></tr>
+          </tbody>
+        </table>
+      </div>
+
       <section class="faq" aria-labelledby="meo-faq-title">
         <h2 id="meo-faq-title">SEO・MEOのよくある質問</h2>
         <div class="faq-item">
@@ -183,14 +230,25 @@
         </div>
       </section>
 
-      <p class="related-links">具体的な見せ方は<a href="tokushima-homepage-works.html">徳島のホームページ制作事例</a>、問い合わせまでの見直し方は<a href="homepage-improvement.html">ホームページの改善ポイント</a>で確認できます。</p>
+      <p class="related-links">具体的な見せ方は<a href="tokushima-homepage-works.html">徳島のホームページ制作事例</a>、問い合わせまでの見直し方は<a href="homepage-improvement.html">ホームページの改善ポイント</a>、相談前の整理は<a href="web-consultation.html">Web制作の相談準備</a>で確認できます。</p>
 
       <h2>まずは土台を作る</h2>
       <p>SEOもMEOも、すぐに順位が上がる魔法ではありません。まずはページを分かりやすく整え、Googleに登録し、必要な情報を少しずつ増やしていくことが大切です。</p>
 
-      <a class="cta" href="index.html#contact">Web集客を相談する →</a>
+      <a class="cta" href="index.html#contact" data-ga-event="contact_intent_click" data-ga-location="seo_meo_article">Web集客を相談する →</a>
     </article>
   </main>
   <footer><div class="wrap"><nav><a href="index.html">Top</a><a href="tokushima-homepage.html">依頼前の整理</a><a href="homepage-cost.html">費用の考え方</a></nav></div></footer>
+  <script>
+    document.querySelectorAll("[data-ga-event]").forEach((link) => {
+      link.addEventListener("click", () => {
+        if (typeof gtag !== "function") return;
+        gtag("event", link.dataset.gaEvent, {
+          link_location: link.dataset.gaLocation,
+          link_url: link.href
+        });
+      });
+    });
+  </script>
 </body>
 </html>
