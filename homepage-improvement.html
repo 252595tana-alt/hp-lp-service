@@ -36,7 +36,7 @@
       "isPartOf": {"@id": "https://252595tana-alt.github.io/hp-lp-service/#website"},
       "image": "https://252595tana-alt.github.io/hp-lp-service/hero-v2.png",
       "datePublished": "2026-08-28",
-      "dateModified": "2026-09-18",
+      "dateModified": "2026-09-25",
       "mainEntityOfPage": "https://252595tana-alt.github.io/hp-lp-service/homepage-improvement.html"
     }
   </script>
@@ -47,6 +47,38 @@
       "itemListElement": [
         {"@type": "ListItem", "position": 1, "name": "トップ", "item": "https://252595tana-alt.github.io/hp-lp-service/"},
         {"@type": "ListItem", "position": 2, "name": "問い合わせが来ないホームページの改善ポイント", "item": "https://252595tana-alt.github.io/hp-lp-service/homepage-improvement.html"}
+      ]
+    }
+  </script>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "問い合わせが来ないホームページは、何から改善すべきですか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "まず、検索結果に表示されていない、表示されてもクリックされない、読まれても問い合わせに進まない、のどこで止まっているかを確認します。Search ConsoleやGA4の数字に合わせて、タイトル、本文、実績、問い合わせ導線の順に優先度を決めます。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "デザインを変えるだけで問い合わせは増えますか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "デザイン変更だけで増えるとは限りません。誰向けのサービスか、何を相談できるか、実績や費用の考え方、問い合わせ方法が分かる状態を先に整え、必要に応じて見た目と操作性を改善します。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "アクセスが少ない段階でもホームページを改善できますか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "改善できます。検索される内容とページの主題、地域や対象者、内部リンク、スマートフォンの問い合わせ導線を先に確認します。データが増えた後は、表示回数、CTR、相談クリックを見ながら追加調整します。"
+          }
+        }
       ]
     }
   </script>
@@ -71,6 +103,11 @@
     .diagnosis-list div { display: grid; grid-template-columns: minmax(220px, 0.55fr) minmax(0, 1fr); gap: 24px; padding: 20px 0; border-bottom: 1px solid rgba(16, 19, 18, 0.16); }
     .diagnosis-list dt { font-weight: 900; }
     .diagnosis-list dd { margin: 0; color: #4f544f; }
+    .faq { margin: 54px 0 0; }
+    .faq-list { margin-top: 24px; border-top: 1px solid rgba(16, 19, 18, 0.16); }
+    .faq-item { padding: 22px 0; border-bottom: 1px solid rgba(16, 19, 18, 0.16); }
+    .faq-item h3 { font-size: 18px; line-height: 1.5; margin-bottom: 8px; }
+    .faq-item p { color: #4f544f; }
     .cta { display: inline-flex; align-items: center; gap: 12px; margin-top: 36px; padding: 13px 22px; border: 1px solid #101312; border-radius: 999px; text-decoration: none; font-weight: 900; }
     footer { color: #f7f5ef; background: #090c0b; padding: 34px 0; }
     footer nav { display: flex; flex-wrap: wrap; gap: 18px; }
@@ -114,6 +151,24 @@
 
       <h2>数字を見て少しずつ直す</h2>
       <p>問い合わせ改善は一度で終わりではありません。表示回数はあるのにクリックされない言葉、読まれているのに問い合わせにつながらないページを見つけて、タイトル、説明文、本文、導線を調整します。</p>
+
+      <section class="faq" aria-labelledby="improvement-faq-title">
+        <h2 id="improvement-faq-title">ホームページ改善のよくある質問</h2>
+        <div class="faq-list">
+          <article class="faq-item">
+            <h3>問い合わせが来ないホームページは、何から改善すべきですか？</h3>
+            <p>まず、検索結果に表示されていない、表示されてもクリックされない、読まれても問い合わせに進まない、のどこで止まっているかを確認します。Search ConsoleやGA4の数字に合わせて、タイトル、本文、実績、問い合わせ導線の順に優先度を決めます。</p>
+          </article>
+          <article class="faq-item">
+            <h3>デザインを変えるだけで問い合わせは増えますか？</h3>
+            <p>デザイン変更だけで増えるとは限りません。誰向けのサービスか、何を相談できるか、実績や費用の考え方、問い合わせ方法が分かる状態を先に整え、必要に応じて見た目と操作性を改善します。</p>
+          </article>
+          <article class="faq-item">
+            <h3>アクセスが少ない段階でもホームページを改善できますか？</h3>
+            <p>改善できます。検索される内容とページの主題、地域や対象者、内部リンク、スマートフォンの問い合わせ導線を先に確認します。データが増えた後は、表示回数、CTR、相談クリックを見ながら追加調整します。</p>
+          </article>
+        </div>
+      </section>
 
       <a class="cta" href="index.html#contact" data-ga-event="contact_intent_click" data-ga-location="homepage_improvement_article">ホームページ改善を相談する →</a>
     </article>
