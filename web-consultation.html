@@ -36,7 +36,7 @@
       "isPartOf": {"@id": "https://252595tana-alt.github.io/hp-lp-service/#website"},
       "image": "https://252595tana-alt.github.io/hp-lp-service/hero-v2.png",
       "datePublished": "2026-08-28",
-      "dateModified": "2026-09-26",
+      "dateModified": "2026-09-28",
       "mainEntityOfPage": "https://252595tana-alt.github.io/hp-lp-service/web-consultation.html"
     }
   </script>
@@ -109,6 +109,38 @@
       }
     }
   </script>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Web制作の内容が決まっていなくても相談できますか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "はい。現在困っていることと、問い合わせ・予約・採用などホームページで実現したい目的から、必要なページや導線を一緒に整理できます。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Web制作の相談前に何を準備すればよいですか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "会社概要、サービス内容、対象のお客様、利用中のSNSやLINE、既存サイトのURLなどがあると進めやすくなります。資料がそろっていない場合も、ヒアリングしながら整理できます。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "ホームページ公開後のSEOや改善も相談できますか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "はい。SEO、MEO、アクセス分析、更新方法など、公開後に確認する指標と改善する範囲を制作相談の中で整理できます。"
+          }
+        }
+      ]
+    }
+  </script>
   <style>
     * { box-sizing: border-box; margin: 0; }
     body { color: #101312; background: #f7f5ef; font-family: "Yu Gothic", "Yu Gothic UI", Meiryo, sans-serif; line-height: 1.9; }
@@ -133,6 +165,10 @@
     .step-number { color: #0f6b57; font-weight: 900; }
     .process-list h3 { font-size: 20px; line-height: 1.5; }
     .process-list p { margin-top: 6px; color: #4f544f; }
+    .faq { margin-top: 54px; border-top: 1px solid rgba(16, 19, 18, 0.16); }
+    .faq-item { padding: 24px 0; border-bottom: 1px solid rgba(16, 19, 18, 0.16); }
+    .faq-item h3 { font-size: 20px; line-height: 1.5; }
+    .faq-item p { margin-top: 8px; color: #4f544f; }
     .cta { display: inline-flex; align-items: center; gap: 12px; margin-top: 36px; padding: 13px 22px; border: 1px solid #101312; border-radius: 999px; text-decoration: none; font-weight: 900; }
     footer { color: #f7f5ef; background: #090c0b; padding: 34px 0; }
     footer nav { display: flex; flex-wrap: wrap; gap: 18px; }
@@ -180,6 +216,24 @@
 
       <h2>Web制作は公開後から育つ</h2>
       <p>公開しただけですぐに成果が出るとは限りません。検索で見られている言葉、クリックされるページ、問い合わせにつながる導線を見ながら、文章や構成を改善していくことが大切です。公開後に確認する項目は<a href="homepage-improvement.html">問い合わせが来ないホームページの改善ポイント</a>にまとめています。</p>
+
+      <section aria-labelledby="consultation-faq-title">
+        <h2 id="consultation-faq-title">Web制作相談のよくある質問</h2>
+        <div class="faq">
+          <article class="faq-item">
+            <h3>Web制作の内容が決まっていなくても相談できますか？</h3>
+            <p>はい。現在困っていることと、問い合わせ・予約・採用などホームページで実現したい目的から、必要なページや導線を一緒に整理できます。</p>
+          </article>
+          <article class="faq-item">
+            <h3>Web制作の相談前に何を準備すればよいですか？</h3>
+            <p>会社概要、サービス内容、対象のお客様、利用中のSNSやLINE、既存サイトのURLなどがあると進めやすくなります。資料がそろっていない場合も、ヒアリングしながら整理できます。</p>
+          </article>
+          <article class="faq-item">
+            <h3>ホームページ公開後のSEOや改善も相談できますか？</h3>
+            <p>はい。SEO、MEO、アクセス分析、更新方法など、公開後に確認する指標と改善する範囲を制作相談の中で整理できます。</p>
+          </article>
+        </div>
+      </section>
 
       <a class="cta" href="index.html#contact" data-ga-event="contact_intent_click" data-ga-location="web_consultation_article">Web制作を相談する →</a>
     </article>
