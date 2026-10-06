@@ -623,6 +623,9 @@
     .bot-art-mark { width: 54px; height: 54px; margin: 0 auto; border: 2px solid var(--green); border-radius: 18px; transform: rotate(-12deg); }
     .bot-art p { color: var(--green); font-size: clamp(25px, 4vw, 42px); font-weight: 900; line-height: 1.3; }
     .bot-art small { color: var(--muted); font-size: 12px; }
+    .development-art { background: radial-gradient(circle at 78% 18%, rgba(217, 72, 59, 0.12), transparent 30%), #f7f5ef; }
+    .development-art .bot-art-mark { border-color: #d9483b; }
+    .work-status { align-self: flex-start; margin: 0 0 18px; padding: 4px 12px; border: 1px solid #d9483b; border-radius: 99px; color: #a53127; font-size: 13px; font-weight: 900; }
 
     .approach-list {
       display: grid;
@@ -973,7 +976,7 @@
             <p class="kicker reveal">06 / Selected Works</p>
             <h2 class="display small reveal"><span class="line">課題から、</span><span class="line">形にしたもの。</span></h2>
           </div>
-          <p class="lead reveal">単なる制作ギャラリーではなく、何を整理し、どう形にしたのかが伝わる実績として掲載しています。</p>
+          <p class="lead reveal">制作実績と開発中の案件を、それぞれの進捗が分かる形で掲載しています。</p>
         </div>
         <div class="works-grid">
           <article class="work-card reveal">
@@ -987,6 +990,10 @@
           <article class="work-card reveal">
             <div class="work-image"><div class="bot-art" aria-label="LINEチャットbotの装飾イメージ。実際の画面ではありません"><span class="bot-art-mark" aria-hidden="true"></span><p>LINEチャットbot</p><small>制作実績の紹介</small></div></div>
             <div class="work-body"><p class="work-type">Chatbot</p><h3>LINEチャットbot</h3><div class="work-meta"><p>LINE上で利用するチャットbotの制作実績です。</p></div><a class="work-detail-link" href="tokushima-homepage-works.html#line-chatbot">事例の詳細を見る →</a></div>
+          </article>
+          <article class="work-card reveal">
+            <div class="work-image"><div class="bot-art development-art" aria-label="ヒトアンドのAIヒアリングの装飾イメージ。実際の画面ではありません"><span class="bot-art-mark" aria-hidden="true"></span><p>ヒトアンドの<br>AIヒアリング</p><small>開発中</small></div></div>
+            <div class="work-body"><p class="work-type">AI Hearing</p><p class="work-status">開発中</p><h3>ヒトアンドのAIヒアリング</h3><div class="work-meta"><p>AIヒアリングを開発中です。</p></div><a class="work-detail-link" href="tokushima-homepage-works.html#hitand-ai-hearing">開発中の案件を見る →</a></div>
           </article>
         </div>
       </div>
