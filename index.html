@@ -295,7 +295,7 @@
     }
 
     .hero {
-      min-height: 100svh;
+      min-height: calc(100svh - 140px);
       position: relative;
       display: flex;
       align-items: flex-end;
@@ -343,8 +343,8 @@
       align-items: end;
     }
     .hero h1 {
-      font-size: clamp(58px, 14vw, 168px);
-      line-height: 0.91;
+      font-size: clamp(44px, 6vw, 78px);
+      line-height: 1.12;
       letter-spacing: 0;
       font-weight: 900;
       max-width: 900px;
@@ -352,8 +352,14 @@
     .hero h1 span {
       display: block;
     }
+    .hero-concept {
+      margin-top: 16px;
+      font-size: clamp(20px, 2.4vw, 30px);
+      font-weight: 800;
+      line-height: 1.4;
+    }
     .hero-copy {
-      margin-top: 28px;
+      margin-top: 22px;
       max-width: 560px;
       color: rgba(255, 255, 255, 0.82);
       font-size: clamp(15px, 1.5vw, 18px);
@@ -366,6 +372,16 @@
       gap: 14px;
       margin-top: 34px;
     }
+    .hero-actions .button:not(.line) {
+      color: #fff;
+      background: rgba(255, 255, 255, 0.12);
+      border-color: rgba(255, 255, 255, 0.72);
+    }
+    .hero-actions .button:not(.line):hover {
+      color: var(--ink);
+      background: #fff;
+      border-color: #fff;
+    }
     .hero-meta {
       border-left: 1px solid rgba(255, 255, 255, 0.3);
       padding-left: 22px;
@@ -374,12 +390,13 @@
       line-height: 1.8;
     }
     .scroll-hint {
-      margin-top: 56px;
+      margin-top: 32px;
       color: rgba(255, 255, 255, 0.54);
       font-size: 11px;
       font-weight: 900;
       letter-spacing: 0.18em;
     }
+    .hero + .statement { padding-top: 32px; }
 
     .statement { background: var(--ink); color: var(--paper); }
     .statement .container {
@@ -765,7 +782,14 @@
       .hero-media { background: url("public/images/hero-mobile-poster.jpg") center / cover no-repeat; }
       .hero-media video { display: none; }
       .hero::after { display: none; }
-      .hero h1 { font-size: clamp(54px, 22vw, 92px); }
+      .hero { min-height: calc(100svh - 72px); padding-top: 88px; padding-bottom: 28px; }
+      .hero-grid { gap: 24px; }
+      .hero h1 { font-size: clamp(30px, 9vw, 38px); }
+      .hero-concept { font-size: 20px; }
+      .hero-copy { margin-top: 18px; line-height: 1.8; }
+      .hero-actions { margin-top: 24px; }
+      .scroll-hint { margin-top: 24px; }
+      .hero + .statement { padding-top: 8px; }
       .display { font-size: clamp(39px, 16vw, 68px); }
       .display.small { font-size: clamp(36px, 13vw, 58px); }
       .contact-title { font-size: clamp(34px, 10vw, 54px); }
@@ -800,6 +824,19 @@
         background:
           linear-gradient(180deg, rgba(9, 14, 12, 0.04) 0%, rgba(9, 14, 12, 0.16) 24%, #090e0c 49%, #090e0c 100%);
       }
+    }
+
+    @media (max-width: 640px) and (max-height: 760px) {
+      .hero-meta { display: none; }
+      .scroll-hint { display: none; }
+    }
+
+    @media (max-width: 640px) and (max-height: 600px) {
+      .hero { padding-top: 72px; padding-bottom: 16px; }
+      .hero .kicker { margin-bottom: 12px; }
+      .hero-concept { margin-top: 12px; }
+      .hero-copy { margin-top: 14px; }
+      .hero-actions { margin-top: 18px; }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -839,7 +876,8 @@
       <div class="container hero-grid">
         <div>
           <p class="kicker">Think. Create. Move Forward.</p>
-          <h1><span>つくる前に、</span><span>考える。</span></h1>
+          <h1><span>徳島の</span><span>ホームページ制作</span><span>・Web制作</span></h1>
+          <p class="hero-concept">つくる前に、考える。</p>
           <p class="hero-copy">
             徳島のホームページ制作・Web制作を、目的にしない。事業の課題を整理し、必要な仕組みを一緒につくる。集客、採用、業務改善までつなげて考えます。
           </p>
@@ -859,7 +897,7 @@
 
     <section class="statement section">
       <div class="container">
-        <h2 class="display small reveal"><span class="line">ホームページを</span><span class="line">作ることが、</span><span class="line">私の仕事ではありません。</span></h2>
+        <h2 class="display small"><span class="line">ホームページを</span><span class="line">作ることが、</span><span class="line">私の仕事ではありません。</span></h2>
         <p class="reveal">
           その先にある、売上、集客、採用、時間、業務改善、新しい挑戦。その目的に近づくために、ホームページやWebを使う。徳島の個人事業主・中小企業の方に、完成された答えを押しつけるのではなく、一緒に考え、一緒に前へ進む人でありたいと思っています。
         </p>
